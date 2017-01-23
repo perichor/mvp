@@ -1,0 +1,21 @@
+{
+  "name": "hrsf52-mvp",
+  "description": "Tic Tac Toe Online",
+  "main": "index.js",
+  "authors": [
+    "Jeremy Sande"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/perichor/hrsf52-mvp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}

@@ -1,0 +1,1 @@
+reactDOM.render(<App />, document.getElementById(app));
