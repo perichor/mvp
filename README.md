@@ -1,4 +1,5 @@
 # Project Name #
+	Reverse Tic Tac Toe Online
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -17,7 +18,7 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  Reverse Tic Tac Toe ONLINE
+  Tic Tac Toe but Reversed... and Online.
 
 ## Sub-Heading ##
   Reverse Tic Tac Toe, but it's online.
