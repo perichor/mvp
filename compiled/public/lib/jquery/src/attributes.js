@@ -1,0 +1,11 @@
+"use strict";
+
+define(["./core", "./attributes/attr", "./attributes/prop", "./attributes/classes", "./attributes/val"], function (jQuery) {
+
+	"use strict";
+
+	// Return jQuery for attributes-only inclusion
+
+	return jQuery;
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy9hdHRyaWJ1dGVzLmpzIl0sIm5hbWVzIjpbImRlZmluZSIsImpRdWVyeSJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsT0FBUSxDQUNQLFFBRE8sRUFFUCxtQkFGTyxFQUdQLG1CQUhPLEVBSVAsc0JBSk8sRUFLUCxrQkFMTyxDQUFSLEVBTUcsVUFBVUMsTUFBVixFQUFtQjs7QUFFdEI7O0FBRUE7O0FBQ0EsUUFBT0EsTUFBUDtBQUNDLENBWkQiLCJmaWxlIjoiYXR0cmlidXRlcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImRlZmluZSggW1xuXHRcIi4vY29yZVwiLFxuXHRcIi4vYXR0cmlidXRlcy9hdHRyXCIsXG5cdFwiLi9hdHRyaWJ1dGVzL3Byb3BcIixcblx0XCIuL2F0dHJpYnV0ZXMvY2xhc3Nlc1wiLFxuXHRcIi4vYXR0cmlidXRlcy92YWxcIlxuXSwgZnVuY3Rpb24oIGpRdWVyeSApIHtcblxuXCJ1c2Ugc3RyaWN0XCI7XG5cbi8vIFJldHVybiBqUXVlcnkgZm9yIGF0dHJpYnV0ZXMtb25seSBpbmNsdXNpb25cbnJldHVybiBqUXVlcnk7XG59ICk7XG4iXX0=

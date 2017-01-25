@@ -1,0 +1,51 @@
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
+
+/**
+ * @see http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
+ */
+
+var supportedInputTypes = {
+  'color': true,
+  'date': true,
+  'datetime': true,
+  'datetime-local': true,
+  'email': true,
+  'month': true,
+  'number': true,
+  'password': true,
+  'range': true,
+  'search': true,
+  'tel': true,
+  'text': true,
+  'time': true,
+  'url': true,
+  'week': true
+};
+
+function isTextInputElement(elem) {
+  var nodeName = elem && elem.nodeName && elem.nodeName.toLowerCase();
+
+  if (nodeName === 'input') {
+    return !!supportedInputTypes[elem.type];
+  }
+
+  if (nodeName === 'textarea') {
+    return true;
+  }
+
+  return false;
+}
+
+module.exports = isTextInputElement;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvcmVhY3QtZG9tL2xpYi9pc1RleHRJbnB1dEVsZW1lbnQuanMiXSwibmFtZXMiOlsic3VwcG9ydGVkSW5wdXRUeXBlcyIsImlzVGV4dElucHV0RWxlbWVudCIsImVsZW0iLCJub2RlTmFtZSIsInRvTG93ZXJDYXNlIiwidHlwZSIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7OztBQVdBOztBQUVBOzs7O0FBSUEsSUFBSUEsc0JBQXNCO0FBQ3hCLFdBQVMsSUFEZTtBQUV4QixVQUFRLElBRmdCO0FBR3hCLGNBQVksSUFIWTtBQUl4QixvQkFBa0IsSUFKTTtBQUt4QixXQUFTLElBTGU7QUFNeEIsV0FBUyxJQU5lO0FBT3hCLFlBQVUsSUFQYztBQVF4QixjQUFZLElBUlk7QUFTeEIsV0FBUyxJQVRlO0FBVXhCLFlBQVUsSUFWYztBQVd4QixTQUFPLElBWGlCO0FBWXhCLFVBQVEsSUFaZ0I7QUFheEIsVUFBUSxJQWJnQjtBQWN4QixTQUFPLElBZGlCO0FBZXhCLFVBQVE7QUFmZ0IsQ0FBMUI7O0FBa0JBLFNBQVNDLGtCQUFULENBQTRCQyxJQUE1QixFQUFrQztBQUNoQyxNQUFJQyxXQUFXRCxRQUFRQSxLQUFLQyxRQUFiLElBQXlCRCxLQUFLQyxRQUFMLENBQWNDLFdBQWQsRUFBeEM7O0FBRUEsTUFBSUQsYUFBYSxPQUFqQixFQUEwQjtBQUN4QixXQUFPLENBQUMsQ0FBQ0gsb0JBQW9CRSxLQUFLRyxJQUF6QixDQUFUO0FBQ0Q7O0FBRUQsTUFBSUYsYUFBYSxVQUFqQixFQUE2QjtBQUMzQixXQUFPLElBQVA7QUFDRDs7QUFFRCxTQUFPLEtBQVA7QUFDRDs7QUFFREcsT0FBT0MsT0FBUCxHQUFpQk4sa0JBQWpCIiwiZmlsZSI6ImlzVGV4dElucHV0RWxlbWVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQ29weXJpZ2h0IDIwMTMtcHJlc2VudCwgRmFjZWJvb2ssIEluYy5cbiAqIEFsbCByaWdodHMgcmVzZXJ2ZWQuXG4gKlxuICogVGhpcyBzb3VyY2UgY29kZSBpcyBsaWNlbnNlZCB1bmRlciB0aGUgQlNELXN0eWxlIGxpY2Vuc2UgZm91bmQgaW4gdGhlXG4gKiBMSUNFTlNFIGZpbGUgaW4gdGhlIHJvb3QgZGlyZWN0b3J5IG9mIHRoaXMgc291cmNlIHRyZWUuIEFuIGFkZGl0aW9uYWwgZ3JhbnRcbiAqIG9mIHBhdGVudCByaWdodHMgY2FuIGJlIGZvdW5kIGluIHRoZSBQQVRFTlRTIGZpbGUgaW4gdGhlIHNhbWUgZGlyZWN0b3J5LlxuICpcbiAqIFxuICovXG5cbid1c2Ugc3RyaWN0JztcblxuLyoqXG4gKiBAc2VlIGh0dHA6Ly93d3cud2hhdHdnLm9yZy9zcGVjcy93ZWItYXBwcy9jdXJyZW50LXdvcmsvbXVsdGlwYWdlL3RoZS1pbnB1dC1lbGVtZW50Lmh0bWwjaW5wdXQtdHlwZS1hdHRyLXN1bW1hcnlcbiAqL1xuXG52YXIgc3VwcG9ydGVkSW5wdXRUeXBlcyA9IHtcbiAgJ2NvbG9yJzogdHJ1ZSxcbiAgJ2RhdGUnOiB0cnVlLFxuICAnZGF0ZXRpbWUnOiB0cnVlLFxuICAnZGF0ZXRpbWUtbG9jYWwnOiB0cnVlLFxuICAnZW1haWwnOiB0cnVlLFxuICAnbW9udGgnOiB0cnVlLFxuICAnbnVtYmVyJzogdHJ1ZSxcbiAgJ3Bhc3N3b3JkJzogdHJ1ZSxcbiAgJ3JhbmdlJzogdHJ1ZSxcbiAgJ3NlYXJjaCc6IHRydWUsXG4gICd0ZWwnOiB0cnVlLFxuICAndGV4dCc6IHRydWUsXG4gICd0aW1lJzogdHJ1ZSxcbiAgJ3VybCc6IHRydWUsXG4gICd3ZWVrJzogdHJ1ZVxufTtcblxuZnVuY3Rpb24gaXNUZXh0SW5wdXRFbGVtZW50KGVsZW0pIHtcbiAgdmFyIG5vZGVOYW1lID0gZWxlbSAmJiBlbGVtLm5vZGVOYW1lICYmIGVsZW0ubm9kZU5hbWUudG9Mb3dlckNhc2UoKTtcblxuICBpZiAobm9kZU5hbWUgPT09ICdpbnB1dCcpIHtcbiAgICByZXR1cm4gISFzdXBwb3J0ZWRJbnB1dFR5cGVzW2VsZW0udHlwZV07XG4gIH1cblxuICBpZiAobm9kZU5hbWUgPT09ICd0ZXh0YXJlYScpIHtcbiAgICByZXR1cm4gdHJ1ZTtcbiAgfVxuXG4gIHJldHVybiBmYWxzZTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBpc1RleHRJbnB1dEVsZW1lbnQ7Il19

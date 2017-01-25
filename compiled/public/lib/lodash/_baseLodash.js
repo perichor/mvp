@@ -1,0 +1,13 @@
+"use strict";
+
+/**
+ * The function whose prototype chain sequence wrappers inherit from.
+ *
+ * @private
+ */
+function baseLodash() {
+  // No operation performed.
+}
+
+module.exports = baseLodash;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlTG9kYXNoLmpzIl0sIm5hbWVzIjpbImJhc2VMb2Rhc2giLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBOzs7OztBQUtBLFNBQVNBLFVBQVQsR0FBc0I7QUFDcEI7QUFDRDs7QUFFREMsT0FBT0MsT0FBUCxHQUFpQkYsVUFBakIiLCJmaWxlIjoiX2Jhc2VMb2Rhc2guanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFRoZSBmdW5jdGlvbiB3aG9zZSBwcm90b3R5cGUgY2hhaW4gc2VxdWVuY2Ugd3JhcHBlcnMgaW5oZXJpdCBmcm9tLlxuICpcbiAqIEBwcml2YXRlXG4gKi9cbmZ1bmN0aW9uIGJhc2VMb2Rhc2goKSB7XG4gIC8vIE5vIG9wZXJhdGlvbiBwZXJmb3JtZWQuXG59XG5cbm1vZHVsZS5leHBvcnRzID0gYmFzZUxvZGFzaDtcbiJdfQ==

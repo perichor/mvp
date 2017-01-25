@@ -1,0 +1,58 @@
+/**
+ * Copyright 2014-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
+
+var _prodInvariant = require('./reactProdInvariant');
+
+var invariant = require('fbjs/lib/invariant');
+
+/**
+ * Accumulates items that must not be null or undefined into the first one. This
+ * is used to conserve memory by avoiding array allocations, and thus sacrifices
+ * API cleanness. Since `current` can be null before being passed in and not
+ * null after this function, make sure to assign it back to `current`:
+ *
+ * `a = accumulateInto(a, b);`
+ *
+ * This API should be sparingly used. Try `accumulate` for something cleaner.
+ *
+ * @return {*|array<*>} An accumulation of items.
+ */
+
+function accumulateInto(current, next) {
+  !(next != null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'accumulateInto(...): Accumulated items must not be null or undefined.') : _prodInvariant('30') : void 0;
+
+  if (current == null) {
+    return next;
+  }
+
+  // Both are not empty. Warning: Never call x.concat(y) when you are not
+  // certain that x is an Array (x could be a string with concat method).
+  if (Array.isArray(current)) {
+    if (Array.isArray(next)) {
+      current.push.apply(current, next);
+      return current;
+    }
+    current.push(next);
+    return current;
+  }
+
+  if (Array.isArray(next)) {
+    // A bit too dangerous to mutate `next`.
+    return [current].concat(next);
+  }
+
+  return [current, next];
+}
+
+module.exports = accumulateInto;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvcmVhY3QtZG9tL2xpYi9hY2N1bXVsYXRlSW50by5qcyJdLCJuYW1lcyI6WyJfcHJvZEludmFyaWFudCIsInJlcXVpcmUiLCJpbnZhcmlhbnQiLCJhY2N1bXVsYXRlSW50byIsImN1cnJlbnQiLCJuZXh0IiwicHJvY2VzcyIsImVudiIsIk5PREVfRU5WIiwiQXJyYXkiLCJpc0FycmF5IiwicHVzaCIsImFwcGx5IiwiY29uY2F0IiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7O0FBV0E7O0FBRUEsSUFBSUEsaUJBQWlCQyxRQUFRLHNCQUFSLENBQXJCOztBQUVBLElBQUlDLFlBQVlELFFBQVEsb0JBQVIsQ0FBaEI7O0FBRUE7Ozs7Ozs7Ozs7Ozs7QUFhQSxTQUFTRSxjQUFULENBQXdCQyxPQUF4QixFQUFpQ0MsSUFBakMsRUFBdUM7QUFDckMsSUFBRUEsUUFBUSxJQUFWLElBQWtCQyxRQUFRQyxHQUFSLENBQVlDLFFBQVosS0FBeUIsWUFBekIsR0FBd0NOLFVBQVUsS0FBVixFQUFpQix1RUFBakIsQ0FBeEMsR0FBb0lGLGVBQWUsSUFBZixDQUF0SixHQUE2SyxLQUFLLENBQWxMOztBQUVBLE1BQUlJLFdBQVcsSUFBZixFQUFxQjtBQUNuQixXQUFPQyxJQUFQO0FBQ0Q7O0FBRUQ7QUFDQTtBQUNBLE1BQUlJLE1BQU1DLE9BQU4sQ0FBY04sT0FBZCxDQUFKLEVBQTRCO0FBQzFCLFFBQUlLLE1BQU1DLE9BQU4sQ0FBY0wsSUFBZCxDQUFKLEVBQXlCO0FBQ3ZCRCxjQUFRTyxJQUFSLENBQWFDLEtBQWIsQ0FBbUJSLE9BQW5CLEVBQTRCQyxJQUE1QjtBQUNBLGFBQU9ELE9BQVA7QUFDRDtBQUNEQSxZQUFRTyxJQUFSLENBQWFOLElBQWI7QUFDQSxXQUFPRCxPQUFQO0FBQ0Q7O0FBRUQsTUFBSUssTUFBTUMsT0FBTixDQUFjTCxJQUFkLENBQUosRUFBeUI7QUFDdkI7QUFDQSxXQUFPLENBQUNELE9BQUQsRUFBVVMsTUFBVixDQUFpQlIsSUFBakIsQ0FBUDtBQUNEOztBQUVELFNBQU8sQ0FBQ0QsT0FBRCxFQUFVQyxJQUFWLENBQVA7QUFDRDs7QUFFRFMsT0FBT0MsT0FBUCxHQUFpQlosY0FBakIiLCJmaWxlIjoiYWNjdW11bGF0ZUludG8uanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIENvcHlyaWdodCAyMDE0LXByZXNlbnQsIEZhY2Vib29rLCBJbmMuXG4gKiBBbGwgcmlnaHRzIHJlc2VydmVkLlxuICpcbiAqIFRoaXMgc291cmNlIGNvZGUgaXMgbGljZW5zZWQgdW5kZXIgdGhlIEJTRC1zdHlsZSBsaWNlbnNlIGZvdW5kIGluIHRoZVxuICogTElDRU5TRSBmaWxlIGluIHRoZSByb290IGRpcmVjdG9yeSBvZiB0aGlzIHNvdXJjZSB0cmVlLiBBbiBhZGRpdGlvbmFsIGdyYW50XG4gKiBvZiBwYXRlbnQgcmlnaHRzIGNhbiBiZSBmb3VuZCBpbiB0aGUgUEFURU5UUyBmaWxlIGluIHRoZSBzYW1lIGRpcmVjdG9yeS5cbiAqXG4gKiBcbiAqL1xuXG4ndXNlIHN0cmljdCc7XG5cbnZhciBfcHJvZEludmFyaWFudCA9IHJlcXVpcmUoJy4vcmVhY3RQcm9kSW52YXJpYW50Jyk7XG5cbnZhciBpbnZhcmlhbnQgPSByZXF1aXJlKCdmYmpzL2xpYi9pbnZhcmlhbnQnKTtcblxuLyoqXG4gKiBBY2N1bXVsYXRlcyBpdGVtcyB0aGF0IG11c3Qgbm90IGJlIG51bGwgb3IgdW5kZWZpbmVkIGludG8gdGhlIGZpcnN0IG9uZS4gVGhpc1xuICogaXMgdXNlZCB0byBjb25zZXJ2ZSBtZW1vcnkgYnkgYXZvaWRpbmcgYXJyYXkgYWxsb2NhdGlvbnMsIGFuZCB0aHVzIHNhY3JpZmljZXNcbiAqIEFQSSBjbGVhbm5lc3MuIFNpbmNlIGBjdXJyZW50YCBjYW4gYmUgbnVsbCBiZWZvcmUgYmVpbmcgcGFzc2VkIGluIGFuZCBub3RcbiAqIG51bGwgYWZ0ZXIgdGhpcyBmdW5jdGlvbiwgbWFrZSBzdXJlIHRvIGFzc2lnbiBpdCBiYWNrIHRvIGBjdXJyZW50YDpcbiAqXG4gKiBgYSA9IGFjY3VtdWxhdGVJbnRvKGEsIGIpO2BcbiAqXG4gKiBUaGlzIEFQSSBzaG91bGQgYmUgc3BhcmluZ2x5IHVzZWQuIFRyeSBgYWNjdW11bGF0ZWAgZm9yIHNvbWV0aGluZyBjbGVhbmVyLlxuICpcbiAqIEByZXR1cm4geyp8YXJyYXk8Kj59IEFuIGFjY3VtdWxhdGlvbiBvZiBpdGVtcy5cbiAqL1xuXG5mdW5jdGlvbiBhY2N1bXVsYXRlSW50byhjdXJyZW50LCBuZXh0KSB7XG4gICEobmV4dCAhPSBudWxsKSA/IHByb2Nlc3MuZW52Lk5PREVfRU5WICE9PSAncHJvZHVjdGlvbicgPyBpbnZhcmlhbnQoZmFsc2UsICdhY2N1bXVsYXRlSW50byguLi4pOiBBY2N1bXVsYXRlZCBpdGVtcyBtdXN0IG5vdCBiZSBudWxsIG9yIHVuZGVmaW5lZC4nKSA6IF9wcm9kSW52YXJpYW50KCczMCcpIDogdm9pZCAwO1xuXG4gIGlmIChjdXJyZW50ID09IG51bGwpIHtcbiAgICByZXR1cm4gbmV4dDtcbiAgfVxuXG4gIC8vIEJvdGggYXJlIG5vdCBlbXB0eS4gV2FybmluZzogTmV2ZXIgY2FsbCB4LmNvbmNhdCh5KSB3aGVuIHlvdSBhcmUgbm90XG4gIC8vIGNlcnRhaW4gdGhhdCB4IGlzIGFuIEFycmF5ICh4IGNvdWxkIGJlIGEgc3RyaW5nIHdpdGggY29uY2F0IG1ldGhvZCkuXG4gIGlmIChBcnJheS5pc0FycmF5KGN1cnJlbnQpKSB7XG4gICAgaWYgKEFycmF5LmlzQXJyYXkobmV4dCkpIHtcbiAgICAgIGN1cnJlbnQucHVzaC5hcHBseShjdXJyZW50LCBuZXh0KTtcbiAgICAgIHJldHVybiBjdXJyZW50O1xuICAgIH1cbiAgICBjdXJyZW50LnB1c2gobmV4dCk7XG4gICAgcmV0dXJuIGN1cnJlbnQ7XG4gIH1cblxuICBpZiAoQXJyYXkuaXNBcnJheShuZXh0KSkge1xuICAgIC8vIEEgYml0IHRvbyBkYW5nZXJvdXMgdG8gbXV0YXRlIGBuZXh0YC5cbiAgICByZXR1cm4gW2N1cnJlbnRdLmNvbmNhdChuZXh0KTtcbiAgfVxuXG4gIHJldHVybiBbY3VycmVudCwgbmV4dF07XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYWNjdW11bGF0ZUludG87Il19

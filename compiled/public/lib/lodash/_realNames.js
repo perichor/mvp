@@ -1,0 +1,7 @@
+"use strict";
+
+/** Used to lookup unminified function names. */
+var realNames = {};
+
+module.exports = realNames;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19yZWFsTmFtZXMuanMiXSwibmFtZXMiOlsicmVhbE5hbWVzIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQTtBQUNBLElBQUlBLFlBQVksRUFBaEI7O0FBRUFDLE9BQU9DLE9BQVAsR0FBaUJGLFNBQWpCIiwiZmlsZSI6Il9yZWFsTmFtZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKiogVXNlZCB0byBsb29rdXAgdW5taW5pZmllZCBmdW5jdGlvbiBuYW1lcy4gKi9cbnZhciByZWFsTmFtZXMgPSB7fTtcblxubW9kdWxlLmV4cG9ydHMgPSByZWFsTmFtZXM7XG4iXX0=

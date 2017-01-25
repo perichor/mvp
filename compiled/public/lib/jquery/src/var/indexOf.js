@@ -1,0 +1,8 @@
+"use strict";
+
+define(["./arr"], function (arr) {
+	"use strict";
+
+	return arr.indexOf;
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy92YXIvaW5kZXhPZi5qcyJdLCJuYW1lcyI6WyJkZWZpbmUiLCJhcnIiLCJpbmRleE9mIl0sIm1hcHBpbmdzIjoiOztBQUFBQSxPQUFRLENBQ1AsT0FETyxDQUFSLEVBRUcsVUFBVUMsR0FBVixFQUFnQjtBQUNsQjs7QUFFQSxRQUFPQSxJQUFJQyxPQUFYO0FBQ0EsQ0FORCIsImZpbGUiOiJpbmRleE9mLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZGVmaW5lKCBbXG5cdFwiLi9hcnJcIlxuXSwgZnVuY3Rpb24oIGFyciApIHtcblx0XCJ1c2Ugc3RyaWN0XCI7XG5cblx0cmV0dXJuIGFyci5pbmRleE9mO1xufSApO1xuIl19

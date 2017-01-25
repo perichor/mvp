@@ -1,0 +1,19 @@
+'use strict';
+
+var isPlainObject = require('./isPlainObject');
+
+/**
+ * Used by `_.omit` to customize its `_.cloneDeep` use to only clone plain
+ * objects.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @param {string} key The key of the property to inspect.
+ * @returns {*} Returns the uncloned value or `undefined` to defer cloning to `_.cloneDeep`.
+ */
+function customOmitClone(value) {
+  return isPlainObject(value) ? undefined : value;
+}
+
+module.exports = customOmitClone;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jdXN0b21PbWl0Q2xvbmUuanMiXSwibmFtZXMiOlsiaXNQbGFpbk9iamVjdCIsInJlcXVpcmUiLCJjdXN0b21PbWl0Q2xvbmUiLCJ2YWx1ZSIsInVuZGVmaW5lZCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsZ0JBQWdCQyxRQUFRLGlCQUFSLENBQXBCOztBQUVBOzs7Ozs7Ozs7QUFTQSxTQUFTQyxlQUFULENBQXlCQyxLQUF6QixFQUFnQztBQUM5QixTQUFPSCxjQUFjRyxLQUFkLElBQXVCQyxTQUF2QixHQUFtQ0QsS0FBMUM7QUFDRDs7QUFFREUsT0FBT0MsT0FBUCxHQUFpQkosZUFBakIiLCJmaWxlIjoiX2N1c3RvbU9taXRDbG9uZS5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBpc1BsYWluT2JqZWN0ID0gcmVxdWlyZSgnLi9pc1BsYWluT2JqZWN0Jyk7XG5cbi8qKlxuICogVXNlZCBieSBgXy5vbWl0YCB0byBjdXN0b21pemUgaXRzIGBfLmNsb25lRGVlcGAgdXNlIHRvIG9ubHkgY2xvbmUgcGxhaW5cbiAqIG9iamVjdHMuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7Kn0gdmFsdWUgVGhlIHZhbHVlIHRvIGluc3BlY3QuXG4gKiBAcGFyYW0ge3N0cmluZ30ga2V5IFRoZSBrZXkgb2YgdGhlIHByb3BlcnR5IHRvIGluc3BlY3QuXG4gKiBAcmV0dXJucyB7Kn0gUmV0dXJucyB0aGUgdW5jbG9uZWQgdmFsdWUgb3IgYHVuZGVmaW5lZGAgdG8gZGVmZXIgY2xvbmluZyB0byBgXy5jbG9uZURlZXBgLlxuICovXG5mdW5jdGlvbiBjdXN0b21PbWl0Q2xvbmUodmFsdWUpIHtcbiAgcmV0dXJuIGlzUGxhaW5PYmplY3QodmFsdWUpID8gdW5kZWZpbmVkIDogdmFsdWU7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gY3VzdG9tT21pdENsb25lO1xuIl19

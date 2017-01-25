@@ -1,0 +1,8 @@
+"use strict";
+
+define(["../../var/pnum"], function (pnum) {
+	"use strict";
+
+	return new RegExp("^(" + pnum + ")(?!px)[a-z%]+$", "i");
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy9jc3MvdmFyL3JudW1ub25weC5qcyJdLCJuYW1lcyI6WyJkZWZpbmUiLCJwbnVtIiwiUmVnRXhwIl0sIm1hcHBpbmdzIjoiOztBQUFBQSxPQUFRLENBQ1AsZ0JBRE8sQ0FBUixFQUVHLFVBQVVDLElBQVYsRUFBaUI7QUFDbkI7O0FBRUEsUUFBTyxJQUFJQyxNQUFKLENBQVksT0FBT0QsSUFBUCxHQUFjLGlCQUExQixFQUE2QyxHQUE3QyxDQUFQO0FBQ0EsQ0FORCIsImZpbGUiOiJybnVtbm9ucHguanMiLCJzb3VyY2VzQ29udGVudCI6WyJkZWZpbmUoIFtcblx0XCIuLi8uLi92YXIvcG51bVwiXG5dLCBmdW5jdGlvbiggcG51bSApIHtcblx0XCJ1c2Ugc3RyaWN0XCI7XG5cblx0cmV0dXJuIG5ldyBSZWdFeHAoIFwiXihcIiArIHBudW0gKyBcIikoPyFweClbYS16JV0rJFwiLCBcImlcIiApO1xufSApO1xuIl19

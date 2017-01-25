@@ -1,0 +1,20 @@
+"use strict";
+
+/** Used to match wrap detail comments. */
+var reWrapDetails = /\{\n\/\* \[wrapped with (.+)\] \*/,
+    reSplitDetails = /,? & /;
+
+/**
+ * Extracts wrapper details from the `source` body comment.
+ *
+ * @private
+ * @param {string} source The source to inspect.
+ * @returns {Array} Returns the wrapper details.
+ */
+function getWrapDetails(source) {
+  var match = source.match(reWrapDetails);
+  return match ? match[1].split(reSplitDetails) : [];
+}
+
+module.exports = getWrapDetails;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19nZXRXcmFwRGV0YWlscy5qcyJdLCJuYW1lcyI6WyJyZVdyYXBEZXRhaWxzIiwicmVTcGxpdERldGFpbHMiLCJnZXRXcmFwRGV0YWlscyIsInNvdXJjZSIsIm1hdGNoIiwic3BsaXQiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0EsSUFBSUEsZ0JBQWdCLG1DQUFwQjtBQUFBLElBQ0lDLGlCQUFpQixPQURyQjs7QUFHQTs7Ozs7OztBQU9BLFNBQVNDLGNBQVQsQ0FBd0JDLE1BQXhCLEVBQWdDO0FBQzlCLE1BQUlDLFFBQVFELE9BQU9DLEtBQVAsQ0FBYUosYUFBYixDQUFaO0FBQ0EsU0FBT0ksUUFBUUEsTUFBTSxDQUFOLEVBQVNDLEtBQVQsQ0FBZUosY0FBZixDQUFSLEdBQXlDLEVBQWhEO0FBQ0Q7O0FBRURLLE9BQU9DLE9BQVAsR0FBaUJMLGNBQWpCIiwiZmlsZSI6Il9nZXRXcmFwRGV0YWlscy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiBVc2VkIHRvIG1hdGNoIHdyYXAgZGV0YWlsIGNvbW1lbnRzLiAqL1xudmFyIHJlV3JhcERldGFpbHMgPSAvXFx7XFxuXFwvXFwqIFxcW3dyYXBwZWQgd2l0aCAoLispXFxdIFxcKi8sXG4gICAgcmVTcGxpdERldGFpbHMgPSAvLD8gJiAvO1xuXG4vKipcbiAqIEV4dHJhY3RzIHdyYXBwZXIgZGV0YWlscyBmcm9tIHRoZSBgc291cmNlYCBib2R5IGNvbW1lbnQuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7c3RyaW5nfSBzb3VyY2UgVGhlIHNvdXJjZSB0byBpbnNwZWN0LlxuICogQHJldHVybnMge0FycmF5fSBSZXR1cm5zIHRoZSB3cmFwcGVyIGRldGFpbHMuXG4gKi9cbmZ1bmN0aW9uIGdldFdyYXBEZXRhaWxzKHNvdXJjZSkge1xuICB2YXIgbWF0Y2ggPSBzb3VyY2UubWF0Y2gocmVXcmFwRGV0YWlscyk7XG4gIHJldHVybiBtYXRjaCA/IG1hdGNoWzFdLnNwbGl0KHJlU3BsaXREZXRhaWxzKSA6IFtdO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGdldFdyYXBEZXRhaWxzO1xuIl19

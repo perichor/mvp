@@ -1,0 +1,20 @@
+'use strict';
+
+var identity = require('./identity'),
+    metaMap = require('./_metaMap');
+
+/**
+ * The base implementation of `setData` without support for hot loop shorting.
+ *
+ * @private
+ * @param {Function} func The function to associate metadata with.
+ * @param {*} data The metadata.
+ * @returns {Function} Returns `func`.
+ */
+var baseSetData = !metaMap ? identity : function (func, data) {
+  metaMap.set(func, data);
+  return func;
+};
+
+module.exports = baseSetData;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlU2V0RGF0YS5qcyJdLCJuYW1lcyI6WyJpZGVudGl0eSIsInJlcXVpcmUiLCJtZXRhTWFwIiwiYmFzZVNldERhdGEiLCJmdW5jIiwiZGF0YSIsInNldCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsV0FBV0MsUUFBUSxZQUFSLENBQWY7QUFBQSxJQUNJQyxVQUFVRCxRQUFRLFlBQVIsQ0FEZDs7QUFHQTs7Ozs7Ozs7QUFRQSxJQUFJRSxjQUFjLENBQUNELE9BQUQsR0FBV0YsUUFBWCxHQUFzQixVQUFTSSxJQUFULEVBQWVDLElBQWYsRUFBcUI7QUFDM0RILFVBQVFJLEdBQVIsQ0FBWUYsSUFBWixFQUFrQkMsSUFBbEI7QUFDQSxTQUFPRCxJQUFQO0FBQ0QsQ0FIRDs7QUFLQUcsT0FBT0MsT0FBUCxHQUFpQkwsV0FBakIiLCJmaWxlIjoiX2Jhc2VTZXREYXRhLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGlkZW50aXR5ID0gcmVxdWlyZSgnLi9pZGVudGl0eScpLFxuICAgIG1ldGFNYXAgPSByZXF1aXJlKCcuL19tZXRhTWFwJyk7XG5cbi8qKlxuICogVGhlIGJhc2UgaW1wbGVtZW50YXRpb24gb2YgYHNldERhdGFgIHdpdGhvdXQgc3VwcG9ydCBmb3IgaG90IGxvb3Agc2hvcnRpbmcuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7RnVuY3Rpb259IGZ1bmMgVGhlIGZ1bmN0aW9uIHRvIGFzc29jaWF0ZSBtZXRhZGF0YSB3aXRoLlxuICogQHBhcmFtIHsqfSBkYXRhIFRoZSBtZXRhZGF0YS5cbiAqIEByZXR1cm5zIHtGdW5jdGlvbn0gUmV0dXJucyBgZnVuY2AuXG4gKi9cbnZhciBiYXNlU2V0RGF0YSA9ICFtZXRhTWFwID8gaWRlbnRpdHkgOiBmdW5jdGlvbihmdW5jLCBkYXRhKSB7XG4gIG1ldGFNYXAuc2V0KGZ1bmMsIGRhdGEpO1xuICByZXR1cm4gZnVuYztcbn07XG5cbm1vZHVsZS5leHBvcnRzID0gYmFzZVNldERhdGE7XG4iXX0=

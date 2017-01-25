@@ -1,0 +1,9 @@
+'use strict';
+
+var root = require('./_root');
+
+/** Built-in value references. */
+var _Symbol = root.Symbol;
+
+module.exports = _Symbol;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19TeW1ib2wuanMiXSwibmFtZXMiOlsicm9vdCIsInJlcXVpcmUiLCJTeW1ib2wiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLE9BQU9DLFFBQVEsU0FBUixDQUFYOztBQUVBO0FBQ0EsSUFBSUMsVUFBU0YsS0FBS0UsTUFBbEI7O0FBRUFDLE9BQU9DLE9BQVAsR0FBaUJGLE9BQWpCIiwiZmlsZSI6Il9TeW1ib2wuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgcm9vdCA9IHJlcXVpcmUoJy4vX3Jvb3QnKTtcblxuLyoqIEJ1aWx0LWluIHZhbHVlIHJlZmVyZW5jZXMuICovXG52YXIgU3ltYm9sID0gcm9vdC5TeW1ib2w7XG5cbm1vZHVsZS5leHBvcnRzID0gU3ltYm9sO1xuIl19

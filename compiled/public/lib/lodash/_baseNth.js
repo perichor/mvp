@@ -1,0 +1,23 @@
+'use strict';
+
+var isIndex = require('./_isIndex');
+
+/**
+ * The base implementation of `_.nth` which doesn't coerce arguments.
+ *
+ * @private
+ * @param {Array} array The array to query.
+ * @param {number} n The index of the element to return.
+ * @returns {*} Returns the nth element of `array`.
+ */
+function baseNth(array, n) {
+  var length = array.length;
+  if (!length) {
+    return;
+  }
+  n += n < 0 ? length : 0;
+  return isIndex(n, length) ? array[n] : undefined;
+}
+
+module.exports = baseNth;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlTnRoLmpzIl0sIm5hbWVzIjpbImlzSW5kZXgiLCJyZXF1aXJlIiwiYmFzZU50aCIsImFycmF5IiwibiIsImxlbmd0aCIsInVuZGVmaW5lZCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsVUFBVUMsUUFBUSxZQUFSLENBQWQ7O0FBRUE7Ozs7Ozs7O0FBUUEsU0FBU0MsT0FBVCxDQUFpQkMsS0FBakIsRUFBd0JDLENBQXhCLEVBQTJCO0FBQ3pCLE1BQUlDLFNBQVNGLE1BQU1FLE1BQW5CO0FBQ0EsTUFBSSxDQUFDQSxNQUFMLEVBQWE7QUFDWDtBQUNEO0FBQ0RELE9BQUtBLElBQUksQ0FBSixHQUFRQyxNQUFSLEdBQWlCLENBQXRCO0FBQ0EsU0FBT0wsUUFBUUksQ0FBUixFQUFXQyxNQUFYLElBQXFCRixNQUFNQyxDQUFOLENBQXJCLEdBQWdDRSxTQUF2QztBQUNEOztBQUVEQyxPQUFPQyxPQUFQLEdBQWlCTixPQUFqQiIsImZpbGUiOiJfYmFzZU50aC5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBpc0luZGV4ID0gcmVxdWlyZSgnLi9faXNJbmRleCcpO1xuXG4vKipcbiAqIFRoZSBiYXNlIGltcGxlbWVudGF0aW9uIG9mIGBfLm50aGAgd2hpY2ggZG9lc24ndCBjb2VyY2UgYXJndW1lbnRzLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge0FycmF5fSBhcnJheSBUaGUgYXJyYXkgdG8gcXVlcnkuXG4gKiBAcGFyYW0ge251bWJlcn0gbiBUaGUgaW5kZXggb2YgdGhlIGVsZW1lbnQgdG8gcmV0dXJuLlxuICogQHJldHVybnMgeyp9IFJldHVybnMgdGhlIG50aCBlbGVtZW50IG9mIGBhcnJheWAuXG4gKi9cbmZ1bmN0aW9uIGJhc2VOdGgoYXJyYXksIG4pIHtcbiAgdmFyIGxlbmd0aCA9IGFycmF5Lmxlbmd0aDtcbiAgaWYgKCFsZW5ndGgpIHtcbiAgICByZXR1cm47XG4gIH1cbiAgbiArPSBuIDwgMCA/IGxlbmd0aCA6IDA7XG4gIHJldHVybiBpc0luZGV4KG4sIGxlbmd0aCkgPyBhcnJheVtuXSA6IHVuZGVmaW5lZDtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBiYXNlTnRoO1xuIl19

@@ -1,0 +1,19 @@
+'use strict';
+
+var baseGet = require('./_baseGet');
+
+/**
+ * A specialized version of `baseProperty` which supports deep paths.
+ *
+ * @private
+ * @param {Array|string} path The path of the property to get.
+ * @returns {Function} Returns the new accessor function.
+ */
+function basePropertyDeep(path) {
+  return function (object) {
+    return baseGet(object, path);
+  };
+}
+
+module.exports = basePropertyDeep;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlUHJvcGVydHlEZWVwLmpzIl0sIm5hbWVzIjpbImJhc2VHZXQiLCJyZXF1aXJlIiwiYmFzZVByb3BlcnR5RGVlcCIsInBhdGgiLCJvYmplY3QiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLFVBQVVDLFFBQVEsWUFBUixDQUFkOztBQUVBOzs7Ozs7O0FBT0EsU0FBU0MsZ0JBQVQsQ0FBMEJDLElBQTFCLEVBQWdDO0FBQzlCLFNBQU8sVUFBU0MsTUFBVCxFQUFpQjtBQUN0QixXQUFPSixRQUFRSSxNQUFSLEVBQWdCRCxJQUFoQixDQUFQO0FBQ0QsR0FGRDtBQUdEOztBQUVERSxPQUFPQyxPQUFQLEdBQWlCSixnQkFBakIiLCJmaWxlIjoiX2Jhc2VQcm9wZXJ0eURlZXAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgYmFzZUdldCA9IHJlcXVpcmUoJy4vX2Jhc2VHZXQnKTtcblxuLyoqXG4gKiBBIHNwZWNpYWxpemVkIHZlcnNpb24gb2YgYGJhc2VQcm9wZXJ0eWAgd2hpY2ggc3VwcG9ydHMgZGVlcCBwYXRocy5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtBcnJheXxzdHJpbmd9IHBhdGggVGhlIHBhdGggb2YgdGhlIHByb3BlcnR5IHRvIGdldC5cbiAqIEByZXR1cm5zIHtGdW5jdGlvbn0gUmV0dXJucyB0aGUgbmV3IGFjY2Vzc29yIGZ1bmN0aW9uLlxuICovXG5mdW5jdGlvbiBiYXNlUHJvcGVydHlEZWVwKHBhdGgpIHtcbiAgcmV0dXJuIGZ1bmN0aW9uKG9iamVjdCkge1xuICAgIHJldHVybiBiYXNlR2V0KG9iamVjdCwgcGF0aCk7XG4gIH07XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYmFzZVByb3BlcnR5RGVlcDtcbiJdfQ==

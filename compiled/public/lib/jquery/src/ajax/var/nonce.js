@@ -1,0 +1,8 @@
+"use strict";
+
+define(["../../core"], function (jQuery) {
+	"use strict";
+
+	return jQuery.now();
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy9hamF4L3Zhci9ub25jZS5qcyJdLCJuYW1lcyI6WyJkZWZpbmUiLCJqUXVlcnkiLCJub3ciXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQVEsQ0FDUCxZQURPLENBQVIsRUFFRyxVQUFVQyxNQUFWLEVBQW1CO0FBQ3JCOztBQUVBLFFBQU9BLE9BQU9DLEdBQVAsRUFBUDtBQUNBLENBTkQiLCJmaWxlIjoibm9uY2UuanMiLCJzb3VyY2VzQ29udGVudCI6WyJkZWZpbmUoIFtcblx0XCIuLi8uLi9jb3JlXCJcbl0sIGZ1bmN0aW9uKCBqUXVlcnkgKSB7XG5cdFwidXNlIHN0cmljdFwiO1xuXG5cdHJldHVybiBqUXVlcnkubm93KCk7XG59ICk7XG4iXX0=

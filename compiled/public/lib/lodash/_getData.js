@@ -1,0 +1,18 @@
+'use strict';
+
+var metaMap = require('./_metaMap'),
+    noop = require('./noop');
+
+/**
+ * Gets metadata for `func`.
+ *
+ * @private
+ * @param {Function} func The function to query.
+ * @returns {*} Returns the metadata for `func`.
+ */
+var getData = !metaMap ? noop : function (func) {
+  return metaMap.get(func);
+};
+
+module.exports = getData;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19nZXREYXRhLmpzIl0sIm5hbWVzIjpbIm1ldGFNYXAiLCJyZXF1aXJlIiwibm9vcCIsImdldERhdGEiLCJmdW5jIiwiZ2V0IiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJQSxVQUFVQyxRQUFRLFlBQVIsQ0FBZDtBQUFBLElBQ0lDLE9BQU9ELFFBQVEsUUFBUixDQURYOztBQUdBOzs7Ozs7O0FBT0EsSUFBSUUsVUFBVSxDQUFDSCxPQUFELEdBQVdFLElBQVgsR0FBa0IsVUFBU0UsSUFBVCxFQUFlO0FBQzdDLFNBQU9KLFFBQVFLLEdBQVIsQ0FBWUQsSUFBWixDQUFQO0FBQ0QsQ0FGRDs7QUFJQUUsT0FBT0MsT0FBUCxHQUFpQkosT0FBakIiLCJmaWxlIjoiX2dldERhdGEuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgbWV0YU1hcCA9IHJlcXVpcmUoJy4vX21ldGFNYXAnKSxcbiAgICBub29wID0gcmVxdWlyZSgnLi9ub29wJyk7XG5cbi8qKlxuICogR2V0cyBtZXRhZGF0YSBmb3IgYGZ1bmNgLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge0Z1bmN0aW9ufSBmdW5jIFRoZSBmdW5jdGlvbiB0byBxdWVyeS5cbiAqIEByZXR1cm5zIHsqfSBSZXR1cm5zIHRoZSBtZXRhZGF0YSBmb3IgYGZ1bmNgLlxuICovXG52YXIgZ2V0RGF0YSA9ICFtZXRhTWFwID8gbm9vcCA6IGZ1bmN0aW9uKGZ1bmMpIHtcbiAgcmV0dXJuIG1ldGFNYXAuZ2V0KGZ1bmMpO1xufTtcblxubW9kdWxlLmV4cG9ydHMgPSBnZXREYXRhO1xuIl19

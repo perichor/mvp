@@ -1,0 +1,48 @@
+'use strict';
+
+var baseCreate = require('./_baseCreate'),
+    isObject = require('./isObject');
+
+/**
+ * Creates a function that produces an instance of `Ctor` regardless of
+ * whether it was invoked as part of a `new` expression or by `call` or `apply`.
+ *
+ * @private
+ * @param {Function} Ctor The constructor to wrap.
+ * @returns {Function} Returns the new wrapped function.
+ */
+function createCtor(Ctor) {
+  return function () {
+    // Use a `switch` statement to work with class constructors. See
+    // http://ecma-international.org/ecma-262/7.0/#sec-ecmascript-function-objects-call-thisargument-argumentslist
+    // for more details.
+    var args = arguments;
+    switch (args.length) {
+      case 0:
+        return new Ctor();
+      case 1:
+        return new Ctor(args[0]);
+      case 2:
+        return new Ctor(args[0], args[1]);
+      case 3:
+        return new Ctor(args[0], args[1], args[2]);
+      case 4:
+        return new Ctor(args[0], args[1], args[2], args[3]);
+      case 5:
+        return new Ctor(args[0], args[1], args[2], args[3], args[4]);
+      case 6:
+        return new Ctor(args[0], args[1], args[2], args[3], args[4], args[5]);
+      case 7:
+        return new Ctor(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+    }
+    var thisBinding = baseCreate(Ctor.prototype),
+        result = Ctor.apply(thisBinding, args);
+
+    // Mimic the constructor's `return` behavior.
+    // See https://es5.github.io/#x13.2.2 for more details.
+    return isObject(result) ? result : thisBinding;
+  };
+}
+
+module.exports = createCtor;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jcmVhdGVDdG9yLmpzIl0sIm5hbWVzIjpbImJhc2VDcmVhdGUiLCJyZXF1aXJlIiwiaXNPYmplY3QiLCJjcmVhdGVDdG9yIiwiQ3RvciIsImFyZ3MiLCJhcmd1bWVudHMiLCJsZW5ndGgiLCJ0aGlzQmluZGluZyIsInByb3RvdHlwZSIsInJlc3VsdCIsImFwcGx5IiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJQSxhQUFhQyxRQUFRLGVBQVIsQ0FBakI7QUFBQSxJQUNJQyxXQUFXRCxRQUFRLFlBQVIsQ0FEZjs7QUFHQTs7Ozs7Ozs7QUFRQSxTQUFTRSxVQUFULENBQW9CQyxJQUFwQixFQUEwQjtBQUN4QixTQUFPLFlBQVc7QUFDaEI7QUFDQTtBQUNBO0FBQ0EsUUFBSUMsT0FBT0MsU0FBWDtBQUNBLFlBQVFELEtBQUtFLE1BQWI7QUFDRSxXQUFLLENBQUw7QUFBUSxlQUFPLElBQUlILElBQUosRUFBUDtBQUNSLFdBQUssQ0FBTDtBQUFRLGVBQU8sSUFBSUEsSUFBSixDQUFTQyxLQUFLLENBQUwsQ0FBVCxDQUFQO0FBQ1IsV0FBSyxDQUFMO0FBQVEsZUFBTyxJQUFJRCxJQUFKLENBQVNDLEtBQUssQ0FBTCxDQUFULEVBQWtCQSxLQUFLLENBQUwsQ0FBbEIsQ0FBUDtBQUNSLFdBQUssQ0FBTDtBQUFRLGVBQU8sSUFBSUQsSUFBSixDQUFTQyxLQUFLLENBQUwsQ0FBVCxFQUFrQkEsS0FBSyxDQUFMLENBQWxCLEVBQTJCQSxLQUFLLENBQUwsQ0FBM0IsQ0FBUDtBQUNSLFdBQUssQ0FBTDtBQUFRLGVBQU8sSUFBSUQsSUFBSixDQUFTQyxLQUFLLENBQUwsQ0FBVCxFQUFrQkEsS0FBSyxDQUFMLENBQWxCLEVBQTJCQSxLQUFLLENBQUwsQ0FBM0IsRUFBb0NBLEtBQUssQ0FBTCxDQUFwQyxDQUFQO0FBQ1IsV0FBSyxDQUFMO0FBQVEsZUFBTyxJQUFJRCxJQUFKLENBQVNDLEtBQUssQ0FBTCxDQUFULEVBQWtCQSxLQUFLLENBQUwsQ0FBbEIsRUFBMkJBLEtBQUssQ0FBTCxDQUEzQixFQUFvQ0EsS0FBSyxDQUFMLENBQXBDLEVBQTZDQSxLQUFLLENBQUwsQ0FBN0MsQ0FBUDtBQUNSLFdBQUssQ0FBTDtBQUFRLGVBQU8sSUFBSUQsSUFBSixDQUFTQyxLQUFLLENBQUwsQ0FBVCxFQUFrQkEsS0FBSyxDQUFMLENBQWxCLEVBQTJCQSxLQUFLLENBQUwsQ0FBM0IsRUFBb0NBLEtBQUssQ0FBTCxDQUFwQyxFQUE2Q0EsS0FBSyxDQUFMLENBQTdDLEVBQXNEQSxLQUFLLENBQUwsQ0FBdEQsQ0FBUDtBQUNSLFdBQUssQ0FBTDtBQUFRLGVBQU8sSUFBSUQsSUFBSixDQUFTQyxLQUFLLENBQUwsQ0FBVCxFQUFrQkEsS0FBSyxDQUFMLENBQWxCLEVBQTJCQSxLQUFLLENBQUwsQ0FBM0IsRUFBb0NBLEtBQUssQ0FBTCxDQUFwQyxFQUE2Q0EsS0FBSyxDQUFMLENBQTdDLEVBQXNEQSxLQUFLLENBQUwsQ0FBdEQsRUFBK0RBLEtBQUssQ0FBTCxDQUEvRCxDQUFQO0FBUlY7QUFVQSxRQUFJRyxjQUFjUixXQUFXSSxLQUFLSyxTQUFoQixDQUFsQjtBQUFBLFFBQ0lDLFNBQVNOLEtBQUtPLEtBQUwsQ0FBV0gsV0FBWCxFQUF3QkgsSUFBeEIsQ0FEYjs7QUFHQTtBQUNBO0FBQ0EsV0FBT0gsU0FBU1EsTUFBVCxJQUFtQkEsTUFBbkIsR0FBNEJGLFdBQW5DO0FBQ0QsR0FyQkQ7QUFzQkQ7O0FBRURJLE9BQU9DLE9BQVAsR0FBaUJWLFVBQWpCIiwiZmlsZSI6Il9jcmVhdGVDdG9yLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGJhc2VDcmVhdGUgPSByZXF1aXJlKCcuL19iYXNlQ3JlYXRlJyksXG4gICAgaXNPYmplY3QgPSByZXF1aXJlKCcuL2lzT2JqZWN0Jyk7XG5cbi8qKlxuICogQ3JlYXRlcyBhIGZ1bmN0aW9uIHRoYXQgcHJvZHVjZXMgYW4gaW5zdGFuY2Ugb2YgYEN0b3JgIHJlZ2FyZGxlc3Mgb2ZcbiAqIHdoZXRoZXIgaXQgd2FzIGludm9rZWQgYXMgcGFydCBvZiBhIGBuZXdgIGV4cHJlc3Npb24gb3IgYnkgYGNhbGxgIG9yIGBhcHBseWAuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7RnVuY3Rpb259IEN0b3IgVGhlIGNvbnN0cnVjdG9yIHRvIHdyYXAuXG4gKiBAcmV0dXJucyB7RnVuY3Rpb259IFJldHVybnMgdGhlIG5ldyB3cmFwcGVkIGZ1bmN0aW9uLlxuICovXG5mdW5jdGlvbiBjcmVhdGVDdG9yKEN0b3IpIHtcbiAgcmV0dXJuIGZ1bmN0aW9uKCkge1xuICAgIC8vIFVzZSBhIGBzd2l0Y2hgIHN0YXRlbWVudCB0byB3b3JrIHdpdGggY2xhc3MgY29uc3RydWN0b3JzLiBTZWVcbiAgICAvLyBodHRwOi8vZWNtYS1pbnRlcm5hdGlvbmFsLm9yZy9lY21hLTI2Mi83LjAvI3NlYy1lY21hc2NyaXB0LWZ1bmN0aW9uLW9iamVjdHMtY2FsbC10aGlzYXJndW1lbnQtYXJndW1lbnRzbGlzdFxuICAgIC8vIGZvciBtb3JlIGRldGFpbHMuXG4gICAgdmFyIGFyZ3MgPSBhcmd1bWVudHM7XG4gICAgc3dpdGNoIChhcmdzLmxlbmd0aCkge1xuICAgICAgY2FzZSAwOiByZXR1cm4gbmV3IEN0b3I7XG4gICAgICBjYXNlIDE6IHJldHVybiBuZXcgQ3RvcihhcmdzWzBdKTtcbiAgICAgIGNhc2UgMjogcmV0dXJuIG5ldyBDdG9yKGFyZ3NbMF0sIGFyZ3NbMV0pO1xuICAgICAgY2FzZSAzOiByZXR1cm4gbmV3IEN0b3IoYXJnc1swXSwgYXJnc1sxXSwgYXJnc1syXSk7XG4gICAgICBjYXNlIDQ6IHJldHVybiBuZXcgQ3RvcihhcmdzWzBdLCBhcmdzWzFdLCBhcmdzWzJdLCBhcmdzWzNdKTtcbiAgICAgIGNhc2UgNTogcmV0dXJuIG5ldyBDdG9yKGFyZ3NbMF0sIGFyZ3NbMV0sIGFyZ3NbMl0sIGFyZ3NbM10sIGFyZ3NbNF0pO1xuICAgICAgY2FzZSA2OiByZXR1cm4gbmV3IEN0b3IoYXJnc1swXSwgYXJnc1sxXSwgYXJnc1syXSwgYXJnc1szXSwgYXJnc1s0XSwgYXJnc1s1XSk7XG4gICAgICBjYXNlIDc6IHJldHVybiBuZXcgQ3RvcihhcmdzWzBdLCBhcmdzWzFdLCBhcmdzWzJdLCBhcmdzWzNdLCBhcmdzWzRdLCBhcmdzWzVdLCBhcmdzWzZdKTtcbiAgICB9XG4gICAgdmFyIHRoaXNCaW5kaW5nID0gYmFzZUNyZWF0ZShDdG9yLnByb3RvdHlwZSksXG4gICAgICAgIHJlc3VsdCA9IEN0b3IuYXBwbHkodGhpc0JpbmRpbmcsIGFyZ3MpO1xuXG4gICAgLy8gTWltaWMgdGhlIGNvbnN0cnVjdG9yJ3MgYHJldHVybmAgYmVoYXZpb3IuXG4gICAgLy8gU2VlIGh0dHBzOi8vZXM1LmdpdGh1Yi5pby8jeDEzLjIuMiBmb3IgbW9yZSBkZXRhaWxzLlxuICAgIHJldHVybiBpc09iamVjdChyZXN1bHQpID8gcmVzdWx0IDogdGhpc0JpbmRpbmc7XG4gIH07XG59XG5cbm1vZHVsZS5leHBvcnRzID0gY3JlYXRlQ3RvcjtcbiJdfQ==

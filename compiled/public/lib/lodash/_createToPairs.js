@@ -1,0 +1,33 @@
+'use strict';
+
+var baseToPairs = require('./_baseToPairs'),
+    getTag = require('./_getTag'),
+    mapToArray = require('./_mapToArray'),
+    setToPairs = require('./_setToPairs');
+
+/** `Object#toString` result references. */
+var mapTag = '[object Map]',
+    setTag = '[object Set]';
+
+/**
+ * Creates a `_.toPairs` or `_.toPairsIn` function.
+ *
+ * @private
+ * @param {Function} keysFunc The function to get the keys of a given object.
+ * @returns {Function} Returns the new pairs function.
+ */
+function createToPairs(keysFunc) {
+  return function (object) {
+    var tag = getTag(object);
+    if (tag == mapTag) {
+      return mapToArray(object);
+    }
+    if (tag == setTag) {
+      return setToPairs(object);
+    }
+    return baseToPairs(object, keysFunc(object));
+  };
+}
+
+module.exports = createToPairs;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jcmVhdGVUb1BhaXJzLmpzIl0sIm5hbWVzIjpbImJhc2VUb1BhaXJzIiwicmVxdWlyZSIsImdldFRhZyIsIm1hcFRvQXJyYXkiLCJzZXRUb1BhaXJzIiwibWFwVGFnIiwic2V0VGFnIiwiY3JlYXRlVG9QYWlycyIsImtleXNGdW5jIiwib2JqZWN0IiwidGFnIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJQSxjQUFjQyxRQUFRLGdCQUFSLENBQWxCO0FBQUEsSUFDSUMsU0FBU0QsUUFBUSxXQUFSLENBRGI7QUFBQSxJQUVJRSxhQUFhRixRQUFRLGVBQVIsQ0FGakI7QUFBQSxJQUdJRyxhQUFhSCxRQUFRLGVBQVIsQ0FIakI7O0FBS0E7QUFDQSxJQUFJSSxTQUFTLGNBQWI7QUFBQSxJQUNJQyxTQUFTLGNBRGI7O0FBR0E7Ozs7Ozs7QUFPQSxTQUFTQyxhQUFULENBQXVCQyxRQUF2QixFQUFpQztBQUMvQixTQUFPLFVBQVNDLE1BQVQsRUFBaUI7QUFDdEIsUUFBSUMsTUFBTVIsT0FBT08sTUFBUCxDQUFWO0FBQ0EsUUFBSUMsT0FBT0wsTUFBWCxFQUFtQjtBQUNqQixhQUFPRixXQUFXTSxNQUFYLENBQVA7QUFDRDtBQUNELFFBQUlDLE9BQU9KLE1BQVgsRUFBbUI7QUFDakIsYUFBT0YsV0FBV0ssTUFBWCxDQUFQO0FBQ0Q7QUFDRCxXQUFPVCxZQUFZUyxNQUFaLEVBQW9CRCxTQUFTQyxNQUFULENBQXBCLENBQVA7QUFDRCxHQVREO0FBVUQ7O0FBRURFLE9BQU9DLE9BQVAsR0FBaUJMLGFBQWpCIiwiZmlsZSI6Il9jcmVhdGVUb1BhaXJzLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGJhc2VUb1BhaXJzID0gcmVxdWlyZSgnLi9fYmFzZVRvUGFpcnMnKSxcbiAgICBnZXRUYWcgPSByZXF1aXJlKCcuL19nZXRUYWcnKSxcbiAgICBtYXBUb0FycmF5ID0gcmVxdWlyZSgnLi9fbWFwVG9BcnJheScpLFxuICAgIHNldFRvUGFpcnMgPSByZXF1aXJlKCcuL19zZXRUb1BhaXJzJyk7XG5cbi8qKiBgT2JqZWN0I3RvU3RyaW5nYCByZXN1bHQgcmVmZXJlbmNlcy4gKi9cbnZhciBtYXBUYWcgPSAnW29iamVjdCBNYXBdJyxcbiAgICBzZXRUYWcgPSAnW29iamVjdCBTZXRdJztcblxuLyoqXG4gKiBDcmVhdGVzIGEgYF8udG9QYWlyc2Agb3IgYF8udG9QYWlyc0luYCBmdW5jdGlvbi5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtGdW5jdGlvbn0ga2V5c0Z1bmMgVGhlIGZ1bmN0aW9uIHRvIGdldCB0aGUga2V5cyBvZiBhIGdpdmVuIG9iamVjdC5cbiAqIEByZXR1cm5zIHtGdW5jdGlvbn0gUmV0dXJucyB0aGUgbmV3IHBhaXJzIGZ1bmN0aW9uLlxuICovXG5mdW5jdGlvbiBjcmVhdGVUb1BhaXJzKGtleXNGdW5jKSB7XG4gIHJldHVybiBmdW5jdGlvbihvYmplY3QpIHtcbiAgICB2YXIgdGFnID0gZ2V0VGFnKG9iamVjdCk7XG4gICAgaWYgKHRhZyA9PSBtYXBUYWcpIHtcbiAgICAgIHJldHVybiBtYXBUb0FycmF5KG9iamVjdCk7XG4gICAgfVxuICAgIGlmICh0YWcgPT0gc2V0VGFnKSB7XG4gICAgICByZXR1cm4gc2V0VG9QYWlycyhvYmplY3QpO1xuICAgIH1cbiAgICByZXR1cm4gYmFzZVRvUGFpcnMob2JqZWN0LCBrZXlzRnVuYyhvYmplY3QpKTtcbiAgfTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBjcmVhdGVUb1BhaXJzO1xuIl19

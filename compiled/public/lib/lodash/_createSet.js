@@ -1,0 +1,22 @@
+'use strict';
+
+var Set = require('./_Set'),
+    noop = require('./noop'),
+    setToArray = require('./_setToArray');
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0;
+
+/**
+ * Creates a set object of `values`.
+ *
+ * @private
+ * @param {Array} values The values to add to the set.
+ * @returns {Object} Returns the new set.
+ */
+var createSet = !(Set && 1 / setToArray(new Set([, -0]))[1] == INFINITY) ? noop : function (values) {
+  return new Set(values);
+};
+
+module.exports = createSet;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jcmVhdGVTZXQuanMiXSwibmFtZXMiOlsiU2V0IiwicmVxdWlyZSIsIm5vb3AiLCJzZXRUb0FycmF5IiwiSU5GSU5JVFkiLCJjcmVhdGVTZXQiLCJ2YWx1ZXMiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLE1BQU1DLFFBQVEsUUFBUixDQUFWO0FBQUEsSUFDSUMsT0FBT0QsUUFBUSxRQUFSLENBRFg7QUFBQSxJQUVJRSxhQUFhRixRQUFRLGVBQVIsQ0FGakI7O0FBSUE7QUFDQSxJQUFJRyxXQUFXLElBQUksQ0FBbkI7O0FBRUE7Ozs7Ozs7QUFPQSxJQUFJQyxZQUFZLEVBQUVMLE9BQVEsSUFBSUcsV0FBVyxJQUFJSCxHQUFKLENBQVEsR0FBRSxDQUFDLENBQUgsQ0FBUixDQUFYLEVBQTJCLENBQTNCLENBQUwsSUFBdUNJLFFBQWhELElBQTRERixJQUE1RCxHQUFtRSxVQUFTSSxNQUFULEVBQWlCO0FBQ2xHLFNBQU8sSUFBSU4sR0FBSixDQUFRTSxNQUFSLENBQVA7QUFDRCxDQUZEOztBQUlBQyxPQUFPQyxPQUFQLEdBQWlCSCxTQUFqQiIsImZpbGUiOiJfY3JlYXRlU2V0LmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIFNldCA9IHJlcXVpcmUoJy4vX1NldCcpLFxuICAgIG5vb3AgPSByZXF1aXJlKCcuL25vb3AnKSxcbiAgICBzZXRUb0FycmF5ID0gcmVxdWlyZSgnLi9fc2V0VG9BcnJheScpO1xuXG4vKiogVXNlZCBhcyByZWZlcmVuY2VzIGZvciB2YXJpb3VzIGBOdW1iZXJgIGNvbnN0YW50cy4gKi9cbnZhciBJTkZJTklUWSA9IDEgLyAwO1xuXG4vKipcbiAqIENyZWF0ZXMgYSBzZXQgb2JqZWN0IG9mIGB2YWx1ZXNgLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge0FycmF5fSB2YWx1ZXMgVGhlIHZhbHVlcyB0byBhZGQgdG8gdGhlIHNldC5cbiAqIEByZXR1cm5zIHtPYmplY3R9IFJldHVybnMgdGhlIG5ldyBzZXQuXG4gKi9cbnZhciBjcmVhdGVTZXQgPSAhKFNldCAmJiAoMSAvIHNldFRvQXJyYXkobmV3IFNldChbLC0wXSkpWzFdKSA9PSBJTkZJTklUWSkgPyBub29wIDogZnVuY3Rpb24odmFsdWVzKSB7XG4gIHJldHVybiBuZXcgU2V0KHZhbHVlcyk7XG59O1xuXG5tb2R1bGUuZXhwb3J0cyA9IGNyZWF0ZVNldDtcbiJdfQ==

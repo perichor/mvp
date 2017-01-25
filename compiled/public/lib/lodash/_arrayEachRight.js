@@ -1,0 +1,24 @@
+"use strict";
+
+/**
+ * A specialized version of `_.forEachRight` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns `array`.
+ */
+function arrayEachRight(array, iteratee) {
+  var length = array == null ? 0 : array.length;
+
+  while (length--) {
+    if (iteratee(array[length], length, array) === false) {
+      break;
+    }
+  }
+  return array;
+}
+
+module.exports = arrayEachRight;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19hcnJheUVhY2hSaWdodC5qcyJdLCJuYW1lcyI6WyJhcnJheUVhY2hSaWdodCIsImFycmF5IiwiaXRlcmF0ZWUiLCJsZW5ndGgiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7Ozs7QUFTQSxTQUFTQSxjQUFULENBQXdCQyxLQUF4QixFQUErQkMsUUFBL0IsRUFBeUM7QUFDdkMsTUFBSUMsU0FBU0YsU0FBUyxJQUFULEdBQWdCLENBQWhCLEdBQW9CQSxNQUFNRSxNQUF2Qzs7QUFFQSxTQUFPQSxRQUFQLEVBQWlCO0FBQ2YsUUFBSUQsU0FBU0QsTUFBTUUsTUFBTixDQUFULEVBQXdCQSxNQUF4QixFQUFnQ0YsS0FBaEMsTUFBMkMsS0FBL0MsRUFBc0Q7QUFDcEQ7QUFDRDtBQUNGO0FBQ0QsU0FBT0EsS0FBUDtBQUNEOztBQUVERyxPQUFPQyxPQUFQLEdBQWlCTCxjQUFqQiIsImZpbGUiOiJfYXJyYXlFYWNoUmlnaHQuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEEgc3BlY2lhbGl6ZWQgdmVyc2lvbiBvZiBgXy5mb3JFYWNoUmlnaHRgIGZvciBhcnJheXMgd2l0aG91dCBzdXBwb3J0IGZvclxuICogaXRlcmF0ZWUgc2hvcnRoYW5kcy5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtBcnJheX0gW2FycmF5XSBUaGUgYXJyYXkgdG8gaXRlcmF0ZSBvdmVyLlxuICogQHBhcmFtIHtGdW5jdGlvbn0gaXRlcmF0ZWUgVGhlIGZ1bmN0aW9uIGludm9rZWQgcGVyIGl0ZXJhdGlvbi5cbiAqIEByZXR1cm5zIHtBcnJheX0gUmV0dXJucyBgYXJyYXlgLlxuICovXG5mdW5jdGlvbiBhcnJheUVhY2hSaWdodChhcnJheSwgaXRlcmF0ZWUpIHtcbiAgdmFyIGxlbmd0aCA9IGFycmF5ID09IG51bGwgPyAwIDogYXJyYXkubGVuZ3RoO1xuXG4gIHdoaWxlIChsZW5ndGgtLSkge1xuICAgIGlmIChpdGVyYXRlZShhcnJheVtsZW5ndGhdLCBsZW5ndGgsIGFycmF5KSA9PT0gZmFsc2UpIHtcbiAgICAgIGJyZWFrO1xuICAgIH1cbiAgfVxuICByZXR1cm4gYXJyYXk7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYXJyYXlFYWNoUmlnaHQ7XG4iXX0=

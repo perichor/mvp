@@ -1,0 +1,17 @@
+'use strict';
+
+var baseRest = require('./_baseRest');
+
+/**
+ * A `baseRest` alias which can be replaced with `identity` by module
+ * replacement plugins.
+ *
+ * @private
+ * @type {Function}
+ * @param {Function} func The function to apply a rest parameter to.
+ * @returns {Function} Returns the new function.
+ */
+var castRest = baseRest;
+
+module.exports = castRest;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jYXN0UmVzdC5qcyJdLCJuYW1lcyI6WyJiYXNlUmVzdCIsInJlcXVpcmUiLCJjYXN0UmVzdCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsV0FBV0MsUUFBUSxhQUFSLENBQWY7O0FBRUE7Ozs7Ozs7OztBQVNBLElBQUlDLFdBQVdGLFFBQWY7O0FBRUFHLE9BQU9DLE9BQVAsR0FBaUJGLFFBQWpCIiwiZmlsZSI6Il9jYXN0UmVzdC5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBiYXNlUmVzdCA9IHJlcXVpcmUoJy4vX2Jhc2VSZXN0Jyk7XG5cbi8qKlxuICogQSBgYmFzZVJlc3RgIGFsaWFzIHdoaWNoIGNhbiBiZSByZXBsYWNlZCB3aXRoIGBpZGVudGl0eWAgYnkgbW9kdWxlXG4gKiByZXBsYWNlbWVudCBwbHVnaW5zLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAdHlwZSB7RnVuY3Rpb259XG4gKiBAcGFyYW0ge0Z1bmN0aW9ufSBmdW5jIFRoZSBmdW5jdGlvbiB0byBhcHBseSBhIHJlc3QgcGFyYW1ldGVyIHRvLlxuICogQHJldHVybnMge0Z1bmN0aW9ufSBSZXR1cm5zIHRoZSBuZXcgZnVuY3Rpb24uXG4gKi9cbnZhciBjYXN0UmVzdCA9IGJhc2VSZXN0O1xuXG5tb2R1bGUuZXhwb3J0cyA9IGNhc3RSZXN0O1xuIl19

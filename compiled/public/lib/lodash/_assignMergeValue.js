@@ -1,0 +1,22 @@
+'use strict';
+
+var baseAssignValue = require('./_baseAssignValue'),
+    eq = require('./eq');
+
+/**
+ * This function is like `assignValue` except that it doesn't assign
+ * `undefined` values.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function assignMergeValue(object, key, value) {
+  if (value !== undefined && !eq(object[key], value) || value === undefined && !(key in object)) {
+    baseAssignValue(object, key, value);
+  }
+}
+
+module.exports = assignMergeValue;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19hc3NpZ25NZXJnZVZhbHVlLmpzIl0sIm5hbWVzIjpbImJhc2VBc3NpZ25WYWx1ZSIsInJlcXVpcmUiLCJlcSIsImFzc2lnbk1lcmdlVmFsdWUiLCJvYmplY3QiLCJrZXkiLCJ2YWx1ZSIsInVuZGVmaW5lZCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsa0JBQWtCQyxRQUFRLG9CQUFSLENBQXRCO0FBQUEsSUFDSUMsS0FBS0QsUUFBUSxNQUFSLENBRFQ7O0FBR0E7Ozs7Ozs7OztBQVNBLFNBQVNFLGdCQUFULENBQTBCQyxNQUExQixFQUFrQ0MsR0FBbEMsRUFBdUNDLEtBQXZDLEVBQThDO0FBQzVDLE1BQUtBLFVBQVVDLFNBQVYsSUFBdUIsQ0FBQ0wsR0FBR0UsT0FBT0MsR0FBUCxDQUFILEVBQWdCQyxLQUFoQixDQUF6QixJQUNDQSxVQUFVQyxTQUFWLElBQXVCLEVBQUVGLE9BQU9ELE1BQVQsQ0FENUIsRUFDK0M7QUFDN0NKLG9CQUFnQkksTUFBaEIsRUFBd0JDLEdBQXhCLEVBQTZCQyxLQUE3QjtBQUNEO0FBQ0Y7O0FBRURFLE9BQU9DLE9BQVAsR0FBaUJOLGdCQUFqQiIsImZpbGUiOiJfYXNzaWduTWVyZ2VWYWx1ZS5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBiYXNlQXNzaWduVmFsdWUgPSByZXF1aXJlKCcuL19iYXNlQXNzaWduVmFsdWUnKSxcbiAgICBlcSA9IHJlcXVpcmUoJy4vZXEnKTtcblxuLyoqXG4gKiBUaGlzIGZ1bmN0aW9uIGlzIGxpa2UgYGFzc2lnblZhbHVlYCBleGNlcHQgdGhhdCBpdCBkb2Vzbid0IGFzc2lnblxuICogYHVuZGVmaW5lZGAgdmFsdWVzLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge09iamVjdH0gb2JqZWN0IFRoZSBvYmplY3QgdG8gbW9kaWZ5LlxuICogQHBhcmFtIHtzdHJpbmd9IGtleSBUaGUga2V5IG9mIHRoZSBwcm9wZXJ0eSB0byBhc3NpZ24uXG4gKiBAcGFyYW0geyp9IHZhbHVlIFRoZSB2YWx1ZSB0byBhc3NpZ24uXG4gKi9cbmZ1bmN0aW9uIGFzc2lnbk1lcmdlVmFsdWUob2JqZWN0LCBrZXksIHZhbHVlKSB7XG4gIGlmICgodmFsdWUgIT09IHVuZGVmaW5lZCAmJiAhZXEob2JqZWN0W2tleV0sIHZhbHVlKSkgfHxcbiAgICAgICh2YWx1ZSA9PT0gdW5kZWZpbmVkICYmICEoa2V5IGluIG9iamVjdCkpKSB7XG4gICAgYmFzZUFzc2lnblZhbHVlKG9iamVjdCwga2V5LCB2YWx1ZSk7XG4gIH1cbn1cblxubW9kdWxlLmV4cG9ydHMgPSBhc3NpZ25NZXJnZVZhbHVlO1xuIl19

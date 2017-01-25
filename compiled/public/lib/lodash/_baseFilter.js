@@ -1,0 +1,24 @@
+'use strict';
+
+var baseEach = require('./_baseEach');
+
+/**
+ * The base implementation of `_.filter` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} predicate The function invoked per iteration.
+ * @returns {Array} Returns the new filtered array.
+ */
+function baseFilter(collection, predicate) {
+  var result = [];
+  baseEach(collection, function (value, index, collection) {
+    if (predicate(value, index, collection)) {
+      result.push(value);
+    }
+  });
+  return result;
+}
+
+module.exports = baseFilter;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlRmlsdGVyLmpzIl0sIm5hbWVzIjpbImJhc2VFYWNoIiwicmVxdWlyZSIsImJhc2VGaWx0ZXIiLCJjb2xsZWN0aW9uIiwicHJlZGljYXRlIiwicmVzdWx0IiwidmFsdWUiLCJpbmRleCIsInB1c2giLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLFdBQVdDLFFBQVEsYUFBUixDQUFmOztBQUVBOzs7Ozs7OztBQVFBLFNBQVNDLFVBQVQsQ0FBb0JDLFVBQXBCLEVBQWdDQyxTQUFoQyxFQUEyQztBQUN6QyxNQUFJQyxTQUFTLEVBQWI7QUFDQUwsV0FBU0csVUFBVCxFQUFxQixVQUFTRyxLQUFULEVBQWdCQyxLQUFoQixFQUF1QkosVUFBdkIsRUFBbUM7QUFDdEQsUUFBSUMsVUFBVUUsS0FBVixFQUFpQkMsS0FBakIsRUFBd0JKLFVBQXhCLENBQUosRUFBeUM7QUFDdkNFLGFBQU9HLElBQVAsQ0FBWUYsS0FBWjtBQUNEO0FBQ0YsR0FKRDtBQUtBLFNBQU9ELE1BQVA7QUFDRDs7QUFFREksT0FBT0MsT0FBUCxHQUFpQlIsVUFBakIiLCJmaWxlIjoiX2Jhc2VGaWx0ZXIuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgYmFzZUVhY2ggPSByZXF1aXJlKCcuL19iYXNlRWFjaCcpO1xuXG4vKipcbiAqIFRoZSBiYXNlIGltcGxlbWVudGF0aW9uIG9mIGBfLmZpbHRlcmAgd2l0aG91dCBzdXBwb3J0IGZvciBpdGVyYXRlZSBzaG9ydGhhbmRzLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge0FycmF5fE9iamVjdH0gY29sbGVjdGlvbiBUaGUgY29sbGVjdGlvbiB0byBpdGVyYXRlIG92ZXIuXG4gKiBAcGFyYW0ge0Z1bmN0aW9ufSBwcmVkaWNhdGUgVGhlIGZ1bmN0aW9uIGludm9rZWQgcGVyIGl0ZXJhdGlvbi5cbiAqIEByZXR1cm5zIHtBcnJheX0gUmV0dXJucyB0aGUgbmV3IGZpbHRlcmVkIGFycmF5LlxuICovXG5mdW5jdGlvbiBiYXNlRmlsdGVyKGNvbGxlY3Rpb24sIHByZWRpY2F0ZSkge1xuICB2YXIgcmVzdWx0ID0gW107XG4gIGJhc2VFYWNoKGNvbGxlY3Rpb24sIGZ1bmN0aW9uKHZhbHVlLCBpbmRleCwgY29sbGVjdGlvbikge1xuICAgIGlmIChwcmVkaWNhdGUodmFsdWUsIGluZGV4LCBjb2xsZWN0aW9uKSkge1xuICAgICAgcmVzdWx0LnB1c2godmFsdWUpO1xuICAgIH1cbiAgfSk7XG4gIHJldHVybiByZXN1bHQ7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYmFzZUZpbHRlcjtcbiJdfQ==

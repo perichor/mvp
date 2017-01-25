@@ -1,0 +1,22 @@
+'use strict';
+
+var basePickBy = require('./_basePickBy'),
+    hasIn = require('./hasIn');
+
+/**
+ * The base implementation of `_.pick` without support for individual
+ * property identifiers.
+ *
+ * @private
+ * @param {Object} object The source object.
+ * @param {string[]} paths The property paths to pick.
+ * @returns {Object} Returns the new object.
+ */
+function basePick(object, paths) {
+  return basePickBy(object, paths, function (value, path) {
+    return hasIn(object, path);
+  });
+}
+
+module.exports = basePick;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlUGljay5qcyJdLCJuYW1lcyI6WyJiYXNlUGlja0J5IiwicmVxdWlyZSIsImhhc0luIiwiYmFzZVBpY2siLCJvYmplY3QiLCJwYXRocyIsInZhbHVlIiwicGF0aCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsYUFBYUMsUUFBUSxlQUFSLENBQWpCO0FBQUEsSUFDSUMsUUFBUUQsUUFBUSxTQUFSLENBRFo7O0FBR0E7Ozs7Ozs7OztBQVNBLFNBQVNFLFFBQVQsQ0FBa0JDLE1BQWxCLEVBQTBCQyxLQUExQixFQUFpQztBQUMvQixTQUFPTCxXQUFXSSxNQUFYLEVBQW1CQyxLQUFuQixFQUEwQixVQUFTQyxLQUFULEVBQWdCQyxJQUFoQixFQUFzQjtBQUNyRCxXQUFPTCxNQUFNRSxNQUFOLEVBQWNHLElBQWQsQ0FBUDtBQUNELEdBRk0sQ0FBUDtBQUdEOztBQUVEQyxPQUFPQyxPQUFQLEdBQWlCTixRQUFqQiIsImZpbGUiOiJfYmFzZVBpY2suanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgYmFzZVBpY2tCeSA9IHJlcXVpcmUoJy4vX2Jhc2VQaWNrQnknKSxcbiAgICBoYXNJbiA9IHJlcXVpcmUoJy4vaGFzSW4nKTtcblxuLyoqXG4gKiBUaGUgYmFzZSBpbXBsZW1lbnRhdGlvbiBvZiBgXy5waWNrYCB3aXRob3V0IHN1cHBvcnQgZm9yIGluZGl2aWR1YWxcbiAqIHByb3BlcnR5IGlkZW50aWZpZXJzLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge09iamVjdH0gb2JqZWN0IFRoZSBzb3VyY2Ugb2JqZWN0LlxuICogQHBhcmFtIHtzdHJpbmdbXX0gcGF0aHMgVGhlIHByb3BlcnR5IHBhdGhzIHRvIHBpY2suXG4gKiBAcmV0dXJucyB7T2JqZWN0fSBSZXR1cm5zIHRoZSBuZXcgb2JqZWN0LlxuICovXG5mdW5jdGlvbiBiYXNlUGljayhvYmplY3QsIHBhdGhzKSB7XG4gIHJldHVybiBiYXNlUGlja0J5KG9iamVjdCwgcGF0aHMsIGZ1bmN0aW9uKHZhbHVlLCBwYXRoKSB7XG4gICAgcmV0dXJuIGhhc0luKG9iamVjdCwgcGF0aCk7XG4gIH0pO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGJhc2VQaWNrO1xuIl19

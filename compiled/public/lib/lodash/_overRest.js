@@ -1,0 +1,39 @@
+'use strict';
+
+var apply = require('./_apply');
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max;
+
+/**
+ * A specialized version of `baseRest` which transforms the rest array.
+ *
+ * @private
+ * @param {Function} func The function to apply a rest parameter to.
+ * @param {number} [start=func.length-1] The start position of the rest parameter.
+ * @param {Function} transform The rest array transform.
+ * @returns {Function} Returns the new function.
+ */
+function overRest(func, start, transform) {
+  start = nativeMax(start === undefined ? func.length - 1 : start, 0);
+  return function () {
+    var args = arguments,
+        index = -1,
+        length = nativeMax(args.length - start, 0),
+        array = Array(length);
+
+    while (++index < length) {
+      array[index] = args[start + index];
+    }
+    index = -1;
+    var otherArgs = Array(start + 1);
+    while (++index < start) {
+      otherArgs[index] = args[index];
+    }
+    otherArgs[start] = transform(array);
+    return apply(func, this, otherArgs);
+  };
+}
+
+module.exports = overRest;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19vdmVyUmVzdC5qcyJdLCJuYW1lcyI6WyJhcHBseSIsInJlcXVpcmUiLCJuYXRpdmVNYXgiLCJNYXRoIiwibWF4Iiwib3ZlclJlc3QiLCJmdW5jIiwic3RhcnQiLCJ0cmFuc2Zvcm0iLCJ1bmRlZmluZWQiLCJsZW5ndGgiLCJhcmdzIiwiYXJndW1lbnRzIiwiaW5kZXgiLCJhcnJheSIsIkFycmF5Iiwib3RoZXJBcmdzIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJQSxRQUFRQyxRQUFRLFVBQVIsQ0FBWjs7QUFFQTtBQUNBLElBQUlDLFlBQVlDLEtBQUtDLEdBQXJCOztBQUVBOzs7Ozs7Ozs7QUFTQSxTQUFTQyxRQUFULENBQWtCQyxJQUFsQixFQUF3QkMsS0FBeEIsRUFBK0JDLFNBQS9CLEVBQTBDO0FBQ3hDRCxVQUFRTCxVQUFVSyxVQUFVRSxTQUFWLEdBQXVCSCxLQUFLSSxNQUFMLEdBQWMsQ0FBckMsR0FBMENILEtBQXBELEVBQTJELENBQTNELENBQVI7QUFDQSxTQUFPLFlBQVc7QUFDaEIsUUFBSUksT0FBT0MsU0FBWDtBQUFBLFFBQ0lDLFFBQVEsQ0FBQyxDQURiO0FBQUEsUUFFSUgsU0FBU1IsVUFBVVMsS0FBS0QsTUFBTCxHQUFjSCxLQUF4QixFQUErQixDQUEvQixDQUZiO0FBQUEsUUFHSU8sUUFBUUMsTUFBTUwsTUFBTixDQUhaOztBQUtBLFdBQU8sRUFBRUcsS0FBRixHQUFVSCxNQUFqQixFQUF5QjtBQUN2QkksWUFBTUQsS0FBTixJQUFlRixLQUFLSixRQUFRTSxLQUFiLENBQWY7QUFDRDtBQUNEQSxZQUFRLENBQUMsQ0FBVDtBQUNBLFFBQUlHLFlBQVlELE1BQU1SLFFBQVEsQ0FBZCxDQUFoQjtBQUNBLFdBQU8sRUFBRU0sS0FBRixHQUFVTixLQUFqQixFQUF3QjtBQUN0QlMsZ0JBQVVILEtBQVYsSUFBbUJGLEtBQUtFLEtBQUwsQ0FBbkI7QUFDRDtBQUNERyxjQUFVVCxLQUFWLElBQW1CQyxVQUFVTSxLQUFWLENBQW5CO0FBQ0EsV0FBT2QsTUFBTU0sSUFBTixFQUFZLElBQVosRUFBa0JVLFNBQWxCLENBQVA7QUFDRCxHQWhCRDtBQWlCRDs7QUFFREMsT0FBT0MsT0FBUCxHQUFpQmIsUUFBakIiLCJmaWxlIjoiX292ZXJSZXN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGFwcGx5ID0gcmVxdWlyZSgnLi9fYXBwbHknKTtcblxuLyogQnVpbHQtaW4gbWV0aG9kIHJlZmVyZW5jZXMgZm9yIHRob3NlIHdpdGggdGhlIHNhbWUgbmFtZSBhcyBvdGhlciBgbG9kYXNoYCBtZXRob2RzLiAqL1xudmFyIG5hdGl2ZU1heCA9IE1hdGgubWF4O1xuXG4vKipcbiAqIEEgc3BlY2lhbGl6ZWQgdmVyc2lvbiBvZiBgYmFzZVJlc3RgIHdoaWNoIHRyYW5zZm9ybXMgdGhlIHJlc3QgYXJyYXkuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7RnVuY3Rpb259IGZ1bmMgVGhlIGZ1bmN0aW9uIHRvIGFwcGx5IGEgcmVzdCBwYXJhbWV0ZXIgdG8uXG4gKiBAcGFyYW0ge251bWJlcn0gW3N0YXJ0PWZ1bmMubGVuZ3RoLTFdIFRoZSBzdGFydCBwb3NpdGlvbiBvZiB0aGUgcmVzdCBwYXJhbWV0ZXIuXG4gKiBAcGFyYW0ge0Z1bmN0aW9ufSB0cmFuc2Zvcm0gVGhlIHJlc3QgYXJyYXkgdHJhbnNmb3JtLlxuICogQHJldHVybnMge0Z1bmN0aW9ufSBSZXR1cm5zIHRoZSBuZXcgZnVuY3Rpb24uXG4gKi9cbmZ1bmN0aW9uIG92ZXJSZXN0KGZ1bmMsIHN0YXJ0LCB0cmFuc2Zvcm0pIHtcbiAgc3RhcnQgPSBuYXRpdmVNYXgoc3RhcnQgPT09IHVuZGVmaW5lZCA/IChmdW5jLmxlbmd0aCAtIDEpIDogc3RhcnQsIDApO1xuICByZXR1cm4gZnVuY3Rpb24oKSB7XG4gICAgdmFyIGFyZ3MgPSBhcmd1bWVudHMsXG4gICAgICAgIGluZGV4ID0gLTEsXG4gICAgICAgIGxlbmd0aCA9IG5hdGl2ZU1heChhcmdzLmxlbmd0aCAtIHN0YXJ0LCAwKSxcbiAgICAgICAgYXJyYXkgPSBBcnJheShsZW5ndGgpO1xuXG4gICAgd2hpbGUgKCsraW5kZXggPCBsZW5ndGgpIHtcbiAgICAgIGFycmF5W2luZGV4XSA9IGFyZ3Nbc3RhcnQgKyBpbmRleF07XG4gICAgfVxuICAgIGluZGV4ID0gLTE7XG4gICAgdmFyIG90aGVyQXJncyA9IEFycmF5KHN0YXJ0ICsgMSk7XG4gICAgd2hpbGUgKCsraW5kZXggPCBzdGFydCkge1xuICAgICAgb3RoZXJBcmdzW2luZGV4XSA9IGFyZ3NbaW5kZXhdO1xuICAgIH1cbiAgICBvdGhlckFyZ3Nbc3RhcnRdID0gdHJhbnNmb3JtKGFycmF5KTtcbiAgICByZXR1cm4gYXBwbHkoZnVuYywgdGhpcywgb3RoZXJBcmdzKTtcbiAgfTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBvdmVyUmVzdDtcbiJdfQ==

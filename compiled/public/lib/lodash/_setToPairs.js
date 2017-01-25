@@ -1,0 +1,21 @@
+"use strict";
+
+/**
+ * Converts `set` to its value-value pairs.
+ *
+ * @private
+ * @param {Object} set The set to convert.
+ * @returns {Array} Returns the value-value pairs.
+ */
+function setToPairs(set) {
+  var index = -1,
+      result = Array(set.size);
+
+  set.forEach(function (value) {
+    result[++index] = [value, value];
+  });
+  return result;
+}
+
+module.exports = setToPairs;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19zZXRUb1BhaXJzLmpzIl0sIm5hbWVzIjpbInNldFRvUGFpcnMiLCJzZXQiLCJpbmRleCIsInJlc3VsdCIsIkFycmF5Iiwic2l6ZSIsImZvckVhY2giLCJ2YWx1ZSIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUE7Ozs7Ozs7QUFPQSxTQUFTQSxVQUFULENBQW9CQyxHQUFwQixFQUF5QjtBQUN2QixNQUFJQyxRQUFRLENBQUMsQ0FBYjtBQUFBLE1BQ0lDLFNBQVNDLE1BQU1ILElBQUlJLElBQVYsQ0FEYjs7QUFHQUosTUFBSUssT0FBSixDQUFZLFVBQVNDLEtBQVQsRUFBZ0I7QUFDMUJKLFdBQU8sRUFBRUQsS0FBVCxJQUFrQixDQUFDSyxLQUFELEVBQVFBLEtBQVIsQ0FBbEI7QUFDRCxHQUZEO0FBR0EsU0FBT0osTUFBUDtBQUNEOztBQUVESyxPQUFPQyxPQUFQLEdBQWlCVCxVQUFqQiIsImZpbGUiOiJfc2V0VG9QYWlycy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQ29udmVydHMgYHNldGAgdG8gaXRzIHZhbHVlLXZhbHVlIHBhaXJzLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge09iamVjdH0gc2V0IFRoZSBzZXQgdG8gY29udmVydC5cbiAqIEByZXR1cm5zIHtBcnJheX0gUmV0dXJucyB0aGUgdmFsdWUtdmFsdWUgcGFpcnMuXG4gKi9cbmZ1bmN0aW9uIHNldFRvUGFpcnMoc2V0KSB7XG4gIHZhciBpbmRleCA9IC0xLFxuICAgICAgcmVzdWx0ID0gQXJyYXkoc2V0LnNpemUpO1xuXG4gIHNldC5mb3JFYWNoKGZ1bmN0aW9uKHZhbHVlKSB7XG4gICAgcmVzdWx0WysraW5kZXhdID0gW3ZhbHVlLCB2YWx1ZV07XG4gIH0pO1xuICByZXR1cm4gcmVzdWx0O1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IHNldFRvUGFpcnM7XG4iXX0=

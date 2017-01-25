@@ -1,0 +1,60 @@
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');
+
+var useHasFeature;
+if (ExecutionEnvironment.canUseDOM) {
+  useHasFeature = document.implementation && document.implementation.hasFeature &&
+  // always returns true in newer browsers as per the standard.
+  // @see http://dom.spec.whatwg.org/#dom-domimplementation-hasfeature
+  document.implementation.hasFeature('', '') !== true;
+}
+
+/**
+ * Checks if an event is supported in the current execution environment.
+ *
+ * NOTE: This will not work correctly for non-generic events such as `change`,
+ * `reset`, `load`, `error`, and `select`.
+ *
+ * Borrows from Modernizr.
+ *
+ * @param {string} eventNameSuffix Event name, e.g. "click".
+ * @param {?boolean} capture Check if the capture phase is supported.
+ * @return {boolean} True if the event is supported.
+ * @internal
+ * @license Modernizr 3.0.0pre (Custom Build) | MIT
+ */
+function isEventSupported(eventNameSuffix, capture) {
+  if (!ExecutionEnvironment.canUseDOM || capture && !('addEventListener' in document)) {
+    return false;
+  }
+
+  var eventName = 'on' + eventNameSuffix;
+  var isSupported = eventName in document;
+
+  if (!isSupported) {
+    var element = document.createElement('div');
+    element.setAttribute(eventName, 'return;');
+    isSupported = typeof element[eventName] === 'function';
+  }
+
+  if (!isSupported && useHasFeature && eventNameSuffix === 'wheel') {
+    // This is the only way to test support for the `wheel` event in IE9+.
+    isSupported = document.implementation.hasFeature('Events.wheel', '3.0');
+  }
+
+  return isSupported;
+}
+
+module.exports = isEventSupported;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvcmVhY3QtZG9tL2xpYi9pc0V2ZW50U3VwcG9ydGVkLmpzIl0sIm5hbWVzIjpbIkV4ZWN1dGlvbkVudmlyb25tZW50IiwicmVxdWlyZSIsInVzZUhhc0ZlYXR1cmUiLCJjYW5Vc2VET00iLCJkb2N1bWVudCIsImltcGxlbWVudGF0aW9uIiwiaGFzRmVhdHVyZSIsImlzRXZlbnRTdXBwb3J0ZWQiLCJldmVudE5hbWVTdWZmaXgiLCJjYXB0dXJlIiwiZXZlbnROYW1lIiwiaXNTdXBwb3J0ZWQiLCJlbGVtZW50IiwiY3JlYXRlRWxlbWVudCIsInNldEF0dHJpYnV0ZSIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7O0FBVUE7O0FBRUEsSUFBSUEsdUJBQXVCQyxRQUFRLCtCQUFSLENBQTNCOztBQUVBLElBQUlDLGFBQUo7QUFDQSxJQUFJRixxQkFBcUJHLFNBQXpCLEVBQW9DO0FBQ2xDRCxrQkFBZ0JFLFNBQVNDLGNBQVQsSUFBMkJELFNBQVNDLGNBQVQsQ0FBd0JDLFVBQW5EO0FBQ2hCO0FBQ0E7QUFDQUYsV0FBU0MsY0FBVCxDQUF3QkMsVUFBeEIsQ0FBbUMsRUFBbkMsRUFBdUMsRUFBdkMsTUFBK0MsSUFIL0M7QUFJRDs7QUFFRDs7Ozs7Ozs7Ozs7Ozs7QUFjQSxTQUFTQyxnQkFBVCxDQUEwQkMsZUFBMUIsRUFBMkNDLE9BQTNDLEVBQW9EO0FBQ2xELE1BQUksQ0FBQ1QscUJBQXFCRyxTQUF0QixJQUFtQ00sV0FBVyxFQUFFLHNCQUFzQkwsUUFBeEIsQ0FBbEQsRUFBcUY7QUFDbkYsV0FBTyxLQUFQO0FBQ0Q7O0FBRUQsTUFBSU0sWUFBWSxPQUFPRixlQUF2QjtBQUNBLE1BQUlHLGNBQWNELGFBQWFOLFFBQS9COztBQUVBLE1BQUksQ0FBQ08sV0FBTCxFQUFrQjtBQUNoQixRQUFJQyxVQUFVUixTQUFTUyxhQUFULENBQXVCLEtBQXZCLENBQWQ7QUFDQUQsWUFBUUUsWUFBUixDQUFxQkosU0FBckIsRUFBZ0MsU0FBaEM7QUFDQUMsa0JBQWMsT0FBT0MsUUFBUUYsU0FBUixDQUFQLEtBQThCLFVBQTVDO0FBQ0Q7O0FBRUQsTUFBSSxDQUFDQyxXQUFELElBQWdCVCxhQUFoQixJQUFpQ00sb0JBQW9CLE9BQXpELEVBQWtFO0FBQ2hFO0FBQ0FHLGtCQUFjUCxTQUFTQyxjQUFULENBQXdCQyxVQUF4QixDQUFtQyxjQUFuQyxFQUFtRCxLQUFuRCxDQUFkO0FBQ0Q7O0FBRUQsU0FBT0ssV0FBUDtBQUNEOztBQUVESSxPQUFPQyxPQUFQLEdBQWlCVCxnQkFBakIiLCJmaWxlIjoiaXNFdmVudFN1cHBvcnRlZC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQ29weXJpZ2h0IDIwMTMtcHJlc2VudCwgRmFjZWJvb2ssIEluYy5cbiAqIEFsbCByaWdodHMgcmVzZXJ2ZWQuXG4gKlxuICogVGhpcyBzb3VyY2UgY29kZSBpcyBsaWNlbnNlZCB1bmRlciB0aGUgQlNELXN0eWxlIGxpY2Vuc2UgZm91bmQgaW4gdGhlXG4gKiBMSUNFTlNFIGZpbGUgaW4gdGhlIHJvb3QgZGlyZWN0b3J5IG9mIHRoaXMgc291cmNlIHRyZWUuIEFuIGFkZGl0aW9uYWwgZ3JhbnRcbiAqIG9mIHBhdGVudCByaWdodHMgY2FuIGJlIGZvdW5kIGluIHRoZSBQQVRFTlRTIGZpbGUgaW4gdGhlIHNhbWUgZGlyZWN0b3J5LlxuICpcbiAqL1xuXG4ndXNlIHN0cmljdCc7XG5cbnZhciBFeGVjdXRpb25FbnZpcm9ubWVudCA9IHJlcXVpcmUoJ2ZianMvbGliL0V4ZWN1dGlvbkVudmlyb25tZW50Jyk7XG5cbnZhciB1c2VIYXNGZWF0dXJlO1xuaWYgKEV4ZWN1dGlvbkVudmlyb25tZW50LmNhblVzZURPTSkge1xuICB1c2VIYXNGZWF0dXJlID0gZG9jdW1lbnQuaW1wbGVtZW50YXRpb24gJiYgZG9jdW1lbnQuaW1wbGVtZW50YXRpb24uaGFzRmVhdHVyZSAmJlxuICAvLyBhbHdheXMgcmV0dXJucyB0cnVlIGluIG5ld2VyIGJyb3dzZXJzIGFzIHBlciB0aGUgc3RhbmRhcmQuXG4gIC8vIEBzZWUgaHR0cDovL2RvbS5zcGVjLndoYXR3Zy5vcmcvI2RvbS1kb21pbXBsZW1lbnRhdGlvbi1oYXNmZWF0dXJlXG4gIGRvY3VtZW50LmltcGxlbWVudGF0aW9uLmhhc0ZlYXR1cmUoJycsICcnKSAhPT0gdHJ1ZTtcbn1cblxuLyoqXG4gKiBDaGVja3MgaWYgYW4gZXZlbnQgaXMgc3VwcG9ydGVkIGluIHRoZSBjdXJyZW50IGV4ZWN1dGlvbiBlbnZpcm9ubWVudC5cbiAqXG4gKiBOT1RFOiBUaGlzIHdpbGwgbm90IHdvcmsgY29ycmVjdGx5IGZvciBub24tZ2VuZXJpYyBldmVudHMgc3VjaCBhcyBgY2hhbmdlYCxcbiAqIGByZXNldGAsIGBsb2FkYCwgYGVycm9yYCwgYW5kIGBzZWxlY3RgLlxuICpcbiAqIEJvcnJvd3MgZnJvbSBNb2Rlcm5penIuXG4gKlxuICogQHBhcmFtIHtzdHJpbmd9IGV2ZW50TmFtZVN1ZmZpeCBFdmVudCBuYW1lLCBlLmcuIFwiY2xpY2tcIi5cbiAqIEBwYXJhbSB7P2Jvb2xlYW59IGNhcHR1cmUgQ2hlY2sgaWYgdGhlIGNhcHR1cmUgcGhhc2UgaXMgc3VwcG9ydGVkLlxuICogQHJldHVybiB7Ym9vbGVhbn0gVHJ1ZSBpZiB0aGUgZXZlbnQgaXMgc3VwcG9ydGVkLlxuICogQGludGVybmFsXG4gKiBAbGljZW5zZSBNb2Rlcm5penIgMy4wLjBwcmUgKEN1c3RvbSBCdWlsZCkgfCBNSVRcbiAqL1xuZnVuY3Rpb24gaXNFdmVudFN1cHBvcnRlZChldmVudE5hbWVTdWZmaXgsIGNhcHR1cmUpIHtcbiAgaWYgKCFFeGVjdXRpb25FbnZpcm9ubWVudC5jYW5Vc2VET00gfHwgY2FwdHVyZSAmJiAhKCdhZGRFdmVudExpc3RlbmVyJyBpbiBkb2N1bWVudCkpIHtcbiAgICByZXR1cm4gZmFsc2U7XG4gIH1cblxuICB2YXIgZXZlbnROYW1lID0gJ29uJyArIGV2ZW50TmFtZVN1ZmZpeDtcbiAgdmFyIGlzU3VwcG9ydGVkID0gZXZlbnROYW1lIGluIGRvY3VtZW50O1xuXG4gIGlmICghaXNTdXBwb3J0ZWQpIHtcbiAgICB2YXIgZWxlbWVudCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO1xuICAgIGVsZW1lbnQuc2V0QXR0cmlidXRlKGV2ZW50TmFtZSwgJ3JldHVybjsnKTtcbiAgICBpc1N1cHBvcnRlZCA9IHR5cGVvZiBlbGVtZW50W2V2ZW50TmFtZV0gPT09ICdmdW5jdGlvbic7XG4gIH1cblxuICBpZiAoIWlzU3VwcG9ydGVkICYmIHVzZUhhc0ZlYXR1cmUgJiYgZXZlbnROYW1lU3VmZml4ID09PSAnd2hlZWwnKSB7XG4gICAgLy8gVGhpcyBpcyB0aGUgb25seSB3YXkgdG8gdGVzdCBzdXBwb3J0IGZvciB0aGUgYHdoZWVsYCBldmVudCBpbiBJRTkrLlxuICAgIGlzU3VwcG9ydGVkID0gZG9jdW1lbnQuaW1wbGVtZW50YXRpb24uaGFzRmVhdHVyZSgnRXZlbnRzLndoZWVsJywgJzMuMCcpO1xuICB9XG5cbiAgcmV0dXJuIGlzU3VwcG9ydGVkO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGlzRXZlbnRTdXBwb3J0ZWQ7Il19

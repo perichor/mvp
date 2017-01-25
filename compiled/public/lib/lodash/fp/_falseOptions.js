@@ -1,0 +1,10 @@
+'use strict';
+
+module.exports = {
+  'cap': false,
+  'curry': false,
+  'fixed': false,
+  'immutable': false,
+  'rearg': false
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL2ZwL19mYWxzZU9wdGlvbnMuanMiXSwibmFtZXMiOlsibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsT0FBT0MsT0FBUCxHQUFpQjtBQUNmLFNBQU8sS0FEUTtBQUVmLFdBQVMsS0FGTTtBQUdmLFdBQVMsS0FITTtBQUlmLGVBQWEsS0FKRTtBQUtmLFdBQVM7QUFMTSxDQUFqQiIsImZpbGUiOiJfZmFsc2VPcHRpb25zLmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSB7XG4gICdjYXAnOiBmYWxzZSxcbiAgJ2N1cnJ5JzogZmFsc2UsXG4gICdmaXhlZCc6IGZhbHNlLFxuICAnaW1tdXRhYmxlJzogZmFsc2UsXG4gICdyZWFyZyc6IGZhbHNlXG59O1xuIl19

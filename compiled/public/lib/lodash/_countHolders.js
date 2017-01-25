@@ -1,0 +1,24 @@
+"use strict";
+
+/**
+ * Gets the number of `placeholder` occurrences in `array`.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} placeholder The placeholder to search for.
+ * @returns {number} Returns the placeholder count.
+ */
+function countHolders(array, placeholder) {
+  var length = array.length,
+      result = 0;
+
+  while (length--) {
+    if (array[length] === placeholder) {
+      ++result;
+    }
+  }
+  return result;
+}
+
+module.exports = countHolders;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jb3VudEhvbGRlcnMuanMiXSwibmFtZXMiOlsiY291bnRIb2xkZXJzIiwiYXJyYXkiLCJwbGFjZWhvbGRlciIsImxlbmd0aCIsInJlc3VsdCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUE7Ozs7Ozs7O0FBUUEsU0FBU0EsWUFBVCxDQUFzQkMsS0FBdEIsRUFBNkJDLFdBQTdCLEVBQTBDO0FBQ3hDLE1BQUlDLFNBQVNGLE1BQU1FLE1BQW5CO0FBQUEsTUFDSUMsU0FBUyxDQURiOztBQUdBLFNBQU9ELFFBQVAsRUFBaUI7QUFDZixRQUFJRixNQUFNRSxNQUFOLE1BQWtCRCxXQUF0QixFQUFtQztBQUNqQyxRQUFFRSxNQUFGO0FBQ0Q7QUFDRjtBQUNELFNBQU9BLE1BQVA7QUFDRDs7QUFFREMsT0FBT0MsT0FBUCxHQUFpQk4sWUFBakIiLCJmaWxlIjoiX2NvdW50SG9sZGVycy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogR2V0cyB0aGUgbnVtYmVyIG9mIGBwbGFjZWhvbGRlcmAgb2NjdXJyZW5jZXMgaW4gYGFycmF5YC5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtBcnJheX0gYXJyYXkgVGhlIGFycmF5IHRvIGluc3BlY3QuXG4gKiBAcGFyYW0geyp9IHBsYWNlaG9sZGVyIFRoZSBwbGFjZWhvbGRlciB0byBzZWFyY2ggZm9yLlxuICogQHJldHVybnMge251bWJlcn0gUmV0dXJucyB0aGUgcGxhY2Vob2xkZXIgY291bnQuXG4gKi9cbmZ1bmN0aW9uIGNvdW50SG9sZGVycyhhcnJheSwgcGxhY2Vob2xkZXIpIHtcbiAgdmFyIGxlbmd0aCA9IGFycmF5Lmxlbmd0aCxcbiAgICAgIHJlc3VsdCA9IDA7XG5cbiAgd2hpbGUgKGxlbmd0aC0tKSB7XG4gICAgaWYgKGFycmF5W2xlbmd0aF0gPT09IHBsYWNlaG9sZGVyKSB7XG4gICAgICArK3Jlc3VsdDtcbiAgICB9XG4gIH1cbiAgcmV0dXJuIHJlc3VsdDtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBjb3VudEhvbGRlcnM7XG4iXX0=

@@ -1,0 +1,19 @@
+'use strict';
+
+var asciiSize = require('./_asciiSize'),
+    hasUnicode = require('./_hasUnicode'),
+    unicodeSize = require('./_unicodeSize');
+
+/**
+ * Gets the number of symbols in `string`.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {number} Returns the string size.
+ */
+function stringSize(string) {
+    return hasUnicode(string) ? unicodeSize(string) : asciiSize(string);
+}
+
+module.exports = stringSize;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19zdHJpbmdTaXplLmpzIl0sIm5hbWVzIjpbImFzY2lpU2l6ZSIsInJlcXVpcmUiLCJoYXNVbmljb2RlIiwidW5pY29kZVNpemUiLCJzdHJpbmdTaXplIiwic3RyaW5nIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJQSxZQUFZQyxRQUFRLGNBQVIsQ0FBaEI7QUFBQSxJQUNJQyxhQUFhRCxRQUFRLGVBQVIsQ0FEakI7QUFBQSxJQUVJRSxjQUFjRixRQUFRLGdCQUFSLENBRmxCOztBQUlBOzs7Ozs7O0FBT0EsU0FBU0csVUFBVCxDQUFvQkMsTUFBcEIsRUFBNEI7QUFDMUIsV0FBT0gsV0FBV0csTUFBWCxJQUNIRixZQUFZRSxNQUFaLENBREcsR0FFSEwsVUFBVUssTUFBVixDQUZKO0FBR0Q7O0FBRURDLE9BQU9DLE9BQVAsR0FBaUJILFVBQWpCIiwiZmlsZSI6Il9zdHJpbmdTaXplLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGFzY2lpU2l6ZSA9IHJlcXVpcmUoJy4vX2FzY2lpU2l6ZScpLFxuICAgIGhhc1VuaWNvZGUgPSByZXF1aXJlKCcuL19oYXNVbmljb2RlJyksXG4gICAgdW5pY29kZVNpemUgPSByZXF1aXJlKCcuL191bmljb2RlU2l6ZScpO1xuXG4vKipcbiAqIEdldHMgdGhlIG51bWJlciBvZiBzeW1ib2xzIGluIGBzdHJpbmdgLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge3N0cmluZ30gc3RyaW5nIFRoZSBzdHJpbmcgdG8gaW5zcGVjdC5cbiAqIEByZXR1cm5zIHtudW1iZXJ9IFJldHVybnMgdGhlIHN0cmluZyBzaXplLlxuICovXG5mdW5jdGlvbiBzdHJpbmdTaXplKHN0cmluZykge1xuICByZXR1cm4gaGFzVW5pY29kZShzdHJpbmcpXG4gICAgPyB1bmljb2RlU2l6ZShzdHJpbmcpXG4gICAgOiBhc2NpaVNpemUoc3RyaW5nKTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBzdHJpbmdTaXplO1xuIl19

@@ -1,0 +1,34 @@
+'use strict';
+
+var realNames = require('./_realNames');
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Gets the name of `func`.
+ *
+ * @private
+ * @param {Function} func The function to query.
+ * @returns {string} Returns the function name.
+ */
+function getFuncName(func) {
+  var result = func.name + '',
+      array = realNames[result],
+      length = hasOwnProperty.call(realNames, result) ? array.length : 0;
+
+  while (length--) {
+    var data = array[length],
+        otherFunc = data.func;
+    if (otherFunc == null || otherFunc == func) {
+      return data.name;
+    }
+  }
+  return result;
+}
+
+module.exports = getFuncName;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19nZXRGdW5jTmFtZS5qcyJdLCJuYW1lcyI6WyJyZWFsTmFtZXMiLCJyZXF1aXJlIiwib2JqZWN0UHJvdG8iLCJPYmplY3QiLCJwcm90b3R5cGUiLCJoYXNPd25Qcm9wZXJ0eSIsImdldEZ1bmNOYW1lIiwiZnVuYyIsInJlc3VsdCIsIm5hbWUiLCJhcnJheSIsImxlbmd0aCIsImNhbGwiLCJkYXRhIiwib3RoZXJGdW5jIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJQSxZQUFZQyxRQUFRLGNBQVIsQ0FBaEI7O0FBRUE7QUFDQSxJQUFJQyxjQUFjQyxPQUFPQyxTQUF6Qjs7QUFFQTtBQUNBLElBQUlDLGlCQUFpQkgsWUFBWUcsY0FBakM7O0FBRUE7Ozs7Ozs7QUFPQSxTQUFTQyxXQUFULENBQXFCQyxJQUFyQixFQUEyQjtBQUN6QixNQUFJQyxTQUFVRCxLQUFLRSxJQUFMLEdBQVksRUFBMUI7QUFBQSxNQUNJQyxRQUFRVixVQUFVUSxNQUFWLENBRFo7QUFBQSxNQUVJRyxTQUFTTixlQUFlTyxJQUFmLENBQW9CWixTQUFwQixFQUErQlEsTUFBL0IsSUFBeUNFLE1BQU1DLE1BQS9DLEdBQXdELENBRnJFOztBQUlBLFNBQU9BLFFBQVAsRUFBaUI7QUFDZixRQUFJRSxPQUFPSCxNQUFNQyxNQUFOLENBQVg7QUFBQSxRQUNJRyxZQUFZRCxLQUFLTixJQURyQjtBQUVBLFFBQUlPLGFBQWEsSUFBYixJQUFxQkEsYUFBYVAsSUFBdEMsRUFBNEM7QUFDMUMsYUFBT00sS0FBS0osSUFBWjtBQUNEO0FBQ0Y7QUFDRCxTQUFPRCxNQUFQO0FBQ0Q7O0FBRURPLE9BQU9DLE9BQVAsR0FBaUJWLFdBQWpCIiwiZmlsZSI6Il9nZXRGdW5jTmFtZS5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciByZWFsTmFtZXMgPSByZXF1aXJlKCcuL19yZWFsTmFtZXMnKTtcblxuLyoqIFVzZWQgZm9yIGJ1aWx0LWluIG1ldGhvZCByZWZlcmVuY2VzLiAqL1xudmFyIG9iamVjdFByb3RvID0gT2JqZWN0LnByb3RvdHlwZTtcblxuLyoqIFVzZWQgdG8gY2hlY2sgb2JqZWN0cyBmb3Igb3duIHByb3BlcnRpZXMuICovXG52YXIgaGFzT3duUHJvcGVydHkgPSBvYmplY3RQcm90by5oYXNPd25Qcm9wZXJ0eTtcblxuLyoqXG4gKiBHZXRzIHRoZSBuYW1lIG9mIGBmdW5jYC5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtGdW5jdGlvbn0gZnVuYyBUaGUgZnVuY3Rpb24gdG8gcXVlcnkuXG4gKiBAcmV0dXJucyB7c3RyaW5nfSBSZXR1cm5zIHRoZSBmdW5jdGlvbiBuYW1lLlxuICovXG5mdW5jdGlvbiBnZXRGdW5jTmFtZShmdW5jKSB7XG4gIHZhciByZXN1bHQgPSAoZnVuYy5uYW1lICsgJycpLFxuICAgICAgYXJyYXkgPSByZWFsTmFtZXNbcmVzdWx0XSxcbiAgICAgIGxlbmd0aCA9IGhhc093blByb3BlcnR5LmNhbGwocmVhbE5hbWVzLCByZXN1bHQpID8gYXJyYXkubGVuZ3RoIDogMDtcblxuICB3aGlsZSAobGVuZ3RoLS0pIHtcbiAgICB2YXIgZGF0YSA9IGFycmF5W2xlbmd0aF0sXG4gICAgICAgIG90aGVyRnVuYyA9IGRhdGEuZnVuYztcbiAgICBpZiAob3RoZXJGdW5jID09IG51bGwgfHwgb3RoZXJGdW5jID09IGZ1bmMpIHtcbiAgICAgIHJldHVybiBkYXRhLm5hbWU7XG4gICAgfVxuICB9XG4gIHJldHVybiByZXN1bHQ7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gZ2V0RnVuY05hbWU7XG4iXX0=

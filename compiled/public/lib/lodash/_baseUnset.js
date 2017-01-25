@@ -1,0 +1,23 @@
+'use strict';
+
+var castPath = require('./_castPath'),
+    last = require('./last'),
+    parent = require('./_parent'),
+    toKey = require('./_toKey');
+
+/**
+ * The base implementation of `_.unset`.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {Array|string} path The property path to unset.
+ * @returns {boolean} Returns `true` if the property is deleted, else `false`.
+ */
+function baseUnset(object, path) {
+  path = castPath(path, object);
+  object = parent(object, path);
+  return object == null || delete object[toKey(last(path))];
+}
+
+module.exports = baseUnset;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlVW5zZXQuanMiXSwibmFtZXMiOlsiY2FzdFBhdGgiLCJyZXF1aXJlIiwibGFzdCIsInBhcmVudCIsInRvS2V5IiwiYmFzZVVuc2V0Iiwib2JqZWN0IiwicGF0aCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsV0FBV0MsUUFBUSxhQUFSLENBQWY7QUFBQSxJQUNJQyxPQUFPRCxRQUFRLFFBQVIsQ0FEWDtBQUFBLElBRUlFLFNBQVNGLFFBQVEsV0FBUixDQUZiO0FBQUEsSUFHSUcsUUFBUUgsUUFBUSxVQUFSLENBSFo7O0FBS0E7Ozs7Ozs7O0FBUUEsU0FBU0ksU0FBVCxDQUFtQkMsTUFBbkIsRUFBMkJDLElBQTNCLEVBQWlDO0FBQy9CQSxTQUFPUCxTQUFTTyxJQUFULEVBQWVELE1BQWYsQ0FBUDtBQUNBQSxXQUFTSCxPQUFPRyxNQUFQLEVBQWVDLElBQWYsQ0FBVDtBQUNBLFNBQU9ELFVBQVUsSUFBVixJQUFrQixPQUFPQSxPQUFPRixNQUFNRixLQUFLSyxJQUFMLENBQU4sQ0FBUCxDQUFoQztBQUNEOztBQUVEQyxPQUFPQyxPQUFQLEdBQWlCSixTQUFqQiIsImZpbGUiOiJfYmFzZVVuc2V0LmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGNhc3RQYXRoID0gcmVxdWlyZSgnLi9fY2FzdFBhdGgnKSxcbiAgICBsYXN0ID0gcmVxdWlyZSgnLi9sYXN0JyksXG4gICAgcGFyZW50ID0gcmVxdWlyZSgnLi9fcGFyZW50JyksXG4gICAgdG9LZXkgPSByZXF1aXJlKCcuL190b0tleScpO1xuXG4vKipcbiAqIFRoZSBiYXNlIGltcGxlbWVudGF0aW9uIG9mIGBfLnVuc2V0YC5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtPYmplY3R9IG9iamVjdCBUaGUgb2JqZWN0IHRvIG1vZGlmeS5cbiAqIEBwYXJhbSB7QXJyYXl8c3RyaW5nfSBwYXRoIFRoZSBwcm9wZXJ0eSBwYXRoIHRvIHVuc2V0LlxuICogQHJldHVybnMge2Jvb2xlYW59IFJldHVybnMgYHRydWVgIGlmIHRoZSBwcm9wZXJ0eSBpcyBkZWxldGVkLCBlbHNlIGBmYWxzZWAuXG4gKi9cbmZ1bmN0aW9uIGJhc2VVbnNldChvYmplY3QsIHBhdGgpIHtcbiAgcGF0aCA9IGNhc3RQYXRoKHBhdGgsIG9iamVjdCk7XG4gIG9iamVjdCA9IHBhcmVudChvYmplY3QsIHBhdGgpO1xuICByZXR1cm4gb2JqZWN0ID09IG51bGwgfHwgZGVsZXRlIG9iamVjdFt0b0tleShsYXN0KHBhdGgpKV07XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYmFzZVVuc2V0O1xuIl19

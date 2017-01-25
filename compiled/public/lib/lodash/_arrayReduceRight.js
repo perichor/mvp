@@ -1,0 +1,27 @@
+"use strict";
+
+/**
+ * A specialized version of `_.reduceRight` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @param {*} [accumulator] The initial value.
+ * @param {boolean} [initAccum] Specify using the last element of `array` as
+ *  the initial value.
+ * @returns {*} Returns the accumulated value.
+ */
+function arrayReduceRight(array, iteratee, accumulator, initAccum) {
+  var length = array == null ? 0 : array.length;
+  if (initAccum && length) {
+    accumulator = array[--length];
+  }
+  while (length--) {
+    accumulator = iteratee(accumulator, array[length], length, array);
+  }
+  return accumulator;
+}
+
+module.exports = arrayReduceRight;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19hcnJheVJlZHVjZVJpZ2h0LmpzIl0sIm5hbWVzIjpbImFycmF5UmVkdWNlUmlnaHQiLCJhcnJheSIsIml0ZXJhdGVlIiwiYWNjdW11bGF0b3IiLCJpbml0QWNjdW0iLCJsZW5ndGgiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7Ozs7Ozs7QUFZQSxTQUFTQSxnQkFBVCxDQUEwQkMsS0FBMUIsRUFBaUNDLFFBQWpDLEVBQTJDQyxXQUEzQyxFQUF3REMsU0FBeEQsRUFBbUU7QUFDakUsTUFBSUMsU0FBU0osU0FBUyxJQUFULEdBQWdCLENBQWhCLEdBQW9CQSxNQUFNSSxNQUF2QztBQUNBLE1BQUlELGFBQWFDLE1BQWpCLEVBQXlCO0FBQ3ZCRixrQkFBY0YsTUFBTSxFQUFFSSxNQUFSLENBQWQ7QUFDRDtBQUNELFNBQU9BLFFBQVAsRUFBaUI7QUFDZkYsa0JBQWNELFNBQVNDLFdBQVQsRUFBc0JGLE1BQU1JLE1BQU4sQ0FBdEIsRUFBcUNBLE1BQXJDLEVBQTZDSixLQUE3QyxDQUFkO0FBQ0Q7QUFDRCxTQUFPRSxXQUFQO0FBQ0Q7O0FBRURHLE9BQU9DLE9BQVAsR0FBaUJQLGdCQUFqQiIsImZpbGUiOiJfYXJyYXlSZWR1Y2VSaWdodC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQSBzcGVjaWFsaXplZCB2ZXJzaW9uIG9mIGBfLnJlZHVjZVJpZ2h0YCBmb3IgYXJyYXlzIHdpdGhvdXQgc3VwcG9ydCBmb3JcbiAqIGl0ZXJhdGVlIHNob3J0aGFuZHMuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7QXJyYXl9IFthcnJheV0gVGhlIGFycmF5IHRvIGl0ZXJhdGUgb3Zlci5cbiAqIEBwYXJhbSB7RnVuY3Rpb259IGl0ZXJhdGVlIFRoZSBmdW5jdGlvbiBpbnZva2VkIHBlciBpdGVyYXRpb24uXG4gKiBAcGFyYW0geyp9IFthY2N1bXVsYXRvcl0gVGhlIGluaXRpYWwgdmFsdWUuXG4gKiBAcGFyYW0ge2Jvb2xlYW59IFtpbml0QWNjdW1dIFNwZWNpZnkgdXNpbmcgdGhlIGxhc3QgZWxlbWVudCBvZiBgYXJyYXlgIGFzXG4gKiAgdGhlIGluaXRpYWwgdmFsdWUuXG4gKiBAcmV0dXJucyB7Kn0gUmV0dXJucyB0aGUgYWNjdW11bGF0ZWQgdmFsdWUuXG4gKi9cbmZ1bmN0aW9uIGFycmF5UmVkdWNlUmlnaHQoYXJyYXksIGl0ZXJhdGVlLCBhY2N1bXVsYXRvciwgaW5pdEFjY3VtKSB7XG4gIHZhciBsZW5ndGggPSBhcnJheSA9PSBudWxsID8gMCA6IGFycmF5Lmxlbmd0aDtcbiAgaWYgKGluaXRBY2N1bSAmJiBsZW5ndGgpIHtcbiAgICBhY2N1bXVsYXRvciA9IGFycmF5Wy0tbGVuZ3RoXTtcbiAgfVxuICB3aGlsZSAobGVuZ3RoLS0pIHtcbiAgICBhY2N1bXVsYXRvciA9IGl0ZXJhdGVlKGFjY3VtdWxhdG9yLCBhcnJheVtsZW5ndGhdLCBsZW5ndGgsIGFycmF5KTtcbiAgfVxuICByZXR1cm4gYWNjdW11bGF0b3I7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYXJyYXlSZWR1Y2VSaWdodDtcbiJdfQ==

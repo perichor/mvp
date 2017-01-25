@@ -1,0 +1,7 @@
+"use strict";
+
+/** Used to match template delimiters. */
+var reEscape = /<%-([\s\S]+?)%>/g;
+
+module.exports = reEscape;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19yZUVzY2FwZS5qcyJdLCJuYW1lcyI6WyJyZUVzY2FwZSIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUE7QUFDQSxJQUFJQSxXQUFXLGtCQUFmOztBQUVBQyxPQUFPQyxPQUFQLEdBQWlCRixRQUFqQiIsImZpbGUiOiJfcmVFc2NhcGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKiogVXNlZCB0byBtYXRjaCB0ZW1wbGF0ZSBkZWxpbWl0ZXJzLiAqL1xudmFyIHJlRXNjYXBlID0gLzwlLShbXFxzXFxTXSs/KSU+L2c7XG5cbm1vZHVsZS5leHBvcnRzID0gcmVFc2NhcGU7XG4iXX0=

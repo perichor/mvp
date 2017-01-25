@@ -1,0 +1,22 @@
+'use strict';
+
+var arrayFilter = require('./_arrayFilter'),
+    isFunction = require('./isFunction');
+
+/**
+ * The base implementation of `_.functions` which creates an array of
+ * `object` function property names filtered from `props`.
+ *
+ * @private
+ * @param {Object} object The object to inspect.
+ * @param {Array} props The property names to filter.
+ * @returns {Array} Returns the function names.
+ */
+function baseFunctions(object, props) {
+  return arrayFilter(props, function (key) {
+    return isFunction(object[key]);
+  });
+}
+
+module.exports = baseFunctions;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlRnVuY3Rpb25zLmpzIl0sIm5hbWVzIjpbImFycmF5RmlsdGVyIiwicmVxdWlyZSIsImlzRnVuY3Rpb24iLCJiYXNlRnVuY3Rpb25zIiwib2JqZWN0IiwicHJvcHMiLCJrZXkiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLGNBQWNDLFFBQVEsZ0JBQVIsQ0FBbEI7QUFBQSxJQUNJQyxhQUFhRCxRQUFRLGNBQVIsQ0FEakI7O0FBR0E7Ozs7Ozs7OztBQVNBLFNBQVNFLGFBQVQsQ0FBdUJDLE1BQXZCLEVBQStCQyxLQUEvQixFQUFzQztBQUNwQyxTQUFPTCxZQUFZSyxLQUFaLEVBQW1CLFVBQVNDLEdBQVQsRUFBYztBQUN0QyxXQUFPSixXQUFXRSxPQUFPRSxHQUFQLENBQVgsQ0FBUDtBQUNELEdBRk0sQ0FBUDtBQUdEOztBQUVEQyxPQUFPQyxPQUFQLEdBQWlCTCxhQUFqQiIsImZpbGUiOiJfYmFzZUZ1bmN0aW9ucy5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBhcnJheUZpbHRlciA9IHJlcXVpcmUoJy4vX2FycmF5RmlsdGVyJyksXG4gICAgaXNGdW5jdGlvbiA9IHJlcXVpcmUoJy4vaXNGdW5jdGlvbicpO1xuXG4vKipcbiAqIFRoZSBiYXNlIGltcGxlbWVudGF0aW9uIG9mIGBfLmZ1bmN0aW9uc2Agd2hpY2ggY3JlYXRlcyBhbiBhcnJheSBvZlxuICogYG9iamVjdGAgZnVuY3Rpb24gcHJvcGVydHkgbmFtZXMgZmlsdGVyZWQgZnJvbSBgcHJvcHNgLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge09iamVjdH0gb2JqZWN0IFRoZSBvYmplY3QgdG8gaW5zcGVjdC5cbiAqIEBwYXJhbSB7QXJyYXl9IHByb3BzIFRoZSBwcm9wZXJ0eSBuYW1lcyB0byBmaWx0ZXIuXG4gKiBAcmV0dXJucyB7QXJyYXl9IFJldHVybnMgdGhlIGZ1bmN0aW9uIG5hbWVzLlxuICovXG5mdW5jdGlvbiBiYXNlRnVuY3Rpb25zKG9iamVjdCwgcHJvcHMpIHtcbiAgcmV0dXJuIGFycmF5RmlsdGVyKHByb3BzLCBmdW5jdGlvbihrZXkpIHtcbiAgICByZXR1cm4gaXNGdW5jdGlvbihvYmplY3Rba2V5XSk7XG4gIH0pO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGJhc2VGdW5jdGlvbnM7XG4iXX0=

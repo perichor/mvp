@@ -1,0 +1,10 @@
+'use strict';
+
+var getNative = require('./_getNative'),
+    root = require('./_root');
+
+/* Built-in method references that are verified to be native. */
+var Set = getNative(root, 'Set');
+
+module.exports = Set;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19TZXQuanMiXSwibmFtZXMiOlsiZ2V0TmF0aXZlIiwicmVxdWlyZSIsInJvb3QiLCJTZXQiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLFlBQVlDLFFBQVEsY0FBUixDQUFoQjtBQUFBLElBQ0lDLE9BQU9ELFFBQVEsU0FBUixDQURYOztBQUdBO0FBQ0EsSUFBSUUsTUFBTUgsVUFBVUUsSUFBVixFQUFnQixLQUFoQixDQUFWOztBQUVBRSxPQUFPQyxPQUFQLEdBQWlCRixHQUFqQiIsImZpbGUiOiJfU2V0LmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGdldE5hdGl2ZSA9IHJlcXVpcmUoJy4vX2dldE5hdGl2ZScpLFxuICAgIHJvb3QgPSByZXF1aXJlKCcuL19yb290Jyk7XG5cbi8qIEJ1aWx0LWluIG1ldGhvZCByZWZlcmVuY2VzIHRoYXQgYXJlIHZlcmlmaWVkIHRvIGJlIG5hdGl2ZS4gKi9cbnZhciBTZXQgPSBnZXROYXRpdmUocm9vdCwgJ1NldCcpO1xuXG5tb2R1bGUuZXhwb3J0cyA9IFNldDtcbiJdfQ==

@@ -1,0 +1,21 @@
+'use strict';
+
+var baseSlice = require('./_baseSlice');
+
+/**
+ * Casts `array` to a slice if it's needed.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {number} start The start position.
+ * @param {number} [end=array.length] The end position.
+ * @returns {Array} Returns the cast slice.
+ */
+function castSlice(array, start, end) {
+  var length = array.length;
+  end = end === undefined ? length : end;
+  return !start && end >= length ? array : baseSlice(array, start, end);
+}
+
+module.exports = castSlice;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jYXN0U2xpY2UuanMiXSwibmFtZXMiOlsiYmFzZVNsaWNlIiwicmVxdWlyZSIsImNhc3RTbGljZSIsImFycmF5Iiwic3RhcnQiLCJlbmQiLCJsZW5ndGgiLCJ1bmRlZmluZWQiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLFlBQVlDLFFBQVEsY0FBUixDQUFoQjs7QUFFQTs7Ozs7Ozs7O0FBU0EsU0FBU0MsU0FBVCxDQUFtQkMsS0FBbkIsRUFBMEJDLEtBQTFCLEVBQWlDQyxHQUFqQyxFQUFzQztBQUNwQyxNQUFJQyxTQUFTSCxNQUFNRyxNQUFuQjtBQUNBRCxRQUFNQSxRQUFRRSxTQUFSLEdBQW9CRCxNQUFwQixHQUE2QkQsR0FBbkM7QUFDQSxTQUFRLENBQUNELEtBQUQsSUFBVUMsT0FBT0MsTUFBbEIsR0FBNEJILEtBQTVCLEdBQW9DSCxVQUFVRyxLQUFWLEVBQWlCQyxLQUFqQixFQUF3QkMsR0FBeEIsQ0FBM0M7QUFDRDs7QUFFREcsT0FBT0MsT0FBUCxHQUFpQlAsU0FBakIiLCJmaWxlIjoiX2Nhc3RTbGljZS5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBiYXNlU2xpY2UgPSByZXF1aXJlKCcuL19iYXNlU2xpY2UnKTtcblxuLyoqXG4gKiBDYXN0cyBgYXJyYXlgIHRvIGEgc2xpY2UgaWYgaXQncyBuZWVkZWQuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7QXJyYXl9IGFycmF5IFRoZSBhcnJheSB0byBpbnNwZWN0LlxuICogQHBhcmFtIHtudW1iZXJ9IHN0YXJ0IFRoZSBzdGFydCBwb3NpdGlvbi5cbiAqIEBwYXJhbSB7bnVtYmVyfSBbZW5kPWFycmF5Lmxlbmd0aF0gVGhlIGVuZCBwb3NpdGlvbi5cbiAqIEByZXR1cm5zIHtBcnJheX0gUmV0dXJucyB0aGUgY2FzdCBzbGljZS5cbiAqL1xuZnVuY3Rpb24gY2FzdFNsaWNlKGFycmF5LCBzdGFydCwgZW5kKSB7XG4gIHZhciBsZW5ndGggPSBhcnJheS5sZW5ndGg7XG4gIGVuZCA9IGVuZCA9PT0gdW5kZWZpbmVkID8gbGVuZ3RoIDogZW5kO1xuICByZXR1cm4gKCFzdGFydCAmJiBlbmQgPj0gbGVuZ3RoKSA/IGFycmF5IDogYmFzZVNsaWNlKGFycmF5LCBzdGFydCwgZW5kKTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBjYXN0U2xpY2U7XG4iXX0=

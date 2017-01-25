@@ -1,0 +1,16 @@
+"use strict";
+
+/**
+ * Gets the argument placeholder value for `func`.
+ *
+ * @private
+ * @param {Function} func The function to inspect.
+ * @returns {*} Returns the placeholder value.
+ */
+function getHolder(func) {
+  var object = func;
+  return object.placeholder;
+}
+
+module.exports = getHolder;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19nZXRIb2xkZXIuanMiXSwibmFtZXMiOlsiZ2V0SG9sZGVyIiwiZnVuYyIsIm9iamVjdCIsInBsYWNlaG9sZGVyIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQTs7Ozs7OztBQU9BLFNBQVNBLFNBQVQsQ0FBbUJDLElBQW5CLEVBQXlCO0FBQ3ZCLE1BQUlDLFNBQVNELElBQWI7QUFDQSxTQUFPQyxPQUFPQyxXQUFkO0FBQ0Q7O0FBRURDLE9BQU9DLE9BQVAsR0FBaUJMLFNBQWpCIiwiZmlsZSI6Il9nZXRIb2xkZXIuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEdldHMgdGhlIGFyZ3VtZW50IHBsYWNlaG9sZGVyIHZhbHVlIGZvciBgZnVuY2AuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7RnVuY3Rpb259IGZ1bmMgVGhlIGZ1bmN0aW9uIHRvIGluc3BlY3QuXG4gKiBAcmV0dXJucyB7Kn0gUmV0dXJucyB0aGUgcGxhY2Vob2xkZXIgdmFsdWUuXG4gKi9cbmZ1bmN0aW9uIGdldEhvbGRlcihmdW5jKSB7XG4gIHZhciBvYmplY3QgPSBmdW5jO1xuICByZXR1cm4gb2JqZWN0LnBsYWNlaG9sZGVyO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGdldEhvbGRlcjtcbiJdfQ==

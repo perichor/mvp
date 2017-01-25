@@ -1,0 +1,33 @@
+"use strict";
+
+define(["../../core", "../../selector"
+
+// css is assumed
+], function (jQuery) {
+	"use strict";
+
+	// isHiddenWithinTree reports if an element has a non-"none" display style (inline and/or
+	// through the CSS cascade), which is useful in deciding whether or not to make it visible.
+	// It differs from the :hidden selector (jQuery.expr.pseudos.hidden) in two important ways:
+	// * A hidden ancestor does not force an element to be classified as hidden.
+	// * Being disconnected from the document does not force an element to be classified as hidden.
+	// These differences improve the behavior of .toggle() et al. when applied to elements that are
+	// detached or contained within hidden ancestors (gh-2404, gh-2863).
+
+	return function (elem, el) {
+
+		// isHiddenWithinTree might be called from jQuery#filter function;
+		// in that case, element will be second argument
+		elem = el || elem;
+
+		// Inline style trumps all
+		return elem.style.display === "none" || elem.style.display === "" &&
+
+		// Otherwise, check computed style
+		// Support: Firefox <=43 - 45
+		// Disconnected elements can have computed display: none, so first confirm that elem is
+		// in the document.
+		jQuery.contains(elem.ownerDocument, elem) && jQuery.css(elem, "display") === "none";
+	};
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy9jc3MvdmFyL2lzSGlkZGVuV2l0aGluVHJlZS5qcyJdLCJuYW1lcyI6WyJkZWZpbmUiLCJqUXVlcnkiLCJlbGVtIiwiZWwiLCJzdHlsZSIsImRpc3BsYXkiLCJjb250YWlucyIsIm93bmVyRG9jdW1lbnQiLCJjc3MiXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQVEsQ0FDUCxZQURPLEVBRVA7O0FBRUE7QUFKTyxDQUFSLEVBS0csVUFBVUMsTUFBVixFQUFtQjtBQUNyQjs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFDQSxRQUFPLFVBQVVDLElBQVYsRUFBZ0JDLEVBQWhCLEVBQXFCOztBQUUzQjtBQUNBO0FBQ0FELFNBQU9DLE1BQU1ELElBQWI7O0FBRUE7QUFDQSxTQUFPQSxLQUFLRSxLQUFMLENBQVdDLE9BQVgsS0FBdUIsTUFBdkIsSUFDTkgsS0FBS0UsS0FBTCxDQUFXQyxPQUFYLEtBQXVCLEVBQXZCOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0FKLFNBQU9LLFFBQVAsQ0FBaUJKLEtBQUtLLGFBQXRCLEVBQXFDTCxJQUFyQyxDQU5BLElBUUFELE9BQU9PLEdBQVAsQ0FBWU4sSUFBWixFQUFrQixTQUFsQixNQUFrQyxNQVRuQztBQVVBLEVBakJEO0FBa0JBLENBakNEIiwiZmlsZSI6ImlzSGlkZGVuV2l0aGluVHJlZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImRlZmluZSggW1xuXHRcIi4uLy4uL2NvcmVcIixcblx0XCIuLi8uLi9zZWxlY3RvclwiXG5cblx0Ly8gY3NzIGlzIGFzc3VtZWRcbl0sIGZ1bmN0aW9uKCBqUXVlcnkgKSB7XG5cdFwidXNlIHN0cmljdFwiO1xuXG5cdC8vIGlzSGlkZGVuV2l0aGluVHJlZSByZXBvcnRzIGlmIGFuIGVsZW1lbnQgaGFzIGEgbm9uLVwibm9uZVwiIGRpc3BsYXkgc3R5bGUgKGlubGluZSBhbmQvb3Jcblx0Ly8gdGhyb3VnaCB0aGUgQ1NTIGNhc2NhZGUpLCB3aGljaCBpcyB1c2VmdWwgaW4gZGVjaWRpbmcgd2hldGhlciBvciBub3QgdG8gbWFrZSBpdCB2aXNpYmxlLlxuXHQvLyBJdCBkaWZmZXJzIGZyb20gdGhlIDpoaWRkZW4gc2VsZWN0b3IgKGpRdWVyeS5leHByLnBzZXVkb3MuaGlkZGVuKSBpbiB0d28gaW1wb3J0YW50IHdheXM6XG5cdC8vICogQSBoaWRkZW4gYW5jZXN0b3IgZG9lcyBub3QgZm9yY2UgYW4gZWxlbWVudCB0byBiZSBjbGFzc2lmaWVkIGFzIGhpZGRlbi5cblx0Ly8gKiBCZWluZyBkaXNjb25uZWN0ZWQgZnJvbSB0aGUgZG9jdW1lbnQgZG9lcyBub3QgZm9yY2UgYW4gZWxlbWVudCB0byBiZSBjbGFzc2lmaWVkIGFzIGhpZGRlbi5cblx0Ly8gVGhlc2UgZGlmZmVyZW5jZXMgaW1wcm92ZSB0aGUgYmVoYXZpb3Igb2YgLnRvZ2dsZSgpIGV0IGFsLiB3aGVuIGFwcGxpZWQgdG8gZWxlbWVudHMgdGhhdCBhcmVcblx0Ly8gZGV0YWNoZWQgb3IgY29udGFpbmVkIHdpdGhpbiBoaWRkZW4gYW5jZXN0b3JzIChnaC0yNDA0LCBnaC0yODYzKS5cblx0cmV0dXJuIGZ1bmN0aW9uKCBlbGVtLCBlbCApIHtcblxuXHRcdC8vIGlzSGlkZGVuV2l0aGluVHJlZSBtaWdodCBiZSBjYWxsZWQgZnJvbSBqUXVlcnkjZmlsdGVyIGZ1bmN0aW9uO1xuXHRcdC8vIGluIHRoYXQgY2FzZSwgZWxlbWVudCB3aWxsIGJlIHNlY29uZCBhcmd1bWVudFxuXHRcdGVsZW0gPSBlbCB8fCBlbGVtO1xuXG5cdFx0Ly8gSW5saW5lIHN0eWxlIHRydW1wcyBhbGxcblx0XHRyZXR1cm4gZWxlbS5zdHlsZS5kaXNwbGF5ID09PSBcIm5vbmVcIiB8fFxuXHRcdFx0ZWxlbS5zdHlsZS5kaXNwbGF5ID09PSBcIlwiICYmXG5cblx0XHRcdC8vIE90aGVyd2lzZSwgY2hlY2sgY29tcHV0ZWQgc3R5bGVcblx0XHRcdC8vIFN1cHBvcnQ6IEZpcmVmb3ggPD00MyAtIDQ1XG5cdFx0XHQvLyBEaXNjb25uZWN0ZWQgZWxlbWVudHMgY2FuIGhhdmUgY29tcHV0ZWQgZGlzcGxheTogbm9uZSwgc28gZmlyc3QgY29uZmlybSB0aGF0IGVsZW0gaXNcblx0XHRcdC8vIGluIHRoZSBkb2N1bWVudC5cblx0XHRcdGpRdWVyeS5jb250YWlucyggZWxlbS5vd25lckRvY3VtZW50LCBlbGVtICkgJiZcblxuXHRcdFx0alF1ZXJ5LmNzcyggZWxlbSwgXCJkaXNwbGF5XCIgKSA9PT0gXCJub25lXCI7XG5cdH07XG59ICk7XG4iXX0=

@@ -1,0 +1,27 @@
+'use strict';
+
+var apply = require('./_apply'),
+    castPath = require('./_castPath'),
+    last = require('./last'),
+    parent = require('./_parent'),
+    toKey = require('./_toKey');
+
+/**
+ * The base implementation of `_.invoke` without support for individual
+ * method arguments.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path of the method to invoke.
+ * @param {Array} args The arguments to invoke the method with.
+ * @returns {*} Returns the result of the invoked method.
+ */
+function baseInvoke(object, path, args) {
+  path = castPath(path, object);
+  object = parent(object, path);
+  var func = object == null ? object : object[toKey(last(path))];
+  return func == null ? undefined : apply(func, object, args);
+}
+
+module.exports = baseInvoke;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlSW52b2tlLmpzIl0sIm5hbWVzIjpbImFwcGx5IiwicmVxdWlyZSIsImNhc3RQYXRoIiwibGFzdCIsInBhcmVudCIsInRvS2V5IiwiYmFzZUludm9rZSIsIm9iamVjdCIsInBhdGgiLCJhcmdzIiwiZnVuYyIsInVuZGVmaW5lZCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsUUFBUUMsUUFBUSxVQUFSLENBQVo7QUFBQSxJQUNJQyxXQUFXRCxRQUFRLGFBQVIsQ0FEZjtBQUFBLElBRUlFLE9BQU9GLFFBQVEsUUFBUixDQUZYO0FBQUEsSUFHSUcsU0FBU0gsUUFBUSxXQUFSLENBSGI7QUFBQSxJQUlJSSxRQUFRSixRQUFRLFVBQVIsQ0FKWjs7QUFNQTs7Ozs7Ozs7OztBQVVBLFNBQVNLLFVBQVQsQ0FBb0JDLE1BQXBCLEVBQTRCQyxJQUE1QixFQUFrQ0MsSUFBbEMsRUFBd0M7QUFDdENELFNBQU9OLFNBQVNNLElBQVQsRUFBZUQsTUFBZixDQUFQO0FBQ0FBLFdBQVNILE9BQU9HLE1BQVAsRUFBZUMsSUFBZixDQUFUO0FBQ0EsTUFBSUUsT0FBT0gsVUFBVSxJQUFWLEdBQWlCQSxNQUFqQixHQUEwQkEsT0FBT0YsTUFBTUYsS0FBS0ssSUFBTCxDQUFOLENBQVAsQ0FBckM7QUFDQSxTQUFPRSxRQUFRLElBQVIsR0FBZUMsU0FBZixHQUEyQlgsTUFBTVUsSUFBTixFQUFZSCxNQUFaLEVBQW9CRSxJQUFwQixDQUFsQztBQUNEOztBQUVERyxPQUFPQyxPQUFQLEdBQWlCUCxVQUFqQiIsImZpbGUiOiJfYmFzZUludm9rZS5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBhcHBseSA9IHJlcXVpcmUoJy4vX2FwcGx5JyksXG4gICAgY2FzdFBhdGggPSByZXF1aXJlKCcuL19jYXN0UGF0aCcpLFxuICAgIGxhc3QgPSByZXF1aXJlKCcuL2xhc3QnKSxcbiAgICBwYXJlbnQgPSByZXF1aXJlKCcuL19wYXJlbnQnKSxcbiAgICB0b0tleSA9IHJlcXVpcmUoJy4vX3RvS2V5Jyk7XG5cbi8qKlxuICogVGhlIGJhc2UgaW1wbGVtZW50YXRpb24gb2YgYF8uaW52b2tlYCB3aXRob3V0IHN1cHBvcnQgZm9yIGluZGl2aWR1YWxcbiAqIG1ldGhvZCBhcmd1bWVudHMuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7T2JqZWN0fSBvYmplY3QgVGhlIG9iamVjdCB0byBxdWVyeS5cbiAqIEBwYXJhbSB7QXJyYXl8c3RyaW5nfSBwYXRoIFRoZSBwYXRoIG9mIHRoZSBtZXRob2QgdG8gaW52b2tlLlxuICogQHBhcmFtIHtBcnJheX0gYXJncyBUaGUgYXJndW1lbnRzIHRvIGludm9rZSB0aGUgbWV0aG9kIHdpdGguXG4gKiBAcmV0dXJucyB7Kn0gUmV0dXJucyB0aGUgcmVzdWx0IG9mIHRoZSBpbnZva2VkIG1ldGhvZC5cbiAqL1xuZnVuY3Rpb24gYmFzZUludm9rZShvYmplY3QsIHBhdGgsIGFyZ3MpIHtcbiAgcGF0aCA9IGNhc3RQYXRoKHBhdGgsIG9iamVjdCk7XG4gIG9iamVjdCA9IHBhcmVudChvYmplY3QsIHBhdGgpO1xuICB2YXIgZnVuYyA9IG9iamVjdCA9PSBudWxsID8gb2JqZWN0IDogb2JqZWN0W3RvS2V5KGxhc3QocGF0aCkpXTtcbiAgcmV0dXJuIGZ1bmMgPT0gbnVsbCA/IHVuZGVmaW5lZCA6IGFwcGx5KGZ1bmMsIG9iamVjdCwgYXJncyk7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYmFzZUludm9rZTtcbiJdfQ==

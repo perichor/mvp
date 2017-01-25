@@ -1,0 +1,18 @@
+'use strict';
+
+var shuffleSelf = require('./_shuffleSelf'),
+    values = require('./values');
+
+/**
+ * The base implementation of `_.shuffle`.
+ *
+ * @private
+ * @param {Array|Object} collection The collection to shuffle.
+ * @returns {Array} Returns the new shuffled array.
+ */
+function baseShuffle(collection) {
+  return shuffleSelf(values(collection));
+}
+
+module.exports = baseShuffle;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlU2h1ZmZsZS5qcyJdLCJuYW1lcyI6WyJzaHVmZmxlU2VsZiIsInJlcXVpcmUiLCJ2YWx1ZXMiLCJiYXNlU2h1ZmZsZSIsImNvbGxlY3Rpb24iLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLGNBQWNDLFFBQVEsZ0JBQVIsQ0FBbEI7QUFBQSxJQUNJQyxTQUFTRCxRQUFRLFVBQVIsQ0FEYjs7QUFHQTs7Ozs7OztBQU9BLFNBQVNFLFdBQVQsQ0FBcUJDLFVBQXJCLEVBQWlDO0FBQy9CLFNBQU9KLFlBQVlFLE9BQU9FLFVBQVAsQ0FBWixDQUFQO0FBQ0Q7O0FBRURDLE9BQU9DLE9BQVAsR0FBaUJILFdBQWpCIiwiZmlsZSI6Il9iYXNlU2h1ZmZsZS5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBzaHVmZmxlU2VsZiA9IHJlcXVpcmUoJy4vX3NodWZmbGVTZWxmJyksXG4gICAgdmFsdWVzID0gcmVxdWlyZSgnLi92YWx1ZXMnKTtcblxuLyoqXG4gKiBUaGUgYmFzZSBpbXBsZW1lbnRhdGlvbiBvZiBgXy5zaHVmZmxlYC5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtBcnJheXxPYmplY3R9IGNvbGxlY3Rpb24gVGhlIGNvbGxlY3Rpb24gdG8gc2h1ZmZsZS5cbiAqIEByZXR1cm5zIHtBcnJheX0gUmV0dXJucyB0aGUgbmV3IHNodWZmbGVkIGFycmF5LlxuICovXG5mdW5jdGlvbiBiYXNlU2h1ZmZsZShjb2xsZWN0aW9uKSB7XG4gIHJldHVybiBzaHVmZmxlU2VsZih2YWx1ZXMoY29sbGVjdGlvbikpO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGJhc2VTaHVmZmxlO1xuIl19

@@ -1,0 +1,8 @@
+"use strict";
+
+define(function () {
+	"use strict";
+
+	return ["Top", "Right", "Bottom", "Left"];
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy9jc3MvdmFyL2Nzc0V4cGFuZC5qcyJdLCJuYW1lcyI6WyJkZWZpbmUiXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQVEsWUFBVztBQUNsQjs7QUFFQSxRQUFPLENBQUUsS0FBRixFQUFTLE9BQVQsRUFBa0IsUUFBbEIsRUFBNEIsTUFBNUIsQ0FBUDtBQUNBLENBSkQiLCJmaWxlIjoiY3NzRXhwYW5kLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZGVmaW5lKCBmdW5jdGlvbigpIHtcblx0XCJ1c2Ugc3RyaWN0XCI7XG5cblx0cmV0dXJuIFsgXCJUb3BcIiwgXCJSaWdodFwiLCBcIkJvdHRvbVwiLCBcIkxlZnRcIiBdO1xufSApO1xuIl19

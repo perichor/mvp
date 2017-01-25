@@ -1,0 +1,32 @@
+'use strict';
+
+var copyArray = require('./_copyArray'),
+    isIndex = require('./_isIndex');
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMin = Math.min;
+
+/**
+ * Reorder `array` according to the specified indexes where the element at
+ * the first index is assigned as the first element, the element at
+ * the second index is assigned as the second element, and so on.
+ *
+ * @private
+ * @param {Array} array The array to reorder.
+ * @param {Array} indexes The arranged array indexes.
+ * @returns {Array} Returns `array`.
+ */
+function reorder(array, indexes) {
+  var arrLength = array.length,
+      length = nativeMin(indexes.length, arrLength),
+      oldArray = copyArray(array);
+
+  while (length--) {
+    var index = indexes[length];
+    array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
+  }
+  return array;
+}
+
+module.exports = reorder;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19yZW9yZGVyLmpzIl0sIm5hbWVzIjpbImNvcHlBcnJheSIsInJlcXVpcmUiLCJpc0luZGV4IiwibmF0aXZlTWluIiwiTWF0aCIsIm1pbiIsInJlb3JkZXIiLCJhcnJheSIsImluZGV4ZXMiLCJhcnJMZW5ndGgiLCJsZW5ndGgiLCJvbGRBcnJheSIsImluZGV4IiwidW5kZWZpbmVkIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJQSxZQUFZQyxRQUFRLGNBQVIsQ0FBaEI7QUFBQSxJQUNJQyxVQUFVRCxRQUFRLFlBQVIsQ0FEZDs7QUFHQTtBQUNBLElBQUlFLFlBQVlDLEtBQUtDLEdBQXJCOztBQUVBOzs7Ozs7Ozs7O0FBVUEsU0FBU0MsT0FBVCxDQUFpQkMsS0FBakIsRUFBd0JDLE9BQXhCLEVBQWlDO0FBQy9CLE1BQUlDLFlBQVlGLE1BQU1HLE1BQXRCO0FBQUEsTUFDSUEsU0FBU1AsVUFBVUssUUFBUUUsTUFBbEIsRUFBMEJELFNBQTFCLENBRGI7QUFBQSxNQUVJRSxXQUFXWCxVQUFVTyxLQUFWLENBRmY7O0FBSUEsU0FBT0csUUFBUCxFQUFpQjtBQUNmLFFBQUlFLFFBQVFKLFFBQVFFLE1BQVIsQ0FBWjtBQUNBSCxVQUFNRyxNQUFOLElBQWdCUixRQUFRVSxLQUFSLEVBQWVILFNBQWYsSUFBNEJFLFNBQVNDLEtBQVQsQ0FBNUIsR0FBOENDLFNBQTlEO0FBQ0Q7QUFDRCxTQUFPTixLQUFQO0FBQ0Q7O0FBRURPLE9BQU9DLE9BQVAsR0FBaUJULE9BQWpCIiwiZmlsZSI6Il9yZW9yZGVyLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGNvcHlBcnJheSA9IHJlcXVpcmUoJy4vX2NvcHlBcnJheScpLFxuICAgIGlzSW5kZXggPSByZXF1aXJlKCcuL19pc0luZGV4Jyk7XG5cbi8qIEJ1aWx0LWluIG1ldGhvZCByZWZlcmVuY2VzIGZvciB0aG9zZSB3aXRoIHRoZSBzYW1lIG5hbWUgYXMgb3RoZXIgYGxvZGFzaGAgbWV0aG9kcy4gKi9cbnZhciBuYXRpdmVNaW4gPSBNYXRoLm1pbjtcblxuLyoqXG4gKiBSZW9yZGVyIGBhcnJheWAgYWNjb3JkaW5nIHRvIHRoZSBzcGVjaWZpZWQgaW5kZXhlcyB3aGVyZSB0aGUgZWxlbWVudCBhdFxuICogdGhlIGZpcnN0IGluZGV4IGlzIGFzc2lnbmVkIGFzIHRoZSBmaXJzdCBlbGVtZW50LCB0aGUgZWxlbWVudCBhdFxuICogdGhlIHNlY29uZCBpbmRleCBpcyBhc3NpZ25lZCBhcyB0aGUgc2Vjb25kIGVsZW1lbnQsIGFuZCBzbyBvbi5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtBcnJheX0gYXJyYXkgVGhlIGFycmF5IHRvIHJlb3JkZXIuXG4gKiBAcGFyYW0ge0FycmF5fSBpbmRleGVzIFRoZSBhcnJhbmdlZCBhcnJheSBpbmRleGVzLlxuICogQHJldHVybnMge0FycmF5fSBSZXR1cm5zIGBhcnJheWAuXG4gKi9cbmZ1bmN0aW9uIHJlb3JkZXIoYXJyYXksIGluZGV4ZXMpIHtcbiAgdmFyIGFyckxlbmd0aCA9IGFycmF5Lmxlbmd0aCxcbiAgICAgIGxlbmd0aCA9IG5hdGl2ZU1pbihpbmRleGVzLmxlbmd0aCwgYXJyTGVuZ3RoKSxcbiAgICAgIG9sZEFycmF5ID0gY29weUFycmF5KGFycmF5KTtcblxuICB3aGlsZSAobGVuZ3RoLS0pIHtcbiAgICB2YXIgaW5kZXggPSBpbmRleGVzW2xlbmd0aF07XG4gICAgYXJyYXlbbGVuZ3RoXSA9IGlzSW5kZXgoaW5kZXgsIGFyckxlbmd0aCkgPyBvbGRBcnJheVtpbmRleF0gOiB1bmRlZmluZWQ7XG4gIH1cbiAgcmV0dXJuIGFycmF5O1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IHJlb3JkZXI7XG4iXX0=

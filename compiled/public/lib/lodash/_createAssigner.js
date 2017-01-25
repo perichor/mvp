@@ -1,0 +1,38 @@
+'use strict';
+
+var baseRest = require('./_baseRest'),
+    isIterateeCall = require('./_isIterateeCall');
+
+/**
+ * Creates a function like `_.assign`.
+ *
+ * @private
+ * @param {Function} assigner The function to assign values.
+ * @returns {Function} Returns the new assigner function.
+ */
+function createAssigner(assigner) {
+  return baseRest(function (object, sources) {
+    var index = -1,
+        length = sources.length,
+        customizer = length > 1 ? sources[length - 1] : undefined,
+        guard = length > 2 ? sources[2] : undefined;
+
+    customizer = assigner.length > 3 && typeof customizer == 'function' ? (length--, customizer) : undefined;
+
+    if (guard && isIterateeCall(sources[0], sources[1], guard)) {
+      customizer = length < 3 ? undefined : customizer;
+      length = 1;
+    }
+    object = Object(object);
+    while (++index < length) {
+      var source = sources[index];
+      if (source) {
+        assigner(object, source, index, customizer);
+      }
+    }
+    return object;
+  });
+}
+
+module.exports = createAssigner;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jcmVhdGVBc3NpZ25lci5qcyJdLCJuYW1lcyI6WyJiYXNlUmVzdCIsInJlcXVpcmUiLCJpc0l0ZXJhdGVlQ2FsbCIsImNyZWF0ZUFzc2lnbmVyIiwiYXNzaWduZXIiLCJvYmplY3QiLCJzb3VyY2VzIiwiaW5kZXgiLCJsZW5ndGgiLCJjdXN0b21pemVyIiwidW5kZWZpbmVkIiwiZ3VhcmQiLCJPYmplY3QiLCJzb3VyY2UiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLFdBQVdDLFFBQVEsYUFBUixDQUFmO0FBQUEsSUFDSUMsaUJBQWlCRCxRQUFRLG1CQUFSLENBRHJCOztBQUdBOzs7Ozs7O0FBT0EsU0FBU0UsY0FBVCxDQUF3QkMsUUFBeEIsRUFBa0M7QUFDaEMsU0FBT0osU0FBUyxVQUFTSyxNQUFULEVBQWlCQyxPQUFqQixFQUEwQjtBQUN4QyxRQUFJQyxRQUFRLENBQUMsQ0FBYjtBQUFBLFFBQ0lDLFNBQVNGLFFBQVFFLE1BRHJCO0FBQUEsUUFFSUMsYUFBYUQsU0FBUyxDQUFULEdBQWFGLFFBQVFFLFNBQVMsQ0FBakIsQ0FBYixHQUFtQ0UsU0FGcEQ7QUFBQSxRQUdJQyxRQUFRSCxTQUFTLENBQVQsR0FBYUYsUUFBUSxDQUFSLENBQWIsR0FBMEJJLFNBSHRDOztBQUtBRCxpQkFBY0wsU0FBU0ksTUFBVCxHQUFrQixDQUFsQixJQUF1QixPQUFPQyxVQUFQLElBQXFCLFVBQTdDLElBQ1JELFVBQVVDLFVBREYsSUFFVEMsU0FGSjs7QUFJQSxRQUFJQyxTQUFTVCxlQUFlSSxRQUFRLENBQVIsQ0FBZixFQUEyQkEsUUFBUSxDQUFSLENBQTNCLEVBQXVDSyxLQUF2QyxDQUFiLEVBQTREO0FBQzFERixtQkFBYUQsU0FBUyxDQUFULEdBQWFFLFNBQWIsR0FBeUJELFVBQXRDO0FBQ0FELGVBQVMsQ0FBVDtBQUNEO0FBQ0RILGFBQVNPLE9BQU9QLE1BQVAsQ0FBVDtBQUNBLFdBQU8sRUFBRUUsS0FBRixHQUFVQyxNQUFqQixFQUF5QjtBQUN2QixVQUFJSyxTQUFTUCxRQUFRQyxLQUFSLENBQWI7QUFDQSxVQUFJTSxNQUFKLEVBQVk7QUFDVlQsaUJBQVNDLE1BQVQsRUFBaUJRLE1BQWpCLEVBQXlCTixLQUF6QixFQUFnQ0UsVUFBaEM7QUFDRDtBQUNGO0FBQ0QsV0FBT0osTUFBUDtBQUNELEdBdEJNLENBQVA7QUF1QkQ7O0FBRURTLE9BQU9DLE9BQVAsR0FBaUJaLGNBQWpCIiwiZmlsZSI6Il9jcmVhdGVBc3NpZ25lci5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBiYXNlUmVzdCA9IHJlcXVpcmUoJy4vX2Jhc2VSZXN0JyksXG4gICAgaXNJdGVyYXRlZUNhbGwgPSByZXF1aXJlKCcuL19pc0l0ZXJhdGVlQ2FsbCcpO1xuXG4vKipcbiAqIENyZWF0ZXMgYSBmdW5jdGlvbiBsaWtlIGBfLmFzc2lnbmAuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7RnVuY3Rpb259IGFzc2lnbmVyIFRoZSBmdW5jdGlvbiB0byBhc3NpZ24gdmFsdWVzLlxuICogQHJldHVybnMge0Z1bmN0aW9ufSBSZXR1cm5zIHRoZSBuZXcgYXNzaWduZXIgZnVuY3Rpb24uXG4gKi9cbmZ1bmN0aW9uIGNyZWF0ZUFzc2lnbmVyKGFzc2lnbmVyKSB7XG4gIHJldHVybiBiYXNlUmVzdChmdW5jdGlvbihvYmplY3QsIHNvdXJjZXMpIHtcbiAgICB2YXIgaW5kZXggPSAtMSxcbiAgICAgICAgbGVuZ3RoID0gc291cmNlcy5sZW5ndGgsXG4gICAgICAgIGN1c3RvbWl6ZXIgPSBsZW5ndGggPiAxID8gc291cmNlc1tsZW5ndGggLSAxXSA6IHVuZGVmaW5lZCxcbiAgICAgICAgZ3VhcmQgPSBsZW5ndGggPiAyID8gc291cmNlc1syXSA6IHVuZGVmaW5lZDtcblxuICAgIGN1c3RvbWl6ZXIgPSAoYXNzaWduZXIubGVuZ3RoID4gMyAmJiB0eXBlb2YgY3VzdG9taXplciA9PSAnZnVuY3Rpb24nKVxuICAgICAgPyAobGVuZ3RoLS0sIGN1c3RvbWl6ZXIpXG4gICAgICA6IHVuZGVmaW5lZDtcblxuICAgIGlmIChndWFyZCAmJiBpc0l0ZXJhdGVlQ2FsbChzb3VyY2VzWzBdLCBzb3VyY2VzWzFdLCBndWFyZCkpIHtcbiAgICAgIGN1c3RvbWl6ZXIgPSBsZW5ndGggPCAzID8gdW5kZWZpbmVkIDogY3VzdG9taXplcjtcbiAgICAgIGxlbmd0aCA9IDE7XG4gICAgfVxuICAgIG9iamVjdCA9IE9iamVjdChvYmplY3QpO1xuICAgIHdoaWxlICgrK2luZGV4IDwgbGVuZ3RoKSB7XG4gICAgICB2YXIgc291cmNlID0gc291cmNlc1tpbmRleF07XG4gICAgICBpZiAoc291cmNlKSB7XG4gICAgICAgIGFzc2lnbmVyKG9iamVjdCwgc291cmNlLCBpbmRleCwgY3VzdG9taXplcik7XG4gICAgICB9XG4gICAgfVxuICAgIHJldHVybiBvYmplY3Q7XG4gIH0pO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGNyZWF0ZUFzc2lnbmVyO1xuIl19

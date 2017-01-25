@@ -1,0 +1,18 @@
+'use strict';
+
+var createBaseFor = require('./_createBaseFor');
+
+/**
+ * This function is like `baseFor` except that it iterates over properties
+ * in the opposite order.
+ *
+ * @private
+ * @param {Object} object The object to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @param {Function} keysFunc The function to get the keys of `object`.
+ * @returns {Object} Returns `object`.
+ */
+var baseForRight = createBaseFor(true);
+
+module.exports = baseForRight;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlRm9yUmlnaHQuanMiXSwibmFtZXMiOlsiY3JlYXRlQmFzZUZvciIsInJlcXVpcmUiLCJiYXNlRm9yUmlnaHQiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLGdCQUFnQkMsUUFBUSxrQkFBUixDQUFwQjs7QUFFQTs7Ozs7Ozs7OztBQVVBLElBQUlDLGVBQWVGLGNBQWMsSUFBZCxDQUFuQjs7QUFFQUcsT0FBT0MsT0FBUCxHQUFpQkYsWUFBakIiLCJmaWxlIjoiX2Jhc2VGb3JSaWdodC5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBjcmVhdGVCYXNlRm9yID0gcmVxdWlyZSgnLi9fY3JlYXRlQmFzZUZvcicpO1xuXG4vKipcbiAqIFRoaXMgZnVuY3Rpb24gaXMgbGlrZSBgYmFzZUZvcmAgZXhjZXB0IHRoYXQgaXQgaXRlcmF0ZXMgb3ZlciBwcm9wZXJ0aWVzXG4gKiBpbiB0aGUgb3Bwb3NpdGUgb3JkZXIuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7T2JqZWN0fSBvYmplY3QgVGhlIG9iamVjdCB0byBpdGVyYXRlIG92ZXIuXG4gKiBAcGFyYW0ge0Z1bmN0aW9ufSBpdGVyYXRlZSBUaGUgZnVuY3Rpb24gaW52b2tlZCBwZXIgaXRlcmF0aW9uLlxuICogQHBhcmFtIHtGdW5jdGlvbn0ga2V5c0Z1bmMgVGhlIGZ1bmN0aW9uIHRvIGdldCB0aGUga2V5cyBvZiBgb2JqZWN0YC5cbiAqIEByZXR1cm5zIHtPYmplY3R9IFJldHVybnMgYG9iamVjdGAuXG4gKi9cbnZhciBiYXNlRm9yUmlnaHQgPSBjcmVhdGVCYXNlRm9yKHRydWUpO1xuXG5tb2R1bGUuZXhwb3J0cyA9IGJhc2VGb3JSaWdodDtcbiJdfQ==

@@ -1,0 +1,46 @@
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
+
+var _prodInvariant = require('./reactProdInvariant');
+
+var invariant = require('fbjs/lib/invariant');
+
+/**
+ * Accumulates items that must not be null or undefined.
+ *
+ * This is used to conserve memory by avoiding array allocations.
+ *
+ * @return {*|array<*>} An accumulation of items.
+ */
+function accumulate(current, next) {
+  !(next != null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'accumulate(...): Accumulated items must be not be null or undefined.') : _prodInvariant('29') : void 0;
+
+  if (current == null) {
+    return next;
+  }
+
+  // Both are not empty. Warning: Never call x.concat(y) when you are not
+  // certain that x is an Array (x could be a string with concat method).
+  if (Array.isArray(current)) {
+    return current.concat(next);
+  }
+
+  if (Array.isArray(next)) {
+    return [current].concat(next);
+  }
+
+  return [current, next];
+}
+
+module.exports = accumulate;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvcmVhY3QtZG9tL2xpYi9hY2N1bXVsYXRlLmpzIl0sIm5hbWVzIjpbIl9wcm9kSW52YXJpYW50IiwicmVxdWlyZSIsImludmFyaWFudCIsImFjY3VtdWxhdGUiLCJjdXJyZW50IiwibmV4dCIsInByb2Nlc3MiLCJlbnYiLCJOT0RFX0VOViIsIkFycmF5IiwiaXNBcnJheSIsImNvbmNhdCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7OztBQVdBOztBQUVBLElBQUlBLGlCQUFpQkMsUUFBUSxzQkFBUixDQUFyQjs7QUFFQSxJQUFJQyxZQUFZRCxRQUFRLG9CQUFSLENBQWhCOztBQUVBOzs7Ozs7O0FBT0EsU0FBU0UsVUFBVCxDQUFvQkMsT0FBcEIsRUFBNkJDLElBQTdCLEVBQW1DO0FBQ2pDLElBQUVBLFFBQVEsSUFBVixJQUFrQkMsUUFBUUMsR0FBUixDQUFZQyxRQUFaLEtBQXlCLFlBQXpCLEdBQXdDTixVQUFVLEtBQVYsRUFBaUIsc0VBQWpCLENBQXhDLEdBQW1JRixlQUFlLElBQWYsQ0FBckosR0FBNEssS0FBSyxDQUFqTDs7QUFFQSxNQUFJSSxXQUFXLElBQWYsRUFBcUI7QUFDbkIsV0FBT0MsSUFBUDtBQUNEOztBQUVEO0FBQ0E7QUFDQSxNQUFJSSxNQUFNQyxPQUFOLENBQWNOLE9BQWQsQ0FBSixFQUE0QjtBQUMxQixXQUFPQSxRQUFRTyxNQUFSLENBQWVOLElBQWYsQ0FBUDtBQUNEOztBQUVELE1BQUlJLE1BQU1DLE9BQU4sQ0FBY0wsSUFBZCxDQUFKLEVBQXlCO0FBQ3ZCLFdBQU8sQ0FBQ0QsT0FBRCxFQUFVTyxNQUFWLENBQWlCTixJQUFqQixDQUFQO0FBQ0Q7O0FBRUQsU0FBTyxDQUFDRCxPQUFELEVBQVVDLElBQVYsQ0FBUDtBQUNEOztBQUVETyxPQUFPQyxPQUFQLEdBQWlCVixVQUFqQiIsImZpbGUiOiJhY2N1bXVsYXRlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBDb3B5cmlnaHQgMjAxMy1wcmVzZW50LCBGYWNlYm9vaywgSW5jLlxuICogQWxsIHJpZ2h0cyByZXNlcnZlZC5cbiAqXG4gKiBUaGlzIHNvdXJjZSBjb2RlIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBCU0Qtc3R5bGUgbGljZW5zZSBmb3VuZCBpbiB0aGVcbiAqIExJQ0VOU0UgZmlsZSBpbiB0aGUgcm9vdCBkaXJlY3Rvcnkgb2YgdGhpcyBzb3VyY2UgdHJlZS4gQW4gYWRkaXRpb25hbCBncmFudFxuICogb2YgcGF0ZW50IHJpZ2h0cyBjYW4gYmUgZm91bmQgaW4gdGhlIFBBVEVOVFMgZmlsZSBpbiB0aGUgc2FtZSBkaXJlY3RvcnkuXG4gKlxuICogXG4gKi9cblxuJ3VzZSBzdHJpY3QnO1xuXG52YXIgX3Byb2RJbnZhcmlhbnQgPSByZXF1aXJlKCcuL3JlYWN0UHJvZEludmFyaWFudCcpO1xuXG52YXIgaW52YXJpYW50ID0gcmVxdWlyZSgnZmJqcy9saWIvaW52YXJpYW50Jyk7XG5cbi8qKlxuICogQWNjdW11bGF0ZXMgaXRlbXMgdGhhdCBtdXN0IG5vdCBiZSBudWxsIG9yIHVuZGVmaW5lZC5cbiAqXG4gKiBUaGlzIGlzIHVzZWQgdG8gY29uc2VydmUgbWVtb3J5IGJ5IGF2b2lkaW5nIGFycmF5IGFsbG9jYXRpb25zLlxuICpcbiAqIEByZXR1cm4geyp8YXJyYXk8Kj59IEFuIGFjY3VtdWxhdGlvbiBvZiBpdGVtcy5cbiAqL1xuZnVuY3Rpb24gYWNjdW11bGF0ZShjdXJyZW50LCBuZXh0KSB7XG4gICEobmV4dCAhPSBudWxsKSA/IHByb2Nlc3MuZW52Lk5PREVfRU5WICE9PSAncHJvZHVjdGlvbicgPyBpbnZhcmlhbnQoZmFsc2UsICdhY2N1bXVsYXRlKC4uLik6IEFjY3VtdWxhdGVkIGl0ZW1zIG11c3QgYmUgbm90IGJlIG51bGwgb3IgdW5kZWZpbmVkLicpIDogX3Byb2RJbnZhcmlhbnQoJzI5JykgOiB2b2lkIDA7XG5cbiAgaWYgKGN1cnJlbnQgPT0gbnVsbCkge1xuICAgIHJldHVybiBuZXh0O1xuICB9XG5cbiAgLy8gQm90aCBhcmUgbm90IGVtcHR5LiBXYXJuaW5nOiBOZXZlciBjYWxsIHguY29uY2F0KHkpIHdoZW4geW91IGFyZSBub3RcbiAgLy8gY2VydGFpbiB0aGF0IHggaXMgYW4gQXJyYXkgKHggY291bGQgYmUgYSBzdHJpbmcgd2l0aCBjb25jYXQgbWV0aG9kKS5cbiAgaWYgKEFycmF5LmlzQXJyYXkoY3VycmVudCkpIHtcbiAgICByZXR1cm4gY3VycmVudC5jb25jYXQobmV4dCk7XG4gIH1cblxuICBpZiAoQXJyYXkuaXNBcnJheShuZXh0KSkge1xuICAgIHJldHVybiBbY3VycmVudF0uY29uY2F0KG5leHQpO1xuICB9XG5cbiAgcmV0dXJuIFtjdXJyZW50LCBuZXh0XTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBhY2N1bXVsYXRlOyJdfQ==

@@ -1,0 +1,24 @@
+/**
+ * Copyright 2016-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
+
+// Trust the developer to only use ReactInstrumentation with a __DEV__ check
+
+var debugTool = null;
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactDebugTool = require('./ReactDebugTool');
+  debugTool = ReactDebugTool;
+}
+
+module.exports = { debugTool: debugTool };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvcmVhY3QtZG9tL2xpYi9SZWFjdEluc3RydW1lbnRhdGlvbi5qcyJdLCJuYW1lcyI6WyJkZWJ1Z1Rvb2wiLCJwcm9jZXNzIiwiZW52IiwiTk9ERV9FTlYiLCJSZWFjdERlYnVnVG9vbCIsInJlcXVpcmUiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7QUFXQTs7QUFFQTs7QUFFQSxJQUFJQSxZQUFZLElBQWhCOztBQUVBLElBQUlDLFFBQVFDLEdBQVIsQ0FBWUMsUUFBWixLQUF5QixZQUE3QixFQUEyQztBQUN6QyxNQUFJQyxpQkFBaUJDLFFBQVEsa0JBQVIsQ0FBckI7QUFDQUwsY0FBWUksY0FBWjtBQUNEOztBQUVERSxPQUFPQyxPQUFQLEdBQWlCLEVBQUVQLFdBQVdBLFNBQWIsRUFBakIiLCJmaWxlIjoiUmVhY3RJbnN0cnVtZW50YXRpb24uanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIENvcHlyaWdodCAyMDE2LXByZXNlbnQsIEZhY2Vib29rLCBJbmMuXG4gKiBBbGwgcmlnaHRzIHJlc2VydmVkLlxuICpcbiAqIFRoaXMgc291cmNlIGNvZGUgaXMgbGljZW5zZWQgdW5kZXIgdGhlIEJTRC1zdHlsZSBsaWNlbnNlIGZvdW5kIGluIHRoZVxuICogTElDRU5TRSBmaWxlIGluIHRoZSByb290IGRpcmVjdG9yeSBvZiB0aGlzIHNvdXJjZSB0cmVlLiBBbiBhZGRpdGlvbmFsIGdyYW50XG4gKiBvZiBwYXRlbnQgcmlnaHRzIGNhbiBiZSBmb3VuZCBpbiB0aGUgUEFURU5UUyBmaWxlIGluIHRoZSBzYW1lIGRpcmVjdG9yeS5cbiAqXG4gKiBcbiAqL1xuXG4ndXNlIHN0cmljdCc7XG5cbi8vIFRydXN0IHRoZSBkZXZlbG9wZXIgdG8gb25seSB1c2UgUmVhY3RJbnN0cnVtZW50YXRpb24gd2l0aCBhIF9fREVWX18gY2hlY2tcblxudmFyIGRlYnVnVG9vbCA9IG51bGw7XG5cbmlmIChwcm9jZXNzLmVudi5OT0RFX0VOViAhPT0gJ3Byb2R1Y3Rpb24nKSB7XG4gIHZhciBSZWFjdERlYnVnVG9vbCA9IHJlcXVpcmUoJy4vUmVhY3REZWJ1Z1Rvb2wnKTtcbiAgZGVidWdUb29sID0gUmVhY3REZWJ1Z1Rvb2w7XG59XG5cbm1vZHVsZS5leHBvcnRzID0geyBkZWJ1Z1Rvb2w6IGRlYnVnVG9vbCB9OyJdfQ==

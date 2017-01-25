@@ -1,0 +1,41 @@
+'use strict';
+
+var assignValue = require('./_assignValue'),
+    baseAssignValue = require('./_baseAssignValue');
+
+/**
+ * Copies properties of `source` to `object`.
+ *
+ * @private
+ * @param {Object} source The object to copy properties from.
+ * @param {Array} props The property identifiers to copy.
+ * @param {Object} [object={}] The object to copy properties to.
+ * @param {Function} [customizer] The function to customize copied values.
+ * @returns {Object} Returns `object`.
+ */
+function copyObject(source, props, object, customizer) {
+  var isNew = !object;
+  object || (object = {});
+
+  var index = -1,
+      length = props.length;
+
+  while (++index < length) {
+    var key = props[index];
+
+    var newValue = customizer ? customizer(object[key], source[key], key, object, source) : undefined;
+
+    if (newValue === undefined) {
+      newValue = source[key];
+    }
+    if (isNew) {
+      baseAssignValue(object, key, newValue);
+    } else {
+      assignValue(object, key, newValue);
+    }
+  }
+  return object;
+}
+
+module.exports = copyObject;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jb3B5T2JqZWN0LmpzIl0sIm5hbWVzIjpbImFzc2lnblZhbHVlIiwicmVxdWlyZSIsImJhc2VBc3NpZ25WYWx1ZSIsImNvcHlPYmplY3QiLCJzb3VyY2UiLCJwcm9wcyIsIm9iamVjdCIsImN1c3RvbWl6ZXIiLCJpc05ldyIsImluZGV4IiwibGVuZ3RoIiwia2V5IiwibmV3VmFsdWUiLCJ1bmRlZmluZWQiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLGNBQWNDLFFBQVEsZ0JBQVIsQ0FBbEI7QUFBQSxJQUNJQyxrQkFBa0JELFFBQVEsb0JBQVIsQ0FEdEI7O0FBR0E7Ozs7Ozs7Ozs7QUFVQSxTQUFTRSxVQUFULENBQW9CQyxNQUFwQixFQUE0QkMsS0FBNUIsRUFBbUNDLE1BQW5DLEVBQTJDQyxVQUEzQyxFQUF1RDtBQUNyRCxNQUFJQyxRQUFRLENBQUNGLE1BQWI7QUFDQUEsYUFBV0EsU0FBUyxFQUFwQjs7QUFFQSxNQUFJRyxRQUFRLENBQUMsQ0FBYjtBQUFBLE1BQ0lDLFNBQVNMLE1BQU1LLE1BRG5COztBQUdBLFNBQU8sRUFBRUQsS0FBRixHQUFVQyxNQUFqQixFQUF5QjtBQUN2QixRQUFJQyxNQUFNTixNQUFNSSxLQUFOLENBQVY7O0FBRUEsUUFBSUcsV0FBV0wsYUFDWEEsV0FBV0QsT0FBT0ssR0FBUCxDQUFYLEVBQXdCUCxPQUFPTyxHQUFQLENBQXhCLEVBQXFDQSxHQUFyQyxFQUEwQ0wsTUFBMUMsRUFBa0RGLE1BQWxELENBRFcsR0FFWFMsU0FGSjs7QUFJQSxRQUFJRCxhQUFhQyxTQUFqQixFQUE0QjtBQUMxQkQsaUJBQVdSLE9BQU9PLEdBQVAsQ0FBWDtBQUNEO0FBQ0QsUUFBSUgsS0FBSixFQUFXO0FBQ1ROLHNCQUFnQkksTUFBaEIsRUFBd0JLLEdBQXhCLEVBQTZCQyxRQUE3QjtBQUNELEtBRkQsTUFFTztBQUNMWixrQkFBWU0sTUFBWixFQUFvQkssR0FBcEIsRUFBeUJDLFFBQXpCO0FBQ0Q7QUFDRjtBQUNELFNBQU9OLE1BQVA7QUFDRDs7QUFFRFEsT0FBT0MsT0FBUCxHQUFpQlosVUFBakIiLCJmaWxlIjoiX2NvcHlPYmplY3QuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgYXNzaWduVmFsdWUgPSByZXF1aXJlKCcuL19hc3NpZ25WYWx1ZScpLFxuICAgIGJhc2VBc3NpZ25WYWx1ZSA9IHJlcXVpcmUoJy4vX2Jhc2VBc3NpZ25WYWx1ZScpO1xuXG4vKipcbiAqIENvcGllcyBwcm9wZXJ0aWVzIG9mIGBzb3VyY2VgIHRvIGBvYmplY3RgLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge09iamVjdH0gc291cmNlIFRoZSBvYmplY3QgdG8gY29weSBwcm9wZXJ0aWVzIGZyb20uXG4gKiBAcGFyYW0ge0FycmF5fSBwcm9wcyBUaGUgcHJvcGVydHkgaWRlbnRpZmllcnMgdG8gY29weS5cbiAqIEBwYXJhbSB7T2JqZWN0fSBbb2JqZWN0PXt9XSBUaGUgb2JqZWN0IHRvIGNvcHkgcHJvcGVydGllcyB0by5cbiAqIEBwYXJhbSB7RnVuY3Rpb259IFtjdXN0b21pemVyXSBUaGUgZnVuY3Rpb24gdG8gY3VzdG9taXplIGNvcGllZCB2YWx1ZXMuXG4gKiBAcmV0dXJucyB7T2JqZWN0fSBSZXR1cm5zIGBvYmplY3RgLlxuICovXG5mdW5jdGlvbiBjb3B5T2JqZWN0KHNvdXJjZSwgcHJvcHMsIG9iamVjdCwgY3VzdG9taXplcikge1xuICB2YXIgaXNOZXcgPSAhb2JqZWN0O1xuICBvYmplY3QgfHwgKG9iamVjdCA9IHt9KTtcblxuICB2YXIgaW5kZXggPSAtMSxcbiAgICAgIGxlbmd0aCA9IHByb3BzLmxlbmd0aDtcblxuICB3aGlsZSAoKytpbmRleCA8IGxlbmd0aCkge1xuICAgIHZhciBrZXkgPSBwcm9wc1tpbmRleF07XG5cbiAgICB2YXIgbmV3VmFsdWUgPSBjdXN0b21pemVyXG4gICAgICA/IGN1c3RvbWl6ZXIob2JqZWN0W2tleV0sIHNvdXJjZVtrZXldLCBrZXksIG9iamVjdCwgc291cmNlKVxuICAgICAgOiB1bmRlZmluZWQ7XG5cbiAgICBpZiAobmV3VmFsdWUgPT09IHVuZGVmaW5lZCkge1xuICAgICAgbmV3VmFsdWUgPSBzb3VyY2Vba2V5XTtcbiAgICB9XG4gICAgaWYgKGlzTmV3KSB7XG4gICAgICBiYXNlQXNzaWduVmFsdWUob2JqZWN0LCBrZXksIG5ld1ZhbHVlKTtcbiAgICB9IGVsc2Uge1xuICAgICAgYXNzaWduVmFsdWUob2JqZWN0LCBrZXksIG5ld1ZhbHVlKTtcbiAgICB9XG4gIH1cbiAgcmV0dXJuIG9iamVjdDtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBjb3B5T2JqZWN0O1xuIl19

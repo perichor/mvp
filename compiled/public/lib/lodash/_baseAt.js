@@ -1,0 +1,26 @@
+'use strict';
+
+var get = require('./get');
+
+/**
+ * The base implementation of `_.at` without support for individual paths.
+ *
+ * @private
+ * @param {Object} object The object to iterate over.
+ * @param {string[]} paths The property paths to pick.
+ * @returns {Array} Returns the picked elements.
+ */
+function baseAt(object, paths) {
+  var index = -1,
+      length = paths.length,
+      result = Array(length),
+      skip = object == null;
+
+  while (++index < length) {
+    result[index] = skip ? undefined : get(object, paths[index]);
+  }
+  return result;
+}
+
+module.exports = baseAt;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlQXQuanMiXSwibmFtZXMiOlsiZ2V0IiwicmVxdWlyZSIsImJhc2VBdCIsIm9iamVjdCIsInBhdGhzIiwiaW5kZXgiLCJsZW5ndGgiLCJyZXN1bHQiLCJBcnJheSIsInNraXAiLCJ1bmRlZmluZWQiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLE1BQU1DLFFBQVEsT0FBUixDQUFWOztBQUVBOzs7Ozs7OztBQVFBLFNBQVNDLE1BQVQsQ0FBZ0JDLE1BQWhCLEVBQXdCQyxLQUF4QixFQUErQjtBQUM3QixNQUFJQyxRQUFRLENBQUMsQ0FBYjtBQUFBLE1BQ0lDLFNBQVNGLE1BQU1FLE1BRG5CO0FBQUEsTUFFSUMsU0FBU0MsTUFBTUYsTUFBTixDQUZiO0FBQUEsTUFHSUcsT0FBT04sVUFBVSxJQUhyQjs7QUFLQSxTQUFPLEVBQUVFLEtBQUYsR0FBVUMsTUFBakIsRUFBeUI7QUFDdkJDLFdBQU9GLEtBQVAsSUFBZ0JJLE9BQU9DLFNBQVAsR0FBbUJWLElBQUlHLE1BQUosRUFBWUMsTUFBTUMsS0FBTixDQUFaLENBQW5DO0FBQ0Q7QUFDRCxTQUFPRSxNQUFQO0FBQ0Q7O0FBRURJLE9BQU9DLE9BQVAsR0FBaUJWLE1BQWpCIiwiZmlsZSI6Il9iYXNlQXQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgZ2V0ID0gcmVxdWlyZSgnLi9nZXQnKTtcblxuLyoqXG4gKiBUaGUgYmFzZSBpbXBsZW1lbnRhdGlvbiBvZiBgXy5hdGAgd2l0aG91dCBzdXBwb3J0IGZvciBpbmRpdmlkdWFsIHBhdGhzLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge09iamVjdH0gb2JqZWN0IFRoZSBvYmplY3QgdG8gaXRlcmF0ZSBvdmVyLlxuICogQHBhcmFtIHtzdHJpbmdbXX0gcGF0aHMgVGhlIHByb3BlcnR5IHBhdGhzIHRvIHBpY2suXG4gKiBAcmV0dXJucyB7QXJyYXl9IFJldHVybnMgdGhlIHBpY2tlZCBlbGVtZW50cy5cbiAqL1xuZnVuY3Rpb24gYmFzZUF0KG9iamVjdCwgcGF0aHMpIHtcbiAgdmFyIGluZGV4ID0gLTEsXG4gICAgICBsZW5ndGggPSBwYXRocy5sZW5ndGgsXG4gICAgICByZXN1bHQgPSBBcnJheShsZW5ndGgpLFxuICAgICAgc2tpcCA9IG9iamVjdCA9PSBudWxsO1xuXG4gIHdoaWxlICgrK2luZGV4IDwgbGVuZ3RoKSB7XG4gICAgcmVzdWx0W2luZGV4XSA9IHNraXAgPyB1bmRlZmluZWQgOiBnZXQob2JqZWN0LCBwYXRoc1tpbmRleF0pO1xuICB9XG4gIHJldHVybiByZXN1bHQ7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYmFzZUF0O1xuIl19

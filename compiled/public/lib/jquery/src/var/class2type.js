@@ -1,0 +1,10 @@
+"use strict";
+
+define(function () {
+	"use strict";
+
+	// [[Class]] -> type pairs
+
+	return {};
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy92YXIvY2xhc3MydHlwZS5qcyJdLCJuYW1lcyI6WyJkZWZpbmUiXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQVEsWUFBVztBQUNsQjs7QUFFQTs7QUFDQSxRQUFPLEVBQVA7QUFDQSxDQUxEIiwiZmlsZSI6ImNsYXNzMnR5cGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyJkZWZpbmUoIGZ1bmN0aW9uKCkge1xuXHRcInVzZSBzdHJpY3RcIjtcblxuXHQvLyBbW0NsYXNzXV0gLT4gdHlwZSBwYWlyc1xuXHRyZXR1cm4ge307XG59ICk7XG4iXX0=

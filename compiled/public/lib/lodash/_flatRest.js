@@ -1,0 +1,19 @@
+'use strict';
+
+var flatten = require('./flatten'),
+    overRest = require('./_overRest'),
+    setToString = require('./_setToString');
+
+/**
+ * A specialized version of `baseRest` which flattens the rest array.
+ *
+ * @private
+ * @param {Function} func The function to apply a rest parameter to.
+ * @returns {Function} Returns the new function.
+ */
+function flatRest(func) {
+  return setToString(overRest(func, undefined, flatten), func + '');
+}
+
+module.exports = flatRest;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19mbGF0UmVzdC5qcyJdLCJuYW1lcyI6WyJmbGF0dGVuIiwicmVxdWlyZSIsIm92ZXJSZXN0Iiwic2V0VG9TdHJpbmciLCJmbGF0UmVzdCIsImZ1bmMiLCJ1bmRlZmluZWQiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBLElBQUlBLFVBQVVDLFFBQVEsV0FBUixDQUFkO0FBQUEsSUFDSUMsV0FBV0QsUUFBUSxhQUFSLENBRGY7QUFBQSxJQUVJRSxjQUFjRixRQUFRLGdCQUFSLENBRmxCOztBQUlBOzs7Ozs7O0FBT0EsU0FBU0csUUFBVCxDQUFrQkMsSUFBbEIsRUFBd0I7QUFDdEIsU0FBT0YsWUFBWUQsU0FBU0csSUFBVCxFQUFlQyxTQUFmLEVBQTBCTixPQUExQixDQUFaLEVBQWdESyxPQUFPLEVBQXZELENBQVA7QUFDRDs7QUFFREUsT0FBT0MsT0FBUCxHQUFpQkosUUFBakIiLCJmaWxlIjoiX2ZsYXRSZXN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGZsYXR0ZW4gPSByZXF1aXJlKCcuL2ZsYXR0ZW4nKSxcbiAgICBvdmVyUmVzdCA9IHJlcXVpcmUoJy4vX292ZXJSZXN0JyksXG4gICAgc2V0VG9TdHJpbmcgPSByZXF1aXJlKCcuL19zZXRUb1N0cmluZycpO1xuXG4vKipcbiAqIEEgc3BlY2lhbGl6ZWQgdmVyc2lvbiBvZiBgYmFzZVJlc3RgIHdoaWNoIGZsYXR0ZW5zIHRoZSByZXN0IGFycmF5LlxuICpcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge0Z1bmN0aW9ufSBmdW5jIFRoZSBmdW5jdGlvbiB0byBhcHBseSBhIHJlc3QgcGFyYW1ldGVyIHRvLlxuICogQHJldHVybnMge0Z1bmN0aW9ufSBSZXR1cm5zIHRoZSBuZXcgZnVuY3Rpb24uXG4gKi9cbmZ1bmN0aW9uIGZsYXRSZXN0KGZ1bmMpIHtcbiAgcmV0dXJuIHNldFRvU3RyaW5nKG92ZXJSZXN0KGZ1bmMsIHVuZGVmaW5lZCwgZmxhdHRlbiksIGZ1bmMgKyAnJyk7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gZmxhdFJlc3Q7XG4iXX0=

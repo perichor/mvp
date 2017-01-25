@@ -1,0 +1,52 @@
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');
+var escapeTextContentForBrowser = require('./escapeTextContentForBrowser');
+var setInnerHTML = require('./setInnerHTML');
+
+/**
+ * Set the textContent property of a node, ensuring that whitespace is preserved
+ * even in IE8. innerText is a poor substitute for textContent and, among many
+ * issues, inserts <br> instead of the literal newline chars. innerHTML behaves
+ * as it should.
+ *
+ * @param {DOMElement} node
+ * @param {string} text
+ * @internal
+ */
+var setTextContent = function setTextContent(node, text) {
+  if (text) {
+    var firstChild = node.firstChild;
+
+    if (firstChild && firstChild === node.lastChild && firstChild.nodeType === 3) {
+      firstChild.nodeValue = text;
+      return;
+    }
+  }
+  node.textContent = text;
+};
+
+if (ExecutionEnvironment.canUseDOM) {
+  if (!('textContent' in document.documentElement)) {
+    setTextContent = function setTextContent(node, text) {
+      if (node.nodeType === 3) {
+        node.nodeValue = text;
+        return;
+      }
+      setInnerHTML(node, escapeTextContentForBrowser(text));
+    };
+  }
+}
+
+module.exports = setTextContent;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvcmVhY3QtZG9tL2xpYi9zZXRUZXh0Q29udGVudC5qcyJdLCJuYW1lcyI6WyJFeGVjdXRpb25FbnZpcm9ubWVudCIsInJlcXVpcmUiLCJlc2NhcGVUZXh0Q29udGVudEZvckJyb3dzZXIiLCJzZXRJbm5lckhUTUwiLCJzZXRUZXh0Q29udGVudCIsIm5vZGUiLCJ0ZXh0IiwiZmlyc3RDaGlsZCIsImxhc3RDaGlsZCIsIm5vZGVUeXBlIiwibm9kZVZhbHVlIiwidGV4dENvbnRlbnQiLCJjYW5Vc2VET00iLCJkb2N1bWVudCIsImRvY3VtZW50RWxlbWVudCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7O0FBVUE7O0FBRUEsSUFBSUEsdUJBQXVCQyxRQUFRLCtCQUFSLENBQTNCO0FBQ0EsSUFBSUMsOEJBQThCRCxRQUFRLCtCQUFSLENBQWxDO0FBQ0EsSUFBSUUsZUFBZUYsUUFBUSxnQkFBUixDQUFuQjs7QUFFQTs7Ozs7Ozs7OztBQVVBLElBQUlHLGlCQUFpQix3QkFBVUMsSUFBVixFQUFnQkMsSUFBaEIsRUFBc0I7QUFDekMsTUFBSUEsSUFBSixFQUFVO0FBQ1IsUUFBSUMsYUFBYUYsS0FBS0UsVUFBdEI7O0FBRUEsUUFBSUEsY0FBY0EsZUFBZUYsS0FBS0csU0FBbEMsSUFBK0NELFdBQVdFLFFBQVgsS0FBd0IsQ0FBM0UsRUFBOEU7QUFDNUVGLGlCQUFXRyxTQUFYLEdBQXVCSixJQUF2QjtBQUNBO0FBQ0Q7QUFDRjtBQUNERCxPQUFLTSxXQUFMLEdBQW1CTCxJQUFuQjtBQUNELENBVkQ7O0FBWUEsSUFBSU4scUJBQXFCWSxTQUF6QixFQUFvQztBQUNsQyxNQUFJLEVBQUUsaUJBQWlCQyxTQUFTQyxlQUE1QixDQUFKLEVBQWtEO0FBQ2hEVixxQkFBaUIsd0JBQVVDLElBQVYsRUFBZ0JDLElBQWhCLEVBQXNCO0FBQ3JDLFVBQUlELEtBQUtJLFFBQUwsS0FBa0IsQ0FBdEIsRUFBeUI7QUFDdkJKLGFBQUtLLFNBQUwsR0FBaUJKLElBQWpCO0FBQ0E7QUFDRDtBQUNESCxtQkFBYUUsSUFBYixFQUFtQkgsNEJBQTRCSSxJQUE1QixDQUFuQjtBQUNELEtBTkQ7QUFPRDtBQUNGOztBQUVEUyxPQUFPQyxPQUFQLEdBQWlCWixjQUFqQiIsImZpbGUiOiJzZXRUZXh0Q29udGVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQ29weXJpZ2h0IDIwMTMtcHJlc2VudCwgRmFjZWJvb2ssIEluYy5cbiAqIEFsbCByaWdodHMgcmVzZXJ2ZWQuXG4gKlxuICogVGhpcyBzb3VyY2UgY29kZSBpcyBsaWNlbnNlZCB1bmRlciB0aGUgQlNELXN0eWxlIGxpY2Vuc2UgZm91bmQgaW4gdGhlXG4gKiBMSUNFTlNFIGZpbGUgaW4gdGhlIHJvb3QgZGlyZWN0b3J5IG9mIHRoaXMgc291cmNlIHRyZWUuIEFuIGFkZGl0aW9uYWwgZ3JhbnRcbiAqIG9mIHBhdGVudCByaWdodHMgY2FuIGJlIGZvdW5kIGluIHRoZSBQQVRFTlRTIGZpbGUgaW4gdGhlIHNhbWUgZGlyZWN0b3J5LlxuICpcbiAqL1xuXG4ndXNlIHN0cmljdCc7XG5cbnZhciBFeGVjdXRpb25FbnZpcm9ubWVudCA9IHJlcXVpcmUoJ2ZianMvbGliL0V4ZWN1dGlvbkVudmlyb25tZW50Jyk7XG52YXIgZXNjYXBlVGV4dENvbnRlbnRGb3JCcm93c2VyID0gcmVxdWlyZSgnLi9lc2NhcGVUZXh0Q29udGVudEZvckJyb3dzZXInKTtcbnZhciBzZXRJbm5lckhUTUwgPSByZXF1aXJlKCcuL3NldElubmVySFRNTCcpO1xuXG4vKipcbiAqIFNldCB0aGUgdGV4dENvbnRlbnQgcHJvcGVydHkgb2YgYSBub2RlLCBlbnN1cmluZyB0aGF0IHdoaXRlc3BhY2UgaXMgcHJlc2VydmVkXG4gKiBldmVuIGluIElFOC4gaW5uZXJUZXh0IGlzIGEgcG9vciBzdWJzdGl0dXRlIGZvciB0ZXh0Q29udGVudCBhbmQsIGFtb25nIG1hbnlcbiAqIGlzc3VlcywgaW5zZXJ0cyA8YnI+IGluc3RlYWQgb2YgdGhlIGxpdGVyYWwgbmV3bGluZSBjaGFycy4gaW5uZXJIVE1MIGJlaGF2ZXNcbiAqIGFzIGl0IHNob3VsZC5cbiAqXG4gKiBAcGFyYW0ge0RPTUVsZW1lbnR9IG5vZGVcbiAqIEBwYXJhbSB7c3RyaW5nfSB0ZXh0XG4gKiBAaW50ZXJuYWxcbiAqL1xudmFyIHNldFRleHRDb250ZW50ID0gZnVuY3Rpb24gKG5vZGUsIHRleHQpIHtcbiAgaWYgKHRleHQpIHtcbiAgICB2YXIgZmlyc3RDaGlsZCA9IG5vZGUuZmlyc3RDaGlsZDtcblxuICAgIGlmIChmaXJzdENoaWxkICYmIGZpcnN0Q2hpbGQgPT09IG5vZGUubGFzdENoaWxkICYmIGZpcnN0Q2hpbGQubm9kZVR5cGUgPT09IDMpIHtcbiAgICAgIGZpcnN0Q2hpbGQubm9kZVZhbHVlID0gdGV4dDtcbiAgICAgIHJldHVybjtcbiAgICB9XG4gIH1cbiAgbm9kZS50ZXh0Q29udGVudCA9IHRleHQ7XG59O1xuXG5pZiAoRXhlY3V0aW9uRW52aXJvbm1lbnQuY2FuVXNlRE9NKSB7XG4gIGlmICghKCd0ZXh0Q29udGVudCcgaW4gZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50KSkge1xuICAgIHNldFRleHRDb250ZW50ID0gZnVuY3Rpb24gKG5vZGUsIHRleHQpIHtcbiAgICAgIGlmIChub2RlLm5vZGVUeXBlID09PSAzKSB7XG4gICAgICAgIG5vZGUubm9kZVZhbHVlID0gdGV4dDtcbiAgICAgICAgcmV0dXJuO1xuICAgICAgfVxuICAgICAgc2V0SW5uZXJIVE1MKG5vZGUsIGVzY2FwZVRleHRDb250ZW50Rm9yQnJvd3Nlcih0ZXh0KSk7XG4gICAgfTtcbiAgfVxufVxuXG5tb2R1bGUuZXhwb3J0cyA9IHNldFRleHRDb250ZW50OyJdfQ==

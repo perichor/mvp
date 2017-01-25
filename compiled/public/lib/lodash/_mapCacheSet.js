@@ -1,0 +1,25 @@
+'use strict';
+
+var getMapData = require('./_getMapData');
+
+/**
+ * Sets the map `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf MapCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the map cache instance.
+ */
+function mapCacheSet(key, value) {
+  var data = getMapData(this, key),
+      size = data.size;
+
+  data.set(key, value);
+  this.size += data.size == size ? 0 : 1;
+  return this;
+}
+
+module.exports = mapCacheSet;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19tYXBDYWNoZVNldC5qcyJdLCJuYW1lcyI6WyJnZXRNYXBEYXRhIiwicmVxdWlyZSIsIm1hcENhY2hlU2V0Iiwia2V5IiwidmFsdWUiLCJkYXRhIiwic2l6ZSIsInNldCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsYUFBYUMsUUFBUSxlQUFSLENBQWpCOztBQUVBOzs7Ozs7Ozs7O0FBVUEsU0FBU0MsV0FBVCxDQUFxQkMsR0FBckIsRUFBMEJDLEtBQTFCLEVBQWlDO0FBQy9CLE1BQUlDLE9BQU9MLFdBQVcsSUFBWCxFQUFpQkcsR0FBakIsQ0FBWDtBQUFBLE1BQ0lHLE9BQU9ELEtBQUtDLElBRGhCOztBQUdBRCxPQUFLRSxHQUFMLENBQVNKLEdBQVQsRUFBY0MsS0FBZDtBQUNBLE9BQUtFLElBQUwsSUFBYUQsS0FBS0MsSUFBTCxJQUFhQSxJQUFiLEdBQW9CLENBQXBCLEdBQXdCLENBQXJDO0FBQ0EsU0FBTyxJQUFQO0FBQ0Q7O0FBRURFLE9BQU9DLE9BQVAsR0FBaUJQLFdBQWpCIiwiZmlsZSI6Il9tYXBDYWNoZVNldC5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBnZXRNYXBEYXRhID0gcmVxdWlyZSgnLi9fZ2V0TWFwRGF0YScpO1xuXG4vKipcbiAqIFNldHMgdGhlIG1hcCBga2V5YCB0byBgdmFsdWVgLlxuICpcbiAqIEBwcml2YXRlXG4gKiBAbmFtZSBzZXRcbiAqIEBtZW1iZXJPZiBNYXBDYWNoZVxuICogQHBhcmFtIHtzdHJpbmd9IGtleSBUaGUga2V5IG9mIHRoZSB2YWx1ZSB0byBzZXQuXG4gKiBAcGFyYW0geyp9IHZhbHVlIFRoZSB2YWx1ZSB0byBzZXQuXG4gKiBAcmV0dXJucyB7T2JqZWN0fSBSZXR1cm5zIHRoZSBtYXAgY2FjaGUgaW5zdGFuY2UuXG4gKi9cbmZ1bmN0aW9uIG1hcENhY2hlU2V0KGtleSwgdmFsdWUpIHtcbiAgdmFyIGRhdGEgPSBnZXRNYXBEYXRhKHRoaXMsIGtleSksXG4gICAgICBzaXplID0gZGF0YS5zaXplO1xuXG4gIGRhdGEuc2V0KGtleSwgdmFsdWUpO1xuICB0aGlzLnNpemUgKz0gZGF0YS5zaXplID09IHNpemUgPyAwIDogMTtcbiAgcmV0dXJuIHRoaXM7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gbWFwQ2FjaGVTZXQ7XG4iXX0=

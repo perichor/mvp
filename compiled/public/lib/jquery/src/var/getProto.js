@@ -1,0 +1,8 @@
+"use strict";
+
+define(function () {
+	"use strict";
+
+	return Object.getPrototypeOf;
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy92YXIvZ2V0UHJvdG8uanMiXSwibmFtZXMiOlsiZGVmaW5lIiwiT2JqZWN0IiwiZ2V0UHJvdG90eXBlT2YiXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQVEsWUFBVztBQUNsQjs7QUFFQSxRQUFPQyxPQUFPQyxjQUFkO0FBQ0EsQ0FKRCIsImZpbGUiOiJnZXRQcm90by5qcyIsInNvdXJjZXNDb250ZW50IjpbImRlZmluZSggZnVuY3Rpb24oKSB7XG5cdFwidXNlIHN0cmljdFwiO1xuXG5cdHJldHVybiBPYmplY3QuZ2V0UHJvdG90eXBlT2Y7XG59ICk7XG4iXX0=

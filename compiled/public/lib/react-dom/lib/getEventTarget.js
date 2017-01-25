@@ -1,0 +1,35 @@
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+/**
+ * Gets the target node from a native browser event by accounting for
+ * inconsistencies in browser DOM APIs.
+ *
+ * @param {object} nativeEvent Native browser event.
+ * @return {DOMEventTarget} Target node.
+ */
+
+function getEventTarget(nativeEvent) {
+  var target = nativeEvent.target || nativeEvent.srcElement || window;
+
+  // Normalize SVG <use> element events #4963
+  if (target.correspondingUseElement) {
+    target = target.correspondingUseElement;
+  }
+
+  // Safari may fire events on text nodes (Node.TEXT_NODE is 3).
+  // @see http://www.quirksmode.org/js/events_properties.html
+  return target.nodeType === 3 ? target.parentNode : target;
+}
+
+module.exports = getEventTarget;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvcmVhY3QtZG9tL2xpYi9nZXRFdmVudFRhcmdldC5qcyJdLCJuYW1lcyI6WyJnZXRFdmVudFRhcmdldCIsIm5hdGl2ZUV2ZW50IiwidGFyZ2V0Iiwic3JjRWxlbWVudCIsIndpbmRvdyIsImNvcnJlc3BvbmRpbmdVc2VFbGVtZW50Iiwibm9kZVR5cGUiLCJwYXJlbnROb2RlIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7QUFVQTs7QUFFQTs7Ozs7Ozs7QUFRQSxTQUFTQSxjQUFULENBQXdCQyxXQUF4QixFQUFxQztBQUNuQyxNQUFJQyxTQUFTRCxZQUFZQyxNQUFaLElBQXNCRCxZQUFZRSxVQUFsQyxJQUFnREMsTUFBN0Q7O0FBRUE7QUFDQSxNQUFJRixPQUFPRyx1QkFBWCxFQUFvQztBQUNsQ0gsYUFBU0EsT0FBT0csdUJBQWhCO0FBQ0Q7O0FBRUQ7QUFDQTtBQUNBLFNBQU9ILE9BQU9JLFFBQVAsS0FBb0IsQ0FBcEIsR0FBd0JKLE9BQU9LLFVBQS9CLEdBQTRDTCxNQUFuRDtBQUNEOztBQUVETSxPQUFPQyxPQUFQLEdBQWlCVCxjQUFqQiIsImZpbGUiOiJnZXRFdmVudFRhcmdldC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQ29weXJpZ2h0IDIwMTMtcHJlc2VudCwgRmFjZWJvb2ssIEluYy5cbiAqIEFsbCByaWdodHMgcmVzZXJ2ZWQuXG4gKlxuICogVGhpcyBzb3VyY2UgY29kZSBpcyBsaWNlbnNlZCB1bmRlciB0aGUgQlNELXN0eWxlIGxpY2Vuc2UgZm91bmQgaW4gdGhlXG4gKiBMSUNFTlNFIGZpbGUgaW4gdGhlIHJvb3QgZGlyZWN0b3J5IG9mIHRoaXMgc291cmNlIHRyZWUuIEFuIGFkZGl0aW9uYWwgZ3JhbnRcbiAqIG9mIHBhdGVudCByaWdodHMgY2FuIGJlIGZvdW5kIGluIHRoZSBQQVRFTlRTIGZpbGUgaW4gdGhlIHNhbWUgZGlyZWN0b3J5LlxuICpcbiAqL1xuXG4ndXNlIHN0cmljdCc7XG5cbi8qKlxuICogR2V0cyB0aGUgdGFyZ2V0IG5vZGUgZnJvbSBhIG5hdGl2ZSBicm93c2VyIGV2ZW50IGJ5IGFjY291bnRpbmcgZm9yXG4gKiBpbmNvbnNpc3RlbmNpZXMgaW4gYnJvd3NlciBET00gQVBJcy5cbiAqXG4gKiBAcGFyYW0ge29iamVjdH0gbmF0aXZlRXZlbnQgTmF0aXZlIGJyb3dzZXIgZXZlbnQuXG4gKiBAcmV0dXJuIHtET01FdmVudFRhcmdldH0gVGFyZ2V0IG5vZGUuXG4gKi9cblxuZnVuY3Rpb24gZ2V0RXZlbnRUYXJnZXQobmF0aXZlRXZlbnQpIHtcbiAgdmFyIHRhcmdldCA9IG5hdGl2ZUV2ZW50LnRhcmdldCB8fCBuYXRpdmVFdmVudC5zcmNFbGVtZW50IHx8IHdpbmRvdztcblxuICAvLyBOb3JtYWxpemUgU1ZHIDx1c2U+IGVsZW1lbnQgZXZlbnRzICM0OTYzXG4gIGlmICh0YXJnZXQuY29ycmVzcG9uZGluZ1VzZUVsZW1lbnQpIHtcbiAgICB0YXJnZXQgPSB0YXJnZXQuY29ycmVzcG9uZGluZ1VzZUVsZW1lbnQ7XG4gIH1cblxuICAvLyBTYWZhcmkgbWF5IGZpcmUgZXZlbnRzIG9uIHRleHQgbm9kZXMgKE5vZGUuVEVYVF9OT0RFIGlzIDMpLlxuICAvLyBAc2VlIGh0dHA6Ly93d3cucXVpcmtzbW9kZS5vcmcvanMvZXZlbnRzX3Byb3BlcnRpZXMuaHRtbFxuICByZXR1cm4gdGFyZ2V0Lm5vZGVUeXBlID09PSAzID8gdGFyZ2V0LnBhcmVudE5vZGUgOiB0YXJnZXQ7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gZ2V0RXZlbnRUYXJnZXQ7Il19

@@ -1,0 +1,15 @@
+"use strict";
+
+define(["../core", "../event"], function (jQuery) {
+
+	"use strict";
+
+	// Attach a bunch of functions for handling common AJAX events
+
+	jQuery.each(["ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend"], function (i, type) {
+		jQuery.fn[type] = function (fn) {
+			return this.on(type, fn);
+		};
+	});
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy9ldmVudC9hamF4LmpzIl0sIm5hbWVzIjpbImRlZmluZSIsImpRdWVyeSIsImVhY2giLCJpIiwidHlwZSIsImZuIiwib24iXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQVEsQ0FDUCxTQURPLEVBRVAsVUFGTyxDQUFSLEVBR0csVUFBVUMsTUFBVixFQUFtQjs7QUFFdEI7O0FBRUE7O0FBQ0FBLFFBQU9DLElBQVAsQ0FBYSxDQUNaLFdBRFksRUFFWixVQUZZLEVBR1osY0FIWSxFQUlaLFdBSlksRUFLWixhQUxZLEVBTVosVUFOWSxDQUFiLEVBT0csVUFBVUMsQ0FBVixFQUFhQyxJQUFiLEVBQW9CO0FBQ3RCSCxTQUFPSSxFQUFQLENBQVdELElBQVgsSUFBb0IsVUFBVUMsRUFBVixFQUFlO0FBQ2xDLFVBQU8sS0FBS0MsRUFBTCxDQUFTRixJQUFULEVBQWVDLEVBQWYsQ0FBUDtBQUNBLEdBRkQ7QUFHQSxFQVhEO0FBYUMsQ0FyQkQiLCJmaWxlIjoiYWpheC5qcyIsInNvdXJjZXNDb250ZW50IjpbImRlZmluZSggW1xuXHRcIi4uL2NvcmVcIixcblx0XCIuLi9ldmVudFwiXG5dLCBmdW5jdGlvbiggalF1ZXJ5ICkge1xuXG5cInVzZSBzdHJpY3RcIjtcblxuLy8gQXR0YWNoIGEgYnVuY2ggb2YgZnVuY3Rpb25zIGZvciBoYW5kbGluZyBjb21tb24gQUpBWCBldmVudHNcbmpRdWVyeS5lYWNoKCBbXG5cdFwiYWpheFN0YXJ0XCIsXG5cdFwiYWpheFN0b3BcIixcblx0XCJhamF4Q29tcGxldGVcIixcblx0XCJhamF4RXJyb3JcIixcblx0XCJhamF4U3VjY2Vzc1wiLFxuXHRcImFqYXhTZW5kXCJcbl0sIGZ1bmN0aW9uKCBpLCB0eXBlICkge1xuXHRqUXVlcnkuZm5bIHR5cGUgXSA9IGZ1bmN0aW9uKCBmbiApIHtcblx0XHRyZXR1cm4gdGhpcy5vbiggdHlwZSwgZm4gKTtcblx0fTtcbn0gKTtcblxufSApO1xuIl19

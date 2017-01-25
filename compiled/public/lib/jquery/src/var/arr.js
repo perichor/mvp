@@ -1,0 +1,8 @@
+"use strict";
+
+define(function () {
+	"use strict";
+
+	return [];
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy92YXIvYXJyLmpzIl0sIm5hbWVzIjpbImRlZmluZSJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsT0FBUSxZQUFXO0FBQ2xCOztBQUVBLFFBQU8sRUFBUDtBQUNBLENBSkQiLCJmaWxlIjoiYXJyLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZGVmaW5lKCBmdW5jdGlvbigpIHtcblx0XCJ1c2Ugc3RyaWN0XCI7XG5cblx0cmV0dXJuIFtdO1xufSApO1xuIl19

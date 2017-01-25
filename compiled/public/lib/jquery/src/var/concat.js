@@ -1,0 +1,8 @@
+"use strict";
+
+define(["./arr"], function (arr) {
+	"use strict";
+
+	return arr.concat;
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy92YXIvY29uY2F0LmpzIl0sIm5hbWVzIjpbImRlZmluZSIsImFyciIsImNvbmNhdCJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsT0FBUSxDQUNQLE9BRE8sQ0FBUixFQUVHLFVBQVVDLEdBQVYsRUFBZ0I7QUFDbEI7O0FBRUEsUUFBT0EsSUFBSUMsTUFBWDtBQUNBLENBTkQiLCJmaWxlIjoiY29uY2F0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZGVmaW5lKCBbXG5cdFwiLi9hcnJcIlxuXSwgZnVuY3Rpb24oIGFyciApIHtcblx0XCJ1c2Ugc3RyaWN0XCI7XG5cblx0cmV0dXJuIGFyci5jb25jYXQ7XG59ICk7XG4iXX0=

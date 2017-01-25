@@ -1,0 +1,23 @@
+'use strict';
+
+var baseSum = require('./_baseSum');
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/**
+ * The base implementation of `_.mean` and `_.meanBy` without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} array The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {number} Returns the mean.
+ */
+function baseMean(array, iteratee) {
+  var length = array == null ? 0 : array.length;
+  return length ? baseSum(array, iteratee) / length : NAN;
+}
+
+module.exports = baseMean;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlTWVhbi5qcyJdLCJuYW1lcyI6WyJiYXNlU3VtIiwicmVxdWlyZSIsIk5BTiIsImJhc2VNZWFuIiwiYXJyYXkiLCJpdGVyYXRlZSIsImxlbmd0aCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsVUFBVUMsUUFBUSxZQUFSLENBQWQ7O0FBRUE7QUFDQSxJQUFJQyxNQUFNLElBQUksQ0FBZDs7QUFFQTs7Ozs7Ozs7O0FBU0EsU0FBU0MsUUFBVCxDQUFrQkMsS0FBbEIsRUFBeUJDLFFBQXpCLEVBQW1DO0FBQ2pDLE1BQUlDLFNBQVNGLFNBQVMsSUFBVCxHQUFnQixDQUFoQixHQUFvQkEsTUFBTUUsTUFBdkM7QUFDQSxTQUFPQSxTQUFVTixRQUFRSSxLQUFSLEVBQWVDLFFBQWYsSUFBMkJDLE1BQXJDLEdBQStDSixHQUF0RDtBQUNEOztBQUVESyxPQUFPQyxPQUFQLEdBQWlCTCxRQUFqQiIsImZpbGUiOiJfYmFzZU1lYW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgYmFzZVN1bSA9IHJlcXVpcmUoJy4vX2Jhc2VTdW0nKTtcblxuLyoqIFVzZWQgYXMgcmVmZXJlbmNlcyBmb3IgdmFyaW91cyBgTnVtYmVyYCBjb25zdGFudHMuICovXG52YXIgTkFOID0gMCAvIDA7XG5cbi8qKlxuICogVGhlIGJhc2UgaW1wbGVtZW50YXRpb24gb2YgYF8ubWVhbmAgYW5kIGBfLm1lYW5CeWAgd2l0aG91dCBzdXBwb3J0IGZvclxuICogaXRlcmF0ZWUgc2hvcnRoYW5kcy5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtBcnJheX0gYXJyYXkgVGhlIGFycmF5IHRvIGl0ZXJhdGUgb3Zlci5cbiAqIEBwYXJhbSB7RnVuY3Rpb259IGl0ZXJhdGVlIFRoZSBmdW5jdGlvbiBpbnZva2VkIHBlciBpdGVyYXRpb24uXG4gKiBAcmV0dXJucyB7bnVtYmVyfSBSZXR1cm5zIHRoZSBtZWFuLlxuICovXG5mdW5jdGlvbiBiYXNlTWVhbihhcnJheSwgaXRlcmF0ZWUpIHtcbiAgdmFyIGxlbmd0aCA9IGFycmF5ID09IG51bGwgPyAwIDogYXJyYXkubGVuZ3RoO1xuICByZXR1cm4gbGVuZ3RoID8gKGJhc2VTdW0oYXJyYXksIGl0ZXJhdGVlKSAvIGxlbmd0aCkgOiBOQU47XG59XG5cbm1vZHVsZS5leHBvcnRzID0gYmFzZU1lYW47XG4iXX0=

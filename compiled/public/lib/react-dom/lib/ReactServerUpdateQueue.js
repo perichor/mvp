@@ -1,0 +1,138 @@
+/**
+ * Copyright 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var ReactUpdateQueue = require('./ReactUpdateQueue');
+
+var warning = require('fbjs/lib/warning');
+
+function warnNoop(publicInstance, callerName) {
+  if (process.env.NODE_ENV !== 'production') {
+    var constructor = publicInstance.constructor;
+    process.env.NODE_ENV !== 'production' ? warning(false, '%s(...): Can only update a mounting component. ' + 'This usually means you called %s() outside componentWillMount() on the server. ' + 'This is a no-op. Please check the code for the %s component.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass') : void 0;
+  }
+}
+
+/**
+ * This is the update queue used for server rendering.
+ * It delegates to ReactUpdateQueue while server rendering is in progress and
+ * switches to ReactNoopUpdateQueue after the transaction has completed.
+ * @class ReactServerUpdateQueue
+ * @param {Transaction} transaction
+ */
+
+var ReactServerUpdateQueue = function () {
+  function ReactServerUpdateQueue(transaction) {
+    _classCallCheck(this, ReactServerUpdateQueue);
+
+    this.transaction = transaction;
+  }
+
+  /**
+   * Checks whether or not this composite component is mounted.
+   * @param {ReactClass} publicInstance The instance we want to test.
+   * @return {boolean} True if mounted, false otherwise.
+   * @protected
+   * @final
+   */
+
+  ReactServerUpdateQueue.prototype.isMounted = function isMounted(publicInstance) {
+    return false;
+  };
+
+  /**
+   * Enqueue a callback that will be executed after all the pending updates
+   * have processed.
+   *
+   * @param {ReactClass} publicInstance The instance to use as `this` context.
+   * @param {?function} callback Called after state is updated.
+   * @internal
+   */
+
+  ReactServerUpdateQueue.prototype.enqueueCallback = function enqueueCallback(publicInstance, callback, callerName) {
+    if (this.transaction.isInTransaction()) {
+      ReactUpdateQueue.enqueueCallback(publicInstance, callback, callerName);
+    }
+  };
+
+  /**
+   * Forces an update. This should only be invoked when it is known with
+   * certainty that we are **not** in a DOM transaction.
+   *
+   * You may want to call this when you know that some deeper aspect of the
+   * component's state has changed but `setState` was not called.
+   *
+   * This will not invoke `shouldComponentUpdate`, but it will invoke
+   * `componentWillUpdate` and `componentDidUpdate`.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @internal
+   */
+
+  ReactServerUpdateQueue.prototype.enqueueForceUpdate = function enqueueForceUpdate(publicInstance) {
+    if (this.transaction.isInTransaction()) {
+      ReactUpdateQueue.enqueueForceUpdate(publicInstance);
+    } else {
+      warnNoop(publicInstance, 'forceUpdate');
+    }
+  };
+
+  /**
+   * Replaces all of the state. Always use this or `setState` to mutate state.
+   * You should treat `this.state` as immutable.
+   *
+   * There is no guarantee that `this.state` will be immediately updated, so
+   * accessing `this.state` after calling this method may return the old value.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {object|function} completeState Next state.
+   * @internal
+   */
+
+  ReactServerUpdateQueue.prototype.enqueueReplaceState = function enqueueReplaceState(publicInstance, completeState) {
+    if (this.transaction.isInTransaction()) {
+      ReactUpdateQueue.enqueueReplaceState(publicInstance, completeState);
+    } else {
+      warnNoop(publicInstance, 'replaceState');
+    }
+  };
+
+  /**
+   * Sets a subset of the state. This only exists because _pendingState is
+   * internal. This provides a merging strategy that is not available to deep
+   * properties which is confusing. TODO: Expose pendingState or don't use it
+   * during the merge.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {object|function} partialState Next partial state to be merged with state.
+   * @internal
+   */
+
+  ReactServerUpdateQueue.prototype.enqueueSetState = function enqueueSetState(publicInstance, partialState) {
+    if (this.transaction.isInTransaction()) {
+      ReactUpdateQueue.enqueueSetState(publicInstance, partialState);
+    } else {
+      warnNoop(publicInstance, 'setState');
+    }
+  };
+
+  return ReactServerUpdateQueue;
+}();
+
+module.exports = ReactServerUpdateQueue;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvcmVhY3QtZG9tL2xpYi9SZWFjdFNlcnZlclVwZGF0ZVF1ZXVlLmpzIl0sIm5hbWVzIjpbIl9jbGFzc0NhbGxDaGVjayIsImluc3RhbmNlIiwiQ29uc3RydWN0b3IiLCJUeXBlRXJyb3IiLCJSZWFjdFVwZGF0ZVF1ZXVlIiwicmVxdWlyZSIsIndhcm5pbmciLCJ3YXJuTm9vcCIsInB1YmxpY0luc3RhbmNlIiwiY2FsbGVyTmFtZSIsInByb2Nlc3MiLCJlbnYiLCJOT0RFX0VOViIsImNvbnN0cnVjdG9yIiwiZGlzcGxheU5hbWUiLCJuYW1lIiwiUmVhY3RTZXJ2ZXJVcGRhdGVRdWV1ZSIsInRyYW5zYWN0aW9uIiwicHJvdG90eXBlIiwiaXNNb3VudGVkIiwiZW5xdWV1ZUNhbGxiYWNrIiwiY2FsbGJhY2siLCJpc0luVHJhbnNhY3Rpb24iLCJlbnF1ZXVlRm9yY2VVcGRhdGUiLCJlbnF1ZXVlUmVwbGFjZVN0YXRlIiwiY29tcGxldGVTdGF0ZSIsImVucXVldWVTZXRTdGF0ZSIsInBhcnRpYWxTdGF0ZSIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7OztBQVdBOztBQUVBLFNBQVNBLGVBQVQsQ0FBeUJDLFFBQXpCLEVBQW1DQyxXQUFuQyxFQUFnRDtBQUFFLE1BQUksRUFBRUQsb0JBQW9CQyxXQUF0QixDQUFKLEVBQXdDO0FBQUUsVUFBTSxJQUFJQyxTQUFKLENBQWMsbUNBQWQsQ0FBTjtBQUEyRDtBQUFFOztBQUV6SixJQUFJQyxtQkFBbUJDLFFBQVEsb0JBQVIsQ0FBdkI7O0FBRUEsSUFBSUMsVUFBVUQsUUFBUSxrQkFBUixDQUFkOztBQUVBLFNBQVNFLFFBQVQsQ0FBa0JDLGNBQWxCLEVBQWtDQyxVQUFsQyxFQUE4QztBQUM1QyxNQUFJQyxRQUFRQyxHQUFSLENBQVlDLFFBQVosS0FBeUIsWUFBN0IsRUFBMkM7QUFDekMsUUFBSUMsY0FBY0wsZUFBZUssV0FBakM7QUFDQUgsWUFBUUMsR0FBUixDQUFZQyxRQUFaLEtBQXlCLFlBQXpCLEdBQXdDTixRQUFRLEtBQVIsRUFBZSxvREFBb0QsaUZBQXBELEdBQXdJLDhEQUF2SixFQUF1TkcsVUFBdk4sRUFBbU9BLFVBQW5PLEVBQStPSSxnQkFBZ0JBLFlBQVlDLFdBQVosSUFBMkJELFlBQVlFLElBQXZELEtBQWdFLFlBQS9TLENBQXhDLEdBQXVXLEtBQUssQ0FBNVc7QUFDRDtBQUNGOztBQUVEOzs7Ozs7OztBQVFBLElBQUlDLHlCQUF5QixZQUFZO0FBQ3ZDLFdBQVNBLHNCQUFULENBQWdDQyxXQUFoQyxFQUE2QztBQUMzQ2pCLG9CQUFnQixJQUFoQixFQUFzQmdCLHNCQUF0Qjs7QUFFQSxTQUFLQyxXQUFMLEdBQW1CQSxXQUFuQjtBQUNEOztBQUVEOzs7Ozs7OztBQVNBRCx5QkFBdUJFLFNBQXZCLENBQWlDQyxTQUFqQyxHQUE2QyxTQUFTQSxTQUFULENBQW1CWCxjQUFuQixFQUFtQztBQUM5RSxXQUFPLEtBQVA7QUFDRCxHQUZEOztBQUlBOzs7Ozs7Ozs7QUFVQVEseUJBQXVCRSxTQUF2QixDQUFpQ0UsZUFBakMsR0FBbUQsU0FBU0EsZUFBVCxDQUF5QlosY0FBekIsRUFBeUNhLFFBQXpDLEVBQW1EWixVQUFuRCxFQUErRDtBQUNoSCxRQUFJLEtBQUtRLFdBQUwsQ0FBaUJLLGVBQWpCLEVBQUosRUFBd0M7QUFDdENsQix1QkFBaUJnQixlQUFqQixDQUFpQ1osY0FBakMsRUFBaURhLFFBQWpELEVBQTJEWixVQUEzRDtBQUNEO0FBQ0YsR0FKRDs7QUFNQTs7Ozs7Ozs7Ozs7Ozs7QUFlQU8seUJBQXVCRSxTQUF2QixDQUFpQ0ssa0JBQWpDLEdBQXNELFNBQVNBLGtCQUFULENBQTRCZixjQUE1QixFQUE0QztBQUNoRyxRQUFJLEtBQUtTLFdBQUwsQ0FBaUJLLGVBQWpCLEVBQUosRUFBd0M7QUFDdENsQix1QkFBaUJtQixrQkFBakIsQ0FBb0NmLGNBQXBDO0FBQ0QsS0FGRCxNQUVPO0FBQ0xELGVBQVNDLGNBQVQsRUFBeUIsYUFBekI7QUFDRDtBQUNGLEdBTkQ7O0FBUUE7Ozs7Ozs7Ozs7OztBQWFBUSx5QkFBdUJFLFNBQXZCLENBQWlDTSxtQkFBakMsR0FBdUQsU0FBU0EsbUJBQVQsQ0FBNkJoQixjQUE3QixFQUE2Q2lCLGFBQTdDLEVBQTREO0FBQ2pILFFBQUksS0FBS1IsV0FBTCxDQUFpQkssZUFBakIsRUFBSixFQUF3QztBQUN0Q2xCLHVCQUFpQm9CLG1CQUFqQixDQUFxQ2hCLGNBQXJDLEVBQXFEaUIsYUFBckQ7QUFDRCxLQUZELE1BRU87QUFDTGxCLGVBQVNDLGNBQVQsRUFBeUIsY0FBekI7QUFDRDtBQUNGLEdBTkQ7O0FBUUE7Ozs7Ozs7Ozs7O0FBWUFRLHlCQUF1QkUsU0FBdkIsQ0FBaUNRLGVBQWpDLEdBQW1ELFNBQVNBLGVBQVQsQ0FBeUJsQixjQUF6QixFQUF5Q21CLFlBQXpDLEVBQXVEO0FBQ3hHLFFBQUksS0FBS1YsV0FBTCxDQUFpQkssZUFBakIsRUFBSixFQUF3QztBQUN0Q2xCLHVCQUFpQnNCLGVBQWpCLENBQWlDbEIsY0FBakMsRUFBaURtQixZQUFqRDtBQUNELEtBRkQsTUFFTztBQUNMcEIsZUFBU0MsY0FBVCxFQUF5QixVQUF6QjtBQUNEO0FBQ0YsR0FORDs7QUFRQSxTQUFPUSxzQkFBUDtBQUNELENBckc0QixFQUE3Qjs7QUF1R0FZLE9BQU9DLE9BQVAsR0FBaUJiLHNCQUFqQiIsImZpbGUiOiJSZWFjdFNlcnZlclVwZGF0ZVF1ZXVlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBDb3B5cmlnaHQgMjAxNS1wcmVzZW50LCBGYWNlYm9vaywgSW5jLlxuICogQWxsIHJpZ2h0cyByZXNlcnZlZC5cbiAqXG4gKiBUaGlzIHNvdXJjZSBjb2RlIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBCU0Qtc3R5bGUgbGljZW5zZSBmb3VuZCBpbiB0aGVcbiAqIExJQ0VOU0UgZmlsZSBpbiB0aGUgcm9vdCBkaXJlY3Rvcnkgb2YgdGhpcyBzb3VyY2UgdHJlZS4gQW4gYWRkaXRpb25hbCBncmFudFxuICogb2YgcGF0ZW50IHJpZ2h0cyBjYW4gYmUgZm91bmQgaW4gdGhlIFBBVEVOVFMgZmlsZSBpbiB0aGUgc2FtZSBkaXJlY3RvcnkuXG4gKlxuICogXG4gKi9cblxuJ3VzZSBzdHJpY3QnO1xuXG5mdW5jdGlvbiBfY2xhc3NDYWxsQ2hlY2soaW5zdGFuY2UsIENvbnN0cnVjdG9yKSB7IGlmICghKGluc3RhbmNlIGluc3RhbmNlb2YgQ29uc3RydWN0b3IpKSB7IHRocm93IG5ldyBUeXBlRXJyb3IoXCJDYW5ub3QgY2FsbCBhIGNsYXNzIGFzIGEgZnVuY3Rpb25cIik7IH0gfVxuXG52YXIgUmVhY3RVcGRhdGVRdWV1ZSA9IHJlcXVpcmUoJy4vUmVhY3RVcGRhdGVRdWV1ZScpO1xuXG52YXIgd2FybmluZyA9IHJlcXVpcmUoJ2ZianMvbGliL3dhcm5pbmcnKTtcblxuZnVuY3Rpb24gd2Fybk5vb3AocHVibGljSW5zdGFuY2UsIGNhbGxlck5hbWUpIHtcbiAgaWYgKHByb2Nlc3MuZW52Lk5PREVfRU5WICE9PSAncHJvZHVjdGlvbicpIHtcbiAgICB2YXIgY29uc3RydWN0b3IgPSBwdWJsaWNJbnN0YW5jZS5jb25zdHJ1Y3RvcjtcbiAgICBwcm9jZXNzLmVudi5OT0RFX0VOViAhPT0gJ3Byb2R1Y3Rpb24nID8gd2FybmluZyhmYWxzZSwgJyVzKC4uLik6IENhbiBvbmx5IHVwZGF0ZSBhIG1vdW50aW5nIGNvbXBvbmVudC4gJyArICdUaGlzIHVzdWFsbHkgbWVhbnMgeW91IGNhbGxlZCAlcygpIG91dHNpZGUgY29tcG9uZW50V2lsbE1vdW50KCkgb24gdGhlIHNlcnZlci4gJyArICdUaGlzIGlzIGEgbm8tb3AuIFBsZWFzZSBjaGVjayB0aGUgY29kZSBmb3IgdGhlICVzIGNvbXBvbmVudC4nLCBjYWxsZXJOYW1lLCBjYWxsZXJOYW1lLCBjb25zdHJ1Y3RvciAmJiAoY29uc3RydWN0b3IuZGlzcGxheU5hbWUgfHwgY29uc3RydWN0b3IubmFtZSkgfHwgJ1JlYWN0Q2xhc3MnKSA6IHZvaWQgMDtcbiAgfVxufVxuXG4vKipcbiAqIFRoaXMgaXMgdGhlIHVwZGF0ZSBxdWV1ZSB1c2VkIGZvciBzZXJ2ZXIgcmVuZGVyaW5nLlxuICogSXQgZGVsZWdhdGVzIHRvIFJlYWN0VXBkYXRlUXVldWUgd2hpbGUgc2VydmVyIHJlbmRlcmluZyBpcyBpbiBwcm9ncmVzcyBhbmRcbiAqIHN3aXRjaGVzIHRvIFJlYWN0Tm9vcFVwZGF0ZVF1ZXVlIGFmdGVyIHRoZSB0cmFuc2FjdGlvbiBoYXMgY29tcGxldGVkLlxuICogQGNsYXNzIFJlYWN0U2VydmVyVXBkYXRlUXVldWVcbiAqIEBwYXJhbSB7VHJhbnNhY3Rpb259IHRyYW5zYWN0aW9uXG4gKi9cblxudmFyIFJlYWN0U2VydmVyVXBkYXRlUXVldWUgPSBmdW5jdGlvbiAoKSB7XG4gIGZ1bmN0aW9uIFJlYWN0U2VydmVyVXBkYXRlUXVldWUodHJhbnNhY3Rpb24pIHtcbiAgICBfY2xhc3NDYWxsQ2hlY2sodGhpcywgUmVhY3RTZXJ2ZXJVcGRhdGVRdWV1ZSk7XG5cbiAgICB0aGlzLnRyYW5zYWN0aW9uID0gdHJhbnNhY3Rpb247XG4gIH1cblxuICAvKipcbiAgICogQ2hlY2tzIHdoZXRoZXIgb3Igbm90IHRoaXMgY29tcG9zaXRlIGNvbXBvbmVudCBpcyBtb3VudGVkLlxuICAgKiBAcGFyYW0ge1JlYWN0Q2xhc3N9IHB1YmxpY0luc3RhbmNlIFRoZSBpbnN0YW5jZSB3ZSB3YW50IHRvIHRlc3QuXG4gICAqIEByZXR1cm4ge2Jvb2xlYW59IFRydWUgaWYgbW91bnRlZCwgZmFsc2Ugb3RoZXJ3aXNlLlxuICAgKiBAcHJvdGVjdGVkXG4gICAqIEBmaW5hbFxuICAgKi9cblxuXG4gIFJlYWN0U2VydmVyVXBkYXRlUXVldWUucHJvdG90eXBlLmlzTW91bnRlZCA9IGZ1bmN0aW9uIGlzTW91bnRlZChwdWJsaWNJbnN0YW5jZSkge1xuICAgIHJldHVybiBmYWxzZTtcbiAgfTtcblxuICAvKipcbiAgICogRW5xdWV1ZSBhIGNhbGxiYWNrIHRoYXQgd2lsbCBiZSBleGVjdXRlZCBhZnRlciBhbGwgdGhlIHBlbmRpbmcgdXBkYXRlc1xuICAgKiBoYXZlIHByb2Nlc3NlZC5cbiAgICpcbiAgICogQHBhcmFtIHtSZWFjdENsYXNzfSBwdWJsaWNJbnN0YW5jZSBUaGUgaW5zdGFuY2UgdG8gdXNlIGFzIGB0aGlzYCBjb250ZXh0LlxuICAgKiBAcGFyYW0gez9mdW5jdGlvbn0gY2FsbGJhY2sgQ2FsbGVkIGFmdGVyIHN0YXRlIGlzIHVwZGF0ZWQuXG4gICAqIEBpbnRlcm5hbFxuICAgKi9cblxuXG4gIFJlYWN0U2VydmVyVXBkYXRlUXVldWUucHJvdG90eXBlLmVucXVldWVDYWxsYmFjayA9IGZ1bmN0aW9uIGVucXVldWVDYWxsYmFjayhwdWJsaWNJbnN0YW5jZSwgY2FsbGJhY2ssIGNhbGxlck5hbWUpIHtcbiAgICBpZiAodGhpcy50cmFuc2FjdGlvbi5pc0luVHJhbnNhY3Rpb24oKSkge1xuICAgICAgUmVhY3RVcGRhdGVRdWV1ZS5lbnF1ZXVlQ2FsbGJhY2socHVibGljSW5zdGFuY2UsIGNhbGxiYWNrLCBjYWxsZXJOYW1lKTtcbiAgICB9XG4gIH07XG5cbiAgLyoqXG4gICAqIEZvcmNlcyBhbiB1cGRhdGUuIFRoaXMgc2hvdWxkIG9ubHkgYmUgaW52b2tlZCB3aGVuIGl0IGlzIGtub3duIHdpdGhcbiAgICogY2VydGFpbnR5IHRoYXQgd2UgYXJlICoqbm90KiogaW4gYSBET00gdHJhbnNhY3Rpb24uXG4gICAqXG4gICAqIFlvdSBtYXkgd2FudCB0byBjYWxsIHRoaXMgd2hlbiB5b3Uga25vdyB0aGF0IHNvbWUgZGVlcGVyIGFzcGVjdCBvZiB0aGVcbiAgICogY29tcG9uZW50J3Mgc3RhdGUgaGFzIGNoYW5nZWQgYnV0IGBzZXRTdGF0ZWAgd2FzIG5vdCBjYWxsZWQuXG4gICAqXG4gICAqIFRoaXMgd2lsbCBub3QgaW52b2tlIGBzaG91bGRDb21wb25lbnRVcGRhdGVgLCBidXQgaXQgd2lsbCBpbnZva2VcbiAgICogYGNvbXBvbmVudFdpbGxVcGRhdGVgIGFuZCBgY29tcG9uZW50RGlkVXBkYXRlYC5cbiAgICpcbiAgICogQHBhcmFtIHtSZWFjdENsYXNzfSBwdWJsaWNJbnN0YW5jZSBUaGUgaW5zdGFuY2UgdGhhdCBzaG91bGQgcmVyZW5kZXIuXG4gICAqIEBpbnRlcm5hbFxuICAgKi9cblxuXG4gIFJlYWN0U2VydmVyVXBkYXRlUXVldWUucHJvdG90eXBlLmVucXVldWVGb3JjZVVwZGF0ZSA9IGZ1bmN0aW9uIGVucXVldWVGb3JjZVVwZGF0ZShwdWJsaWNJbnN0YW5jZSkge1xuICAgIGlmICh0aGlzLnRyYW5zYWN0aW9uLmlzSW5UcmFuc2FjdGlvbigpKSB7XG4gICAgICBSZWFjdFVwZGF0ZVF1ZXVlLmVucXVldWVGb3JjZVVwZGF0ZShwdWJsaWNJbnN0YW5jZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHdhcm5Ob29wKHB1YmxpY0luc3RhbmNlLCAnZm9yY2VVcGRhdGUnKTtcbiAgICB9XG4gIH07XG5cbiAgLyoqXG4gICAqIFJlcGxhY2VzIGFsbCBvZiB0aGUgc3RhdGUuIEFsd2F5cyB1c2UgdGhpcyBvciBgc2V0U3RhdGVgIHRvIG11dGF0ZSBzdGF0ZS5cbiAgICogWW91IHNob3VsZCB0cmVhdCBgdGhpcy5zdGF0ZWAgYXMgaW1tdXRhYmxlLlxuICAgKlxuICAgKiBUaGVyZSBpcyBubyBndWFyYW50ZWUgdGhhdCBgdGhpcy5zdGF0ZWAgd2lsbCBiZSBpbW1lZGlhdGVseSB1cGRhdGVkLCBzb1xuICAgKiBhY2Nlc3NpbmcgYHRoaXMuc3RhdGVgIGFmdGVyIGNhbGxpbmcgdGhpcyBtZXRob2QgbWF5IHJldHVybiB0aGUgb2xkIHZhbHVlLlxuICAgKlxuICAgKiBAcGFyYW0ge1JlYWN0Q2xhc3N9IHB1YmxpY0luc3RhbmNlIFRoZSBpbnN0YW5jZSB0aGF0IHNob3VsZCByZXJlbmRlci5cbiAgICogQHBhcmFtIHtvYmplY3R8ZnVuY3Rpb259IGNvbXBsZXRlU3RhdGUgTmV4dCBzdGF0ZS5cbiAgICogQGludGVybmFsXG4gICAqL1xuXG5cbiAgUmVhY3RTZXJ2ZXJVcGRhdGVRdWV1ZS5wcm90b3R5cGUuZW5xdWV1ZVJlcGxhY2VTdGF0ZSA9IGZ1bmN0aW9uIGVucXVldWVSZXBsYWNlU3RhdGUocHVibGljSW5zdGFuY2UsIGNvbXBsZXRlU3RhdGUpIHtcbiAgICBpZiAodGhpcy50cmFuc2FjdGlvbi5pc0luVHJhbnNhY3Rpb24oKSkge1xuICAgICAgUmVhY3RVcGRhdGVRdWV1ZS5lbnF1ZXVlUmVwbGFjZVN0YXRlKHB1YmxpY0luc3RhbmNlLCBjb21wbGV0ZVN0YXRlKTtcbiAgICB9IGVsc2Uge1xuICAgICAgd2Fybk5vb3AocHVibGljSW5zdGFuY2UsICdyZXBsYWNlU3RhdGUnKTtcbiAgICB9XG4gIH07XG5cbiAgLyoqXG4gICAqIFNldHMgYSBzdWJzZXQgb2YgdGhlIHN0YXRlLiBUaGlzIG9ubHkgZXhpc3RzIGJlY2F1c2UgX3BlbmRpbmdTdGF0ZSBpc1xuICAgKiBpbnRlcm5hbC4gVGhpcyBwcm92aWRlcyBhIG1lcmdpbmcgc3RyYXRlZ3kgdGhhdCBpcyBub3QgYXZhaWxhYmxlIHRvIGRlZXBcbiAgICogcHJvcGVydGllcyB3aGljaCBpcyBjb25mdXNpbmcuIFRPRE86IEV4cG9zZSBwZW5kaW5nU3RhdGUgb3IgZG9uJ3QgdXNlIGl0XG4gICAqIGR1cmluZyB0aGUgbWVyZ2UuXG4gICAqXG4gICAqIEBwYXJhbSB7UmVhY3RDbGFzc30gcHVibGljSW5zdGFuY2UgVGhlIGluc3RhbmNlIHRoYXQgc2hvdWxkIHJlcmVuZGVyLlxuICAgKiBAcGFyYW0ge29iamVjdHxmdW5jdGlvbn0gcGFydGlhbFN0YXRlIE5leHQgcGFydGlhbCBzdGF0ZSB0byBiZSBtZXJnZWQgd2l0aCBzdGF0ZS5cbiAgICogQGludGVybmFsXG4gICAqL1xuXG5cbiAgUmVhY3RTZXJ2ZXJVcGRhdGVRdWV1ZS5wcm90b3R5cGUuZW5xdWV1ZVNldFN0YXRlID0gZnVuY3Rpb24gZW5xdWV1ZVNldFN0YXRlKHB1YmxpY0luc3RhbmNlLCBwYXJ0aWFsU3RhdGUpIHtcbiAgICBpZiAodGhpcy50cmFuc2FjdGlvbi5pc0luVHJhbnNhY3Rpb24oKSkge1xuICAgICAgUmVhY3RVcGRhdGVRdWV1ZS5lbnF1ZXVlU2V0U3RhdGUocHVibGljSW5zdGFuY2UsIHBhcnRpYWxTdGF0ZSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHdhcm5Ob29wKHB1YmxpY0luc3RhbmNlLCAnc2V0U3RhdGUnKTtcbiAgICB9XG4gIH07XG5cbiAgcmV0dXJuIFJlYWN0U2VydmVyVXBkYXRlUXVldWU7XG59KCk7XG5cbm1vZHVsZS5leHBvcnRzID0gUmVhY3RTZXJ2ZXJVcGRhdGVRdWV1ZTsiXX0=

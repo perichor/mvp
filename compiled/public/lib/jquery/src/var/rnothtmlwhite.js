@@ -1,0 +1,13 @@
+"use strict";
+
+define(function () {
+	"use strict";
+
+	// Only count HTML whitespace
+	// Other whitespace should count in values
+	// https://html.spec.whatwg.org/multipage/infrastructure.html#space-character
+
+	return (/[^\x20\t\r\n\f]+/g
+	);
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy92YXIvcm5vdGh0bWx3aGl0ZS5qcyJdLCJuYW1lcyI6WyJkZWZpbmUiXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQVEsWUFBVztBQUNsQjs7QUFFQTtBQUNBO0FBQ0E7O0FBQ0EsUUFBUztBQUFUO0FBQ0EsQ0FQRCIsImZpbGUiOiJybm90aHRtbHdoaXRlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZGVmaW5lKCBmdW5jdGlvbigpIHtcblx0XCJ1c2Ugc3RyaWN0XCI7XG5cblx0Ly8gT25seSBjb3VudCBIVE1MIHdoaXRlc3BhY2Vcblx0Ly8gT3RoZXIgd2hpdGVzcGFjZSBzaG91bGQgY291bnQgaW4gdmFsdWVzXG5cdC8vIGh0dHBzOi8vaHRtbC5zcGVjLndoYXR3Zy5vcmcvbXVsdGlwYWdlL2luZnJhc3RydWN0dXJlLmh0bWwjc3BhY2UtY2hhcmFjdGVyXG5cdHJldHVybiAoIC9bXlxceDIwXFx0XFxyXFxuXFxmXSsvZyApO1xufSApO1xuIl19

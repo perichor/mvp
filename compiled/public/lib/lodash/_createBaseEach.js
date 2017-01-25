@@ -1,0 +1,35 @@
+'use strict';
+
+var isArrayLike = require('./isArrayLike');
+
+/**
+ * Creates a `baseEach` or `baseEachRight` function.
+ *
+ * @private
+ * @param {Function} eachFunc The function to iterate over a collection.
+ * @param {boolean} [fromRight] Specify iterating from right to left.
+ * @returns {Function} Returns the new base function.
+ */
+function createBaseEach(eachFunc, fromRight) {
+  return function (collection, iteratee) {
+    if (collection == null) {
+      return collection;
+    }
+    if (!isArrayLike(collection)) {
+      return eachFunc(collection, iteratee);
+    }
+    var length = collection.length,
+        index = fromRight ? length : -1,
+        iterable = Object(collection);
+
+    while (fromRight ? index-- : ++index < length) {
+      if (iteratee(iterable[index], index, iterable) === false) {
+        break;
+      }
+    }
+    return collection;
+  };
+}
+
+module.exports = createBaseEach;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19jcmVhdGVCYXNlRWFjaC5qcyJdLCJuYW1lcyI6WyJpc0FycmF5TGlrZSIsInJlcXVpcmUiLCJjcmVhdGVCYXNlRWFjaCIsImVhY2hGdW5jIiwiZnJvbVJpZ2h0IiwiY29sbGVjdGlvbiIsIml0ZXJhdGVlIiwibGVuZ3RoIiwiaW5kZXgiLCJpdGVyYWJsZSIsIk9iamVjdCIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsY0FBY0MsUUFBUSxlQUFSLENBQWxCOztBQUVBOzs7Ozs7OztBQVFBLFNBQVNDLGNBQVQsQ0FBd0JDLFFBQXhCLEVBQWtDQyxTQUFsQyxFQUE2QztBQUMzQyxTQUFPLFVBQVNDLFVBQVQsRUFBcUJDLFFBQXJCLEVBQStCO0FBQ3BDLFFBQUlELGNBQWMsSUFBbEIsRUFBd0I7QUFDdEIsYUFBT0EsVUFBUDtBQUNEO0FBQ0QsUUFBSSxDQUFDTCxZQUFZSyxVQUFaLENBQUwsRUFBOEI7QUFDNUIsYUFBT0YsU0FBU0UsVUFBVCxFQUFxQkMsUUFBckIsQ0FBUDtBQUNEO0FBQ0QsUUFBSUMsU0FBU0YsV0FBV0UsTUFBeEI7QUFBQSxRQUNJQyxRQUFRSixZQUFZRyxNQUFaLEdBQXFCLENBQUMsQ0FEbEM7QUFBQSxRQUVJRSxXQUFXQyxPQUFPTCxVQUFQLENBRmY7O0FBSUEsV0FBUUQsWUFBWUksT0FBWixHQUFzQixFQUFFQSxLQUFGLEdBQVVELE1BQXhDLEVBQWlEO0FBQy9DLFVBQUlELFNBQVNHLFNBQVNELEtBQVQsQ0FBVCxFQUEwQkEsS0FBMUIsRUFBaUNDLFFBQWpDLE1BQStDLEtBQW5ELEVBQTBEO0FBQ3hEO0FBQ0Q7QUFDRjtBQUNELFdBQU9KLFVBQVA7QUFDRCxHQWpCRDtBQWtCRDs7QUFFRE0sT0FBT0MsT0FBUCxHQUFpQlYsY0FBakIiLCJmaWxlIjoiX2NyZWF0ZUJhc2VFYWNoLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGlzQXJyYXlMaWtlID0gcmVxdWlyZSgnLi9pc0FycmF5TGlrZScpO1xuXG4vKipcbiAqIENyZWF0ZXMgYSBgYmFzZUVhY2hgIG9yIGBiYXNlRWFjaFJpZ2h0YCBmdW5jdGlvbi5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtGdW5jdGlvbn0gZWFjaEZ1bmMgVGhlIGZ1bmN0aW9uIHRvIGl0ZXJhdGUgb3ZlciBhIGNvbGxlY3Rpb24uXG4gKiBAcGFyYW0ge2Jvb2xlYW59IFtmcm9tUmlnaHRdIFNwZWNpZnkgaXRlcmF0aW5nIGZyb20gcmlnaHQgdG8gbGVmdC5cbiAqIEByZXR1cm5zIHtGdW5jdGlvbn0gUmV0dXJucyB0aGUgbmV3IGJhc2UgZnVuY3Rpb24uXG4gKi9cbmZ1bmN0aW9uIGNyZWF0ZUJhc2VFYWNoKGVhY2hGdW5jLCBmcm9tUmlnaHQpIHtcbiAgcmV0dXJuIGZ1bmN0aW9uKGNvbGxlY3Rpb24sIGl0ZXJhdGVlKSB7XG4gICAgaWYgKGNvbGxlY3Rpb24gPT0gbnVsbCkge1xuICAgICAgcmV0dXJuIGNvbGxlY3Rpb247XG4gICAgfVxuICAgIGlmICghaXNBcnJheUxpa2UoY29sbGVjdGlvbikpIHtcbiAgICAgIHJldHVybiBlYWNoRnVuYyhjb2xsZWN0aW9uLCBpdGVyYXRlZSk7XG4gICAgfVxuICAgIHZhciBsZW5ndGggPSBjb2xsZWN0aW9uLmxlbmd0aCxcbiAgICAgICAgaW5kZXggPSBmcm9tUmlnaHQgPyBsZW5ndGggOiAtMSxcbiAgICAgICAgaXRlcmFibGUgPSBPYmplY3QoY29sbGVjdGlvbik7XG5cbiAgICB3aGlsZSAoKGZyb21SaWdodCA/IGluZGV4LS0gOiArK2luZGV4IDwgbGVuZ3RoKSkge1xuICAgICAgaWYgKGl0ZXJhdGVlKGl0ZXJhYmxlW2luZGV4XSwgaW5kZXgsIGl0ZXJhYmxlKSA9PT0gZmFsc2UpIHtcbiAgICAgICAgYnJlYWs7XG4gICAgICB9XG4gICAgfVxuICAgIHJldHVybiBjb2xsZWN0aW9uO1xuICB9O1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGNyZWF0ZUJhc2VFYWNoO1xuIl19

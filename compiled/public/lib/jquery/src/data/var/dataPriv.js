@@ -1,0 +1,8 @@
+"use strict";
+
+define(["../Data"], function (Data) {
+	"use strict";
+
+	return new Data();
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy9kYXRhL3Zhci9kYXRhUHJpdi5qcyJdLCJuYW1lcyI6WyJkZWZpbmUiLCJEYXRhIl0sIm1hcHBpbmdzIjoiOztBQUFBQSxPQUFRLENBQ1AsU0FETyxDQUFSLEVBRUcsVUFBVUMsSUFBVixFQUFpQjtBQUNuQjs7QUFFQSxRQUFPLElBQUlBLElBQUosRUFBUDtBQUNBLENBTkQiLCJmaWxlIjoiZGF0YVByaXYuanMiLCJzb3VyY2VzQ29udGVudCI6WyJkZWZpbmUoIFtcblx0XCIuLi9EYXRhXCJcbl0sIGZ1bmN0aW9uKCBEYXRhICkge1xuXHRcInVzZSBzdHJpY3RcIjtcblxuXHRyZXR1cm4gbmV3IERhdGEoKTtcbn0gKTtcbiJdfQ==

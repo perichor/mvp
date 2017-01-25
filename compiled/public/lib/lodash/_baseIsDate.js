@@ -1,0 +1,21 @@
+'use strict';
+
+var baseGetTag = require('./_baseGetTag'),
+    isObjectLike = require('./isObjectLike');
+
+/** `Object#toString` result references. */
+var dateTag = '[object Date]';
+
+/**
+ * The base implementation of `_.isDate` without Node.js optimizations.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a date object, else `false`.
+ */
+function baseIsDate(value) {
+  return isObjectLike(value) && baseGetTag(value) == dateTag;
+}
+
+module.exports = baseIsDate;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlSXNEYXRlLmpzIl0sIm5hbWVzIjpbImJhc2VHZXRUYWciLCJyZXF1aXJlIiwiaXNPYmplY3RMaWtlIiwiZGF0ZVRhZyIsImJhc2VJc0RhdGUiLCJ2YWx1ZSIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSUEsYUFBYUMsUUFBUSxlQUFSLENBQWpCO0FBQUEsSUFDSUMsZUFBZUQsUUFBUSxnQkFBUixDQURuQjs7QUFHQTtBQUNBLElBQUlFLFVBQVUsZUFBZDs7QUFFQTs7Ozs7OztBQU9BLFNBQVNDLFVBQVQsQ0FBb0JDLEtBQXBCLEVBQTJCO0FBQ3pCLFNBQU9ILGFBQWFHLEtBQWIsS0FBdUJMLFdBQVdLLEtBQVgsS0FBcUJGLE9BQW5EO0FBQ0Q7O0FBRURHLE9BQU9DLE9BQVAsR0FBaUJILFVBQWpCIiwiZmlsZSI6Il9iYXNlSXNEYXRlLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGJhc2VHZXRUYWcgPSByZXF1aXJlKCcuL19iYXNlR2V0VGFnJyksXG4gICAgaXNPYmplY3RMaWtlID0gcmVxdWlyZSgnLi9pc09iamVjdExpa2UnKTtcblxuLyoqIGBPYmplY3QjdG9TdHJpbmdgIHJlc3VsdCByZWZlcmVuY2VzLiAqL1xudmFyIGRhdGVUYWcgPSAnW29iamVjdCBEYXRlXSc7XG5cbi8qKlxuICogVGhlIGJhc2UgaW1wbGVtZW50YXRpb24gb2YgYF8uaXNEYXRlYCB3aXRob3V0IE5vZGUuanMgb3B0aW1pemF0aW9ucy5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHsqfSB2YWx1ZSBUaGUgdmFsdWUgdG8gY2hlY2suXG4gKiBAcmV0dXJucyB7Ym9vbGVhbn0gUmV0dXJucyBgdHJ1ZWAgaWYgYHZhbHVlYCBpcyBhIGRhdGUgb2JqZWN0LCBlbHNlIGBmYWxzZWAuXG4gKi9cbmZ1bmN0aW9uIGJhc2VJc0RhdGUodmFsdWUpIHtcbiAgcmV0dXJuIGlzT2JqZWN0TGlrZSh2YWx1ZSkgJiYgYmFzZUdldFRhZyh2YWx1ZSkgPT0gZGF0ZVRhZztcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBiYXNlSXNEYXRlO1xuIl19

@@ -1,0 +1,8 @@
+"use strict";
+
+define(["./arr"], function (arr) {
+	"use strict";
+
+	return arr.slice;
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy92YXIvc2xpY2UuanMiXSwibmFtZXMiOlsiZGVmaW5lIiwiYXJyIiwic2xpY2UiXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQVEsQ0FDUCxPQURPLENBQVIsRUFFRyxVQUFVQyxHQUFWLEVBQWdCO0FBQ2xCOztBQUVBLFFBQU9BLElBQUlDLEtBQVg7QUFDQSxDQU5EIiwiZmlsZSI6InNsaWNlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZGVmaW5lKCBbXG5cdFwiLi9hcnJcIlxuXSwgZnVuY3Rpb24oIGFyciApIHtcblx0XCJ1c2Ugc3RyaWN0XCI7XG5cblx0cmV0dXJuIGFyci5zbGljZTtcbn0gKTtcbiJdfQ==

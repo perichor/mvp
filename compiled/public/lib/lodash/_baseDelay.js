@@ -1,0 +1,26 @@
+'use strict';
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * The base implementation of `_.delay` and `_.defer` which accepts `args`
+ * to provide to `func`.
+ *
+ * @private
+ * @param {Function} func The function to delay.
+ * @param {number} wait The number of milliseconds to delay invocation.
+ * @param {Array} args The arguments to provide to `func`.
+ * @returns {number|Object} Returns the timer id or timeout object.
+ */
+function baseDelay(func, wait, args) {
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  return setTimeout(function () {
+    func.apply(undefined, args);
+  }, wait);
+}
+
+module.exports = baseDelay;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlRGVsYXkuanMiXSwibmFtZXMiOlsiRlVOQ19FUlJPUl9URVhUIiwiYmFzZURlbGF5IiwiZnVuYyIsIndhaXQiLCJhcmdzIiwiVHlwZUVycm9yIiwic2V0VGltZW91dCIsImFwcGx5IiwidW5kZWZpbmVkIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQTtBQUNBLElBQUlBLGtCQUFrQixxQkFBdEI7O0FBRUE7Ozs7Ozs7Ozs7QUFVQSxTQUFTQyxTQUFULENBQW1CQyxJQUFuQixFQUF5QkMsSUFBekIsRUFBK0JDLElBQS9CLEVBQXFDO0FBQ25DLE1BQUksT0FBT0YsSUFBUCxJQUFlLFVBQW5CLEVBQStCO0FBQzdCLFVBQU0sSUFBSUcsU0FBSixDQUFjTCxlQUFkLENBQU47QUFDRDtBQUNELFNBQU9NLFdBQVcsWUFBVztBQUFFSixTQUFLSyxLQUFMLENBQVdDLFNBQVgsRUFBc0JKLElBQXRCO0FBQThCLEdBQXRELEVBQXdERCxJQUF4RCxDQUFQO0FBQ0Q7O0FBRURNLE9BQU9DLE9BQVAsR0FBaUJULFNBQWpCIiwiZmlsZSI6Il9iYXNlRGVsYXkuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKiogRXJyb3IgbWVzc2FnZSBjb25zdGFudHMuICovXG52YXIgRlVOQ19FUlJPUl9URVhUID0gJ0V4cGVjdGVkIGEgZnVuY3Rpb24nO1xuXG4vKipcbiAqIFRoZSBiYXNlIGltcGxlbWVudGF0aW9uIG9mIGBfLmRlbGF5YCBhbmQgYF8uZGVmZXJgIHdoaWNoIGFjY2VwdHMgYGFyZ3NgXG4gKiB0byBwcm92aWRlIHRvIGBmdW5jYC5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtGdW5jdGlvbn0gZnVuYyBUaGUgZnVuY3Rpb24gdG8gZGVsYXkuXG4gKiBAcGFyYW0ge251bWJlcn0gd2FpdCBUaGUgbnVtYmVyIG9mIG1pbGxpc2Vjb25kcyB0byBkZWxheSBpbnZvY2F0aW9uLlxuICogQHBhcmFtIHtBcnJheX0gYXJncyBUaGUgYXJndW1lbnRzIHRvIHByb3ZpZGUgdG8gYGZ1bmNgLlxuICogQHJldHVybnMge251bWJlcnxPYmplY3R9IFJldHVybnMgdGhlIHRpbWVyIGlkIG9yIHRpbWVvdXQgb2JqZWN0LlxuICovXG5mdW5jdGlvbiBiYXNlRGVsYXkoZnVuYywgd2FpdCwgYXJncykge1xuICBpZiAodHlwZW9mIGZ1bmMgIT0gJ2Z1bmN0aW9uJykge1xuICAgIHRocm93IG5ldyBUeXBlRXJyb3IoRlVOQ19FUlJPUl9URVhUKTtcbiAgfVxuICByZXR1cm4gc2V0VGltZW91dChmdW5jdGlvbigpIHsgZnVuYy5hcHBseSh1bmRlZmluZWQsIGFyZ3MpOyB9LCB3YWl0KTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBiYXNlRGVsYXk7XG4iXX0=

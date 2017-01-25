@@ -1,0 +1,30 @@
+"use strict";
+
+/**
+ * The base implementation of `_.conformsTo` which accepts `props` to check.
+ *
+ * @private
+ * @param {Object} object The object to inspect.
+ * @param {Object} source The object of property predicates to conform to.
+ * @returns {boolean} Returns `true` if `object` conforms, else `false`.
+ */
+function baseConformsTo(object, source, props) {
+  var length = props.length;
+  if (object == null) {
+    return !length;
+  }
+  object = Object(object);
+  while (length--) {
+    var key = props[length],
+        predicate = source[key],
+        value = object[key];
+
+    if (value === undefined && !(key in object) || !predicate(value)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+module.exports = baseConformsTo;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlQ29uZm9ybXNUby5qcyJdLCJuYW1lcyI6WyJiYXNlQ29uZm9ybXNUbyIsIm9iamVjdCIsInNvdXJjZSIsInByb3BzIiwibGVuZ3RoIiwiT2JqZWN0Iiwia2V5IiwicHJlZGljYXRlIiwidmFsdWUiLCJ1bmRlZmluZWQiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7OztBQVFBLFNBQVNBLGNBQVQsQ0FBd0JDLE1BQXhCLEVBQWdDQyxNQUFoQyxFQUF3Q0MsS0FBeEMsRUFBK0M7QUFDN0MsTUFBSUMsU0FBU0QsTUFBTUMsTUFBbkI7QUFDQSxNQUFJSCxVQUFVLElBQWQsRUFBb0I7QUFDbEIsV0FBTyxDQUFDRyxNQUFSO0FBQ0Q7QUFDREgsV0FBU0ksT0FBT0osTUFBUCxDQUFUO0FBQ0EsU0FBT0csUUFBUCxFQUFpQjtBQUNmLFFBQUlFLE1BQU1ILE1BQU1DLE1BQU4sQ0FBVjtBQUFBLFFBQ0lHLFlBQVlMLE9BQU9JLEdBQVAsQ0FEaEI7QUFBQSxRQUVJRSxRQUFRUCxPQUFPSyxHQUFQLENBRlo7O0FBSUEsUUFBS0UsVUFBVUMsU0FBVixJQUF1QixFQUFFSCxPQUFPTCxNQUFULENBQXhCLElBQTZDLENBQUNNLFVBQVVDLEtBQVYsQ0FBbEQsRUFBb0U7QUFDbEUsYUFBTyxLQUFQO0FBQ0Q7QUFDRjtBQUNELFNBQU8sSUFBUDtBQUNEOztBQUVERSxPQUFPQyxPQUFQLEdBQWlCWCxjQUFqQiIsImZpbGUiOiJfYmFzZUNvbmZvcm1zVG8uanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFRoZSBiYXNlIGltcGxlbWVudGF0aW9uIG9mIGBfLmNvbmZvcm1zVG9gIHdoaWNoIGFjY2VwdHMgYHByb3BzYCB0byBjaGVjay5cbiAqXG4gKiBAcHJpdmF0ZVxuICogQHBhcmFtIHtPYmplY3R9IG9iamVjdCBUaGUgb2JqZWN0IHRvIGluc3BlY3QuXG4gKiBAcGFyYW0ge09iamVjdH0gc291cmNlIFRoZSBvYmplY3Qgb2YgcHJvcGVydHkgcHJlZGljYXRlcyB0byBjb25mb3JtIHRvLlxuICogQHJldHVybnMge2Jvb2xlYW59IFJldHVybnMgYHRydWVgIGlmIGBvYmplY3RgIGNvbmZvcm1zLCBlbHNlIGBmYWxzZWAuXG4gKi9cbmZ1bmN0aW9uIGJhc2VDb25mb3Jtc1RvKG9iamVjdCwgc291cmNlLCBwcm9wcykge1xuICB2YXIgbGVuZ3RoID0gcHJvcHMubGVuZ3RoO1xuICBpZiAob2JqZWN0ID09IG51bGwpIHtcbiAgICByZXR1cm4gIWxlbmd0aDtcbiAgfVxuICBvYmplY3QgPSBPYmplY3Qob2JqZWN0KTtcbiAgd2hpbGUgKGxlbmd0aC0tKSB7XG4gICAgdmFyIGtleSA9IHByb3BzW2xlbmd0aF0sXG4gICAgICAgIHByZWRpY2F0ZSA9IHNvdXJjZVtrZXldLFxuICAgICAgICB2YWx1ZSA9IG9iamVjdFtrZXldO1xuXG4gICAgaWYgKCh2YWx1ZSA9PT0gdW5kZWZpbmVkICYmICEoa2V5IGluIG9iamVjdCkpIHx8ICFwcmVkaWNhdGUodmFsdWUpKSB7XG4gICAgICByZXR1cm4gZmFsc2U7XG4gICAgfVxuICB9XG4gIHJldHVybiB0cnVlO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGJhc2VDb25mb3Jtc1RvO1xuIl19

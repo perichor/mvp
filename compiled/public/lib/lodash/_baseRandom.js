@@ -1,0 +1,21 @@
+"use strict";
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeFloor = Math.floor,
+    nativeRandom = Math.random;
+
+/**
+ * The base implementation of `_.random` without support for returning
+ * floating-point numbers.
+ *
+ * @private
+ * @param {number} lower The lower bound.
+ * @param {number} upper The upper bound.
+ * @returns {number} Returns the random number.
+ */
+function baseRandom(lower, upper) {
+  return lower + nativeFloor(nativeRandom() * (upper - lower + 1));
+}
+
+module.exports = baseRandom;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3B1YmxpYy9saWIvbG9kYXNoL19iYXNlUmFuZG9tLmpzIl0sIm5hbWVzIjpbIm5hdGl2ZUZsb29yIiwiTWF0aCIsImZsb29yIiwibmF0aXZlUmFuZG9tIiwicmFuZG9tIiwiYmFzZVJhbmRvbSIsImxvd2VyIiwidXBwZXIiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0EsSUFBSUEsY0FBY0MsS0FBS0MsS0FBdkI7QUFBQSxJQUNJQyxlQUFlRixLQUFLRyxNQUR4Qjs7QUFHQTs7Ozs7Ozs7O0FBU0EsU0FBU0MsVUFBVCxDQUFvQkMsS0FBcEIsRUFBMkJDLEtBQTNCLEVBQWtDO0FBQ2hDLFNBQU9ELFFBQVFOLFlBQVlHLGtCQUFrQkksUUFBUUQsS0FBUixHQUFnQixDQUFsQyxDQUFaLENBQWY7QUFDRDs7QUFFREUsT0FBT0MsT0FBUCxHQUFpQkosVUFBakIiLCJmaWxlIjoiX2Jhc2VSYW5kb20uanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBCdWlsdC1pbiBtZXRob2QgcmVmZXJlbmNlcyBmb3IgdGhvc2Ugd2l0aCB0aGUgc2FtZSBuYW1lIGFzIG90aGVyIGBsb2Rhc2hgIG1ldGhvZHMuICovXG52YXIgbmF0aXZlRmxvb3IgPSBNYXRoLmZsb29yLFxuICAgIG5hdGl2ZVJhbmRvbSA9IE1hdGgucmFuZG9tO1xuXG4vKipcbiAqIFRoZSBiYXNlIGltcGxlbWVudGF0aW9uIG9mIGBfLnJhbmRvbWAgd2l0aG91dCBzdXBwb3J0IGZvciByZXR1cm5pbmdcbiAqIGZsb2F0aW5nLXBvaW50IG51bWJlcnMuXG4gKlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7bnVtYmVyfSBsb3dlciBUaGUgbG93ZXIgYm91bmQuXG4gKiBAcGFyYW0ge251bWJlcn0gdXBwZXIgVGhlIHVwcGVyIGJvdW5kLlxuICogQHJldHVybnMge251bWJlcn0gUmV0dXJucyB0aGUgcmFuZG9tIG51bWJlci5cbiAqL1xuZnVuY3Rpb24gYmFzZVJhbmRvbShsb3dlciwgdXBwZXIpIHtcbiAgcmV0dXJuIGxvd2VyICsgbmF0aXZlRmxvb3IobmF0aXZlUmFuZG9tKCkgKiAodXBwZXIgLSBsb3dlciArIDEpKTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSBiYXNlUmFuZG9tO1xuIl19

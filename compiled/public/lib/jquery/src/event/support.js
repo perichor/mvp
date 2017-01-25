@@ -1,0 +1,11 @@
+"use strict";
+
+define(["../var/support"], function (support) {
+
+	"use strict";
+
+	support.focusin = "onfocusin" in window;
+
+	return support;
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3B1YmxpYy9saWIvanF1ZXJ5L3NyYy9ldmVudC9zdXBwb3J0LmpzIl0sIm5hbWVzIjpbImRlZmluZSIsInN1cHBvcnQiLCJmb2N1c2luIiwid2luZG93Il0sIm1hcHBpbmdzIjoiOztBQUFBQSxPQUFRLENBQ1AsZ0JBRE8sQ0FBUixFQUVHLFVBQVVDLE9BQVYsRUFBb0I7O0FBRXZCOztBQUVBQSxTQUFRQyxPQUFSLEdBQWtCLGVBQWVDLE1BQWpDOztBQUVBLFFBQU9GLE9BQVA7QUFFQyxDQVZEIiwiZmlsZSI6InN1cHBvcnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJkZWZpbmUoIFtcblx0XCIuLi92YXIvc3VwcG9ydFwiXG5dLCBmdW5jdGlvbiggc3VwcG9ydCApIHtcblxuXCJ1c2Ugc3RyaWN0XCI7XG5cbnN1cHBvcnQuZm9jdXNpbiA9IFwib25mb2N1c2luXCIgaW4gd2luZG93O1xuXG5yZXR1cm4gc3VwcG9ydDtcblxufSApO1xuIl19
