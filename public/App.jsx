@@ -9,9 +9,10 @@ class App extends React.Component {
 			[0, 0, 0],
 			[0, 0, 0]
 			],
+			turn: '1',
+			player: '0',
 			gameName: ''
 		}
-		setInterval(this.getBoardState.bind(this), 5000);
 	}
 
 	setGameName(e) {
@@ -25,8 +26,7 @@ class App extends React.Component {
 		  type: 'GET',
 		  contentType: 'application/json',
 		  success: function (data) {
-		  	context.setState({boardScreen: data})
-		  	console.log(context.state.boardScreen);
+		  	context.setState({boardScreen: data.game, turn: data.turn});
 		  },
 		  error: function(err) {
 				console.error(err);
@@ -58,7 +58,7 @@ class App extends React.Component {
 		  contentType: 'application/json',
 		  data: JSON.stringify({'name': context.state.gameName}),
 		  success: function (data) {
-		  	context.setState({playing: true});
+		  	context.setState({playing: true, player: '1'});
 		  },
 		  error: function(err) {
 				console.error(err);
@@ -74,7 +74,7 @@ class App extends React.Component {
 		  contentType: 'application/json',
 		  data: JSON.stringify({'name': context.state.gameName}),
 		  success: function (data) {
-		  	context.setState({playing: true});
+		  	context.setState({playing: true, player: '2'});
 		  },
 		  error: function(err) {
 				console.error(err);
@@ -82,10 +82,15 @@ class App extends React.Component {
 		});
 	}
 
+	stopPlaying() {
+		this.setState({playing: false});
+	}
+
 	render() {
 		if (this.state.playing) {
+			setInterval(this.getBoardState.bind(this), 5000);
 			return (
-				<Board handleClick={this.move.bind(this)} boardState={this.state.boardScreen}/>
+				<Board handleClick={this.move.bind(this)} boardState={this.state.boardScreen} turn={this.state.turn} player={this.state.player} stopPlaying={this.stopPlaying.bind(this)}/>
 			);
 		} else {
 			return (
