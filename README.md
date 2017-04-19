@@ -17,12 +17,9 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
- 
-## Heading ##
-  Tic Tac Toe but Reversed... and Online.
 
-## Sub-Heading ##
-  Reverse Tic Tac Toe, but it's online.
+## Tic Tac Toe but Reversed... and Online. ##
+  Like Reverse Tic Tac Toe, but it's online.
 
 ## Summary ##
   With this magnificent game you can settle any debate at anytime with tic tac toe. Can't decide where to eat? Reverse Tic Tac Toe. Trouble picking which person should cook dinner? Reverse Tic Tac Toe. Can't figure out what pizza topping you should get? Reverse Tic Tac Toe. Not sure why this is all about food? Tic... Tac... Toe...
