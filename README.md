@@ -38,9 +38,3 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Customer Quote ##
   "I can't stop playing... they won't let me..." - Wonderful Customer No.3012
-
-## MVP ##
-	Basic online game functionality
-
-## Closing and Call to Action ##
-  If your interested go to localhost:3000/creategame
