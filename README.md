@@ -22,7 +22,7 @@ Once the project moves into development, the press release can be used as a touc
   Like Reverse Tic Tac Toe, but it's online.
 
 ## Summary ##
-  With this magnificent game you can settle any debate at anytime with tic tac toe. Can't decide where to eat? Reverse Tic Tac Toe. Trouble picking which person should cook dinner? Reverse Tic Tac Toe. Can't figure out what pizza topping you should get? Reverse Tic Tac Toe. Not sure why this is all about food? Tic... Tac... Toe...
+  With this magnificent game you can settle any debate at anytime with reverse tic tac toe. Can't decide where to eat? Reverse Tic Tac Toe. Trouble picking which person should cook dinner? Reverse Tic Tac Toe. Can't figure out what pizza topping you should get? Reverse Tic Tac Toe. Not sure why this is all about food? Tic... Tac... Toe...
 
 ## Problem ##
   What Problems does this solve..? All problems. All of 'em. (Mostly just a lack of Reverse Tic Tac Toe access though)
